@@ -66,8 +66,6 @@ setopt auto_cd
 setopt auto_param_keys
 # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
 setopt auto_param_slash
-# スペルチェック
-setopt correct
 # {a-c} を a b c に展開する機能を使えるようにする
 setopt brace_ccl
 # Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
