@@ -7,9 +7,11 @@ HISTSIZE=100000
 # 保存する履歴の数
 SAVEHIST=100000
 
-# 補完機能の強化
+fpath=(~/rcfiles/.zsh/completion $fpath)
+
 autoload -U compinit
-compinit
+# 補完機能の強化
+compinit -u
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
