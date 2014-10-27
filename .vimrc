@@ -8,6 +8,7 @@ endif
 
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell.vim'
 
 " if_luaが有効ならneocompleteを使う
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
@@ -34,8 +35,6 @@ elseif neobundle#is_installed('neocomplcache')
 	let g:neocomplcache_enable_underbar_completion = 1
 endif
 
-
-NeoBundle 'violetyk/neocomplete-php.vim'
 
 " カラースキーム一覧表示に Unite.vim を使う
 NeoBundle 'Shougo/unite.vim'
@@ -77,6 +76,12 @@ endif
 NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_by_filename         = 1 " フルパスではなくファイル名のみで絞込
 
+" plugin ag 
+NeoBundle 'rking/ag.vim'
+
+" ctrlpプラグインの検索にagを使用
+let g:ctrlp_user_command = 'ag %s -l'
+
 set autoindent
 set autoread
 set backup
@@ -102,6 +107,10 @@ set whichwrap=b,s,h,l
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
+
+" jjをESCキーとする
+inoremap <silent> jj <ESC>
+
  
 " Vimを終了してもUndo
 if has('persistent_undo')
