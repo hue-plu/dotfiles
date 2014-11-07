@@ -1,5 +1,11 @@
 # README #
 
+alias settings
+ln -s ~/rcfiles/.vimrc ~/.vimrc
+ln -s ~/rcfiles/.zsh ~/.zsh
+ln -s ~/rcfiles/.zshenv ~/.zshenv
+ln -s ~/rcfiles/.zshrc ~/.zshrc
+
 use command
 
 ag
