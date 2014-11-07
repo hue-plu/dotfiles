@@ -1,6 +1,8 @@
 # README #
 
 alias settings
+
+
 ln -s ~/rcfiles/.vimrc ~/.vimrc
 
 
