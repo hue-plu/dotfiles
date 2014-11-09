@@ -16,6 +16,9 @@ ln -s ~/rcfiles/.zshrc ~/.zshrc
 
 use command
 
+lua (vimproc)
+brew install vim --withlua
+
 ag
 http://blog.glidenote.com/blog/2013/02/28/the-silver-searcher-better-than-ack/
 
