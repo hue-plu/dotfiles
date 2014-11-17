@@ -141,7 +141,7 @@ if has('win32')
 elseif  has('macunix')
   let g:unite_data_directory = '/Volumes/RamDisk/.unite'
 else
-  let g:unite_data_directory = '/mnt/ramdisk/.unite'
+  let g:unite_data_directory = '~/.unite'
 endif
 
 let g:unite_source_bookmark_directory = $HOME . '/.unite/bookmark'
@@ -170,7 +170,7 @@ if has('win32')
 elseif  has('macunix')
   let g:vimfiler_data_directory = '/Volumes/RamDisk/.vimfiler'
 else
-  let g:vimfiler_data_directory = '/mnt/ramdisk/.vimfiler'
+  let g:vimfiler_data_directory = '~/.vimfiler'
 endif
 
 let g:vimfiler_as_default_explorer = 1
