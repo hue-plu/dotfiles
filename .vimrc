@@ -1,4 +1,4 @@
-" <*********** Vim 初期設定設定 **************>
+" <*********** Vim init **************>
 set nocompatible
 filetype off
 if has('vim_starting')
@@ -10,13 +10,14 @@ endif
 
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell.vim'
 
-" if_luaが有効ならneocompleteを使う
+" if_lua executable
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 
 if neobundle#is_installed('neocomplete')
-	" neocomplete用設定
+	" neocomplete
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#enable_ignore_case = 1
 	let g:neocomplete#enable_smart_case = 1
@@ -25,7 +26,7 @@ if neobundle#is_installed('neocomplete')
 	endif
 	let g:neocomplete#keyword_patterns._ = '\h\w*'
 elseif neobundle#is_installed('neocomplcache')
-	" neocomplcache用設定
+	" neocomplcache
 	let g:neocomplcache_enable_at_startup = 1
 	let g:neocomplcache_enable_ignore_case = 1
 	let g:neocomplcache_enable_smart_case = 1
@@ -37,17 +38,12 @@ elseif neobundle#is_installed('neocomplcache')
 	let g:neocomplcache_enable_underbar_completion = 1
 endif
 
-
-" カラースキーム一覧表示に Unite.vim を使う
 NeoBundle 'Shougo/unite.vim'
 
-NeoBundle 'altercation/vim-colors-solarized'
-
 syntax enable
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+NeoBundle 'w0ng/vim-hybrid'
 
+colorscheme hybrid
 filetype plugin on
 filetype indent on
 
@@ -64,24 +60,25 @@ elseif
 	NeoBundle 'molok/vim-smartusline'
 endif
 
+" cursor block enable
 if has('unix')
-	let &t_ti .= "\e[1 q"  " 端末を termcap モードにする
-	let &t_SI .= "\e[5 q"  " 挿入モード開始(バー型のカーソル)
-	let &t_EI .= "\e[1 q"  " 挿入モード終了(ブロック型カーソル)
-	let &t_te .= "\e[0 q"  " termcap モードから抜ける
+	let &t_ti .= "\e[1 q"  
+	let &t_SI .= "\e[5 q"  
+	let &t_EI .= "\e[1 q"  
+	let &t_te .= "\e[0 q"  
 endif
 
 
-" </*********** Vim 初期設定設定 **************>
+" </*********** Vim init **************>
 
 " plugin ctrlp
 NeoBundle 'kien/ctrlp.vim'
-let g:ctrlp_by_filename         = 1 " フルパスではなくファイル名のみで絞込
+let g:ctrlp_by_filename         = 1 " refine file name
 
 " plugin ag 
 NeoBundle 'rking/ag.vim'
 
-" ctrlpプラグインの検索にagを使用
+" ctrlp use ag command
 let g:ctrlp_user_command = 'ag %s -l'
 
 set autoindent
@@ -110,28 +107,83 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=0
 
-" jjをESCキーとする
+" jj map escape key
 inoremap <silent> jj <ESC>
 
  
-" Vimを終了してもUndo
+" vim undo
 if has('persistent_undo')
 	set undofile
 	set undodir=./.vimundo,~/.vim/undo
 endif
 
-" insert modeで開始
+" when unite start, insert mode
 let g:unite_enable_start_insert = 1
 
-" 大文字小文字を区別しない
+" use smart case 
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-" unite grep に ag(The Silver Searcher) を使う
+" unite grep use ag
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
 
+" unite with vimfiler
+"unite {{{
 
+let g:unite_source_file_mru_filename_format = ''
+
+if has('win32')
+  let g:unite_data_directory = 'R:\.unite'
+elseif  has('macunix')
+  let g:unite_data_directory = '/Volumes/RamDisk/.unite'
+else
+  let g:unite_data_directory = '/mnt/ramdisk/.unite'
+endif
+
+let g:unite_source_bookmark_directory = $HOME . '/.unite/bookmark'
+
+augroup vimrc
+  autocmd FileType unite call s:unite_my_settings()
+augroup END
+function! s:unite_my_settings()
+  nmap <buffer> <ESC> <Plug>(unite_exit)
+  imap <buffer> jj <Plug>(unite_insert_leave)
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  nnoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
+  inoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
+  nnoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
+  inoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
+  nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
+  inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
+endfunction
+
+"}}}
+
+"vimfiler {{{
+
+if has('win32')
+  let g:vimfiler_data_directory = 'R:\.vimfiler'
+elseif  has('macunix')
+  let g:vimfiler_data_directory = '/Volumes/RamDisk/.vimfiler'
+else
+  let g:vimfiler_data_directory = '/mnt/ramdisk/.vimfiler'
+endif
+
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
+nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+
+augroup vimrc
+  autocmd FileType vimfiler call s:vimfiler_my_settings()
+augroup END
+function! s:vimfiler_my_settings()
+  nmap <buffer> q <Plug>(vimfiler_exit)
+  nmap <buffer> Q <Plug>(vimfiler_hide)
+endfunction
+
+"}}}
