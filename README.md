@@ -36,8 +36,14 @@ brew install vim --withlua-jit
 
 
 
+```
+#!bash
  LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/lib
  export LD_LIBRARY_PATH
+
+```
+
+
 
 
 ag
