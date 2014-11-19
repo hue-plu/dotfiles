@@ -1,5 +1,8 @@
 export LANG=ja_JP.UTF-8
 
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/lib
+export LD_LIBRARY_PATH
+
 #履歴の保存先
 HISTFILE=$HOME/.zsh-history
 # メモリに展開する履歴の数
