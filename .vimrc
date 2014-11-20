@@ -217,7 +217,7 @@ let g:syntastic_auto_loc_list=2
 let g:syntastic_mode_map = {'mode': 'passive'} 
 augroup AutoSyntastic
     autocmd!
-    autocmd InsertLeave * call s:syntastic()
+	autocmd InsertLeave Tex * call s:syntastic()
 augroup END
 
 function! s:syntastic()
@@ -354,3 +354,7 @@ endfunction
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
+
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,cp932
+set fileformats=unix,dos,mac
