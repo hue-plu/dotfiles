@@ -7,7 +7,6 @@ precmd() {
 }
 PROMPT=$'%2F%n@%m%f %3F%~%f%1v%# '
 
-#export LANG=ja_JP.UTF-8
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/lib
 export LD_LIBRARY_PATH
@@ -99,6 +98,10 @@ setopt noautoremoveslash
 
 if [[ "$OSTYPE" =~ "cygwin" ]];then
 
+	# setting for peco
+	for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
+	bindkey '^r' peco-select-history
+
 	function peco-select-history() {
 	    local tac
 	    if which tac > /dev/null; then
@@ -120,6 +123,8 @@ if [[ "$OSTYPE" =~ "cygwin" ]];then
 	}
 
 else
+
+	export LANG=ja_JP.UTF-8
 
 	# setting for peco
 	for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
