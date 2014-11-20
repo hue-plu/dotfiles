@@ -5,7 +5,7 @@ precmd() {
     LANG=en_US.UTF-8 vcs_info
     psvar[1]=$vcs_info_msg_0_
 }
-PROMPT=$'%2F%n@%m%f %3F%~%f%1v\n%# '
+PROMPT=$'%2F%n@%m%f %3F%~%f%1v%# '
 
 #export LANG=ja_JP.UTF-8
 
