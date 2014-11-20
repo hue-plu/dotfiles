@@ -1,4 +1,13 @@
-export LANG=ja_JP.UTF-8
+# VCS settings
+autoload -Uz vcs_info
+precmd() {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    psvar[1]=$vcs_info_msg_0_
+}
+PROMPT=$'%2F%n@%m%f %3F%~%f%1v\n%# '
+
+#export LANG=ja_JP.UTF-8
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/lib
 export LD_LIBRARY_PATH
@@ -88,14 +97,41 @@ setopt list_packed
 # 最後のスラッシュを自動的に削除しない
 setopt noautoremoveslash
 
-# setting for peco
-for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
-bindkey '^r' peco-select-history
+if [[ "$OSTYPE" =~ "cygwin" ]];then
 
-# agvim
-function agvim () {
-  vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
-}
+	function peco-select-history() {
+	    local tac
+	    if which tac > /dev/null; then
+	        tac="tac"
+	    else
+	        tac="tail -r"
+	    fi
+	    BUFFER=$(history -n 1 | \
+	        eval $tac | \
+	        percol --query "$LBUFFER")
+	    CURSOR=$#BUFFER
+	    zle clear-screen
+	}
+	zle -N peco-select-history
+	
+	# agvim
+	function agvim () {
+	  vim $(ag $@ | percol --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+	}
+
+else
+
+	# setting for peco
+	for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
+	bindkey '^r' peco-select-history
+	
+	# agvim
+	function agvim () {
+	  vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+	}
+
+fi
+
 
  [[ -s /home/yu_saito/.autojump/etc/profile.d/autojump.sh ]] && source /home/yu_saito/.autojump/etc/profile.d/autojump.sh
 
