@@ -97,30 +97,41 @@ setopt list_packed
 # 最後のスラッシュを自動的に削除しない
 setopt noautoremoveslash
 
-# setting for peco
-for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
-bindkey '^r' peco-select-history
+if [[ "$OSTYPE" =~ "cygwin" ]];then
 
+	function peco-select-history() {
+	    local tac
+	    if which tac > /dev/null; then
+	        tac="tac"
+	    else
+	        tac="tail -r"
+	    fi
+	    BUFFER=$(history -n 1 | \
+	        eval $tac | \
+	        percol --query "$LBUFFER")
+	    CURSOR=$#BUFFER
+	    zle clear-screen
+	}
+	zle -N peco-select-history
+	
+	# agvim
+	function agvim () {
+	  vim $(ag $@ | percol --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+	}
 
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(history -n 1 | \
-        eval $tac | \
-        percol --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
+else
 
-# agvim
-function agvim () {
-  vim $(ag $@ | percol --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
-}
+	# setting for peco
+	for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
+	bindkey '^r' peco-select-history
+	
+	# agvim
+	function agvim () {
+	  vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+	}
+
+fi
+
 
  [[ -s /home/yu_saito/.autojump/etc/profile.d/autojump.sh ]] && source /home/yu_saito/.autojump/etc/profile.d/autojump.sh
 
