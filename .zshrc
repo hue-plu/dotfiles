@@ -1,5 +1,8 @@
 export LANG=ja_JP.UTF-8
 
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/lib
+export LD_LIBRARY_PATH
+
 #履歴の保存先
 HISTFILE=$HOME/.zsh-history
 # メモリに展開する履歴の数
@@ -85,25 +88,13 @@ setopt list_packed
 # 最後のスラッシュを自動的に削除しない
 setopt noautoremoveslash
 
-# percol
-function exists { which $1 &> /dev/null }
-
-if exists percol; then
-    function percol_select_history() {
-        local tac
-        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(history -n 1 | eval $tac | percol --query "$LBUFFER")
-        CURSOR=$#BUFFER         # move cursor
-        zle -R -c               # refresh
-    }
-
-    zle -N percol_select_history
-    bindkey '^R' percol_select_history
-fi
+# setting for peco
+for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
+bindkey '^r' peco-select-history
 
 # agvim
 function agvim () {
-  vim $(ag $@ | percol --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
+  vim $(ag $@ | peco --query "$LBUFFER" | awk -F : '{print "-c " $2 " " $1}')
 }
 
  [[ -s /home/yu_saito/.autojump/etc/profile.d/autojump.sh ]] && source /home/yu_saito/.autojump/etc/profile.d/autojump.sh
