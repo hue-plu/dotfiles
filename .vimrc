@@ -90,6 +90,7 @@ NeoBundle 'rking/ag.vim'
 " ctrlp use ag command
 let g:ctrlp_user_command = 'ag %s -l'
 
+" < *********** key mapping *********** >
 set autoindent
 set autoread
 set backup
@@ -116,10 +117,16 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=0
 
+let mapleader = ","
+
+" ,のデフォルトの機能は、\で使えるように退避
+noremap \  ,
+
 " jj map escape key
 inoremap <silent> jj <ESC>
 
- 
+" </*********** key mapping *********** >
+
 " vim undo
 if has('persistent_undo')
 	set undofile
