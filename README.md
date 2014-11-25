@@ -10,6 +10,9 @@ ln -s ~/rcfiles/.vimrc ~/.vimrc
 ln -s ~/rcfiles/.zsh ~/.zsh
 ln -s ~/rcfiles/.zshenv ~/.zshenv
 ln -s ~/rcfiles/.zshrc ~/.zshrc
+
+wget https://github.com/peco/peco/releases/download/v0.2.10/peco_linux_386.tar.gz
+tar xzvf peco_linux_386.tar.gz
 ```
 
 ./configure \
