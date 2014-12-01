@@ -1,5 +1,8 @@
 "<*********** Vim init **************>
+language mes C
 set nocompatible
+set lazyredraw
+set ttyfast
 filetype off
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -146,6 +149,13 @@ endif
 NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_by_filename         = 1 " refine file name
 
+" plugin clever-f
+NeoBundle 'rhysd/clever-f.vim'
+" current line only 
+let g:clever_f_across_no_line  = 1
+" use migemo
+let g:clever_f_use_migemo  = 1
+
 " plugin ag 
 NeoBundle 'rking/ag.vim'
 
@@ -177,6 +187,7 @@ set whichwrap=b,s,h,l
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
+set hlsearch
 
 let mapleader = ","
 
@@ -185,11 +196,6 @@ noremap \  ,
 
 " jj map escape key
 inoremap <silent> jj <ESC>
-
-" buffer change
-nnoremap <silent>bp :bprevious<CR>
-nnoremap <silent>bn :bnext<CR>
-nnoremap <silent>bb :b#<CR>
 
 " </*********** key mapping *********** >
 

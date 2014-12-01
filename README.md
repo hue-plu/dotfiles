@@ -59,3 +59,18 @@ autojump
 
 
 http://blog.zoncoen.net/blog/2014/01/14/percol-autojump-with-zsh/
+
+
+
+.zshenv example
+
+```
+#!zsh
+ path=(
+        ~/local/bin
+        $path
+ )
+
+
+```
+
