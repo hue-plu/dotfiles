@@ -73,4 +73,5 @@ http://blog.zoncoen.net/blog/2014/01/14/percol-autojump-with-zsh/
 
 
 ```
-
+use tmux
+http://tactosh.com/2014/01/tmux-window-pane-tmuxinator/
