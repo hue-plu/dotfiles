@@ -196,11 +196,6 @@ noremap \  ,
 " jj map escape key
 inoremap <silent> jj <ESC>
 
-" buffer change
-nnoremap <silent>bp :bprevious<CR>
-nnoremap <silent>bn :bnext<CR>
-nnoremap <silent>bb :b#<CR>
-
 " </*********** key mapping *********** >
 
 " vim undo
