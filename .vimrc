@@ -1,5 +1,8 @@
 "<*********** Vim init **************>
+language mes C
 set nocompatible
+set lazyredraw
+set ttyfast
 filetype off
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -145,6 +148,13 @@ endif
 " plugin ctrlp
 NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_by_filename         = 1 " refine file name
+
+" plugin clever-f
+NeoBundle 'rhysd/clever-f.vim'
+" current line only 
+let g:clever_f_across_no_line  = 1
+" use migemo
+let g:clever_f_use_migemo  = 1
 
 " plugin ag 
 NeoBundle 'rking/ag.vim'
