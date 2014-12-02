@@ -1,4 +1,10 @@
 # README #
+* wish-list
+* minttyの背景画像
+* tmuxinator 用xmlの自動生成ツール
+* Vim Lingerを上手くターミナル領域に表示
+
+
 
 alias settings
 
