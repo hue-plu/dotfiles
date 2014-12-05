@@ -162,6 +162,9 @@ NeoBundle 'rking/ag.vim'
 " ctrlp use ag command
 let g:ctrlp_user_command = 'ag %s -l'
 
+" lingr chat vim
+NeoBundle 'tsukkee/lingr-vim'
+
 " < *********** key mapping *********** >
 set autoindent
 set autoread
