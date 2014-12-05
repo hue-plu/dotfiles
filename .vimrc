@@ -141,6 +141,10 @@ if has('unix')
 	let &t_te .= "\e[0 q"  
 endif
 
+NeoBundle 'miyakogi/conoline.vim'
+let g:conoline_auto_enable = 1
+let g:conoline_use_colorscheme_default_normal=1
+let g:conoline_use_colorscheme_default_insert=1
 
 " </*********** view settings *********** >
 " </*********** Vim init **************>
