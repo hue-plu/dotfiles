@@ -1,9 +1,6 @@
 # README #
 * wish-list
-* minttyの背景画像
 * tmuxinator 用xmlの自動生成ツール
-* Vim Lingerを上手くターミナル領域に表示
-
 
 
 alias settings
@@ -85,3 +82,8 @@ use tmuxinator
 
 need ruby version update and install tmuxinator
 http://tactosh.com/2014/01/tmux-window-pane-tmuxinator/
+
+for haskell
+.vim/ftplugin/haskell.vim 
+setlocal omnifunc=necoghc#omnifunc
+$cabal install happy
