@@ -98,8 +98,47 @@ endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 " NeoComplete setting
 
+" < *********** key mapping *********** >
+set autoindent
+set autoread
+set backup
+set backupdir=~/.vim/backup
+set clipboard=unnamed,autoselect
+set directory=~/.vim/swap
+set helplang=en
+set hidden
+set laststatus=2
+set lazyredraw
+set list
+set modeline
+set noerrorbells
+set nrformats=
+set number
+set scrolloff=5
+set swapfile
+set ttyfast
+set visualbell t_vb=
+set whichwrap=b,s,h,l
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
+set hlsearch
+set synmaxcol=200
+let mapleader = ","
+
+" ,のデフォルトの機能は、\で使えるように退避
+noremap \  ,
+
+" jj map escape key
+inoremap <silent> jj <ESC>
+
+" </*********** key mapping *********** >
+
 " < *********** view settings *********** >
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+let g:unite_split_rule = "rightbelow"
+noremap <Leader>o <ESC>:Unite -vertical -winwidth=40 outline<Return>
 
 syntax enable
 NeoBundle 'w0ng/vim-hybrid'
@@ -165,41 +204,6 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 " lingr chat vim
 NeoBundle 'tsukkee/lingr-vim'
 
-" < *********** key mapping *********** >
-set autoindent
-set autoread
-set backup
-set backupdir=~/.vim/backup
-set clipboard=unnamed,autoselect
-set directory=~/.vim/swap
-set helplang=en
-set hidden
-set laststatus=2
-set lazyredraw
-set list
-set modeline
-set noerrorbells
-set nrformats=
-set number
-set scrolloff=5
-set swapfile
-set ttyfast
-set visualbell t_vb=
-set whichwrap=b,s,h,l
-set tabstop=4
-set shiftwidth=4
-set softtabstop=0
-set hlsearch
-
-let mapleader = ","
-
-" ,のデフォルトの機能は、\で使えるように退避
-noremap \  ,
-
-" jj map escape key
-inoremap <silent> jj <ESC>
-
-" </*********** key mapping *********** >
 
 " vim undo
 if has('persistent_undo')
