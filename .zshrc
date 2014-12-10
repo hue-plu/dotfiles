@@ -22,7 +22,7 @@ fpath=(~/rcfiles/.zsh/completion $fpath)
 
 autoload -U compinit
 # 補完機能の強化
-compinit -u
+compinit -u -C
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
