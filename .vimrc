@@ -141,11 +141,6 @@ if has('unix')
 	let &t_te .= "\e[0 q"  
 endif
 
-NeoBundle 'miyakogi/conoline.vim'
-let g:conoline_auto_enable = 1
-let g:conoline_use_colorscheme_default_normal=1
-let g:conoline_use_colorscheme_default_insert=1
-
 " </*********** view settings *********** >
 " </*********** Vim init **************>
 
@@ -164,7 +159,8 @@ let g:clever_f_use_migemo  = 1
 NeoBundle 'rking/ag.vim'
 
 " ctrlp use ag command
-let g:ctrlp_user_command = 'ag %s -l'
+let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 
 " lingr chat vim
 NeoBundle 'tsukkee/lingr-vim'
@@ -175,7 +171,6 @@ set autoread
 set backup
 set backupdir=~/.vim/backup
 set clipboard=unnamed,autoselect
-set cursorline
 set directory=~/.vim/swap
 set helplang=en
 set hidden
@@ -434,3 +429,34 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,cp932
 set fileformats=unix,dos,mac
 
 au BufNewFile,BufRead *.php set tags+=$HOME/.tags/php.tags
+
+" vim cursorline settings
+augroup vimrc-auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
+  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
+  autocmd WinEnter * call s:auto_cursorline('WinEnter')
+  autocmd WinLeave * call s:auto_cursorline('WinLeave')
+
+  let s:cursorline_lock = 0
+  function! s:auto_cursorline(event)
+    if a:event ==# 'WinEnter'
+      setlocal cursorline
+      let s:cursorline_lock = 2
+    elseif a:event ==# 'WinLeave'
+      setlocal nocursorline
+    elseif a:event ==# 'CursorMoved'
+      if s:cursorline_lock
+        if 1 < s:cursorline_lock
+          let s:cursorline_lock = 1
+        else
+          setlocal nocursorline
+          let s:cursorline_lock = 0
+        endif
+      endif
+    elseif a:event ==# 'CursorHold'
+      setlocal cursorline
+      let s:cursorline_lock = 1
+    endif
+  endfunction
+augroup END
