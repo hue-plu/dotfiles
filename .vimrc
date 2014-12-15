@@ -52,10 +52,6 @@ elseif neobundle#is_installed('neocomplcache')
 endif
 
 " NeoComplete setting
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
@@ -233,7 +229,7 @@ let g:unite_source_file_mru_filename_format = ''
 if has('win32')
   let g:unite_data_directory = 'R:\.unite'
 elseif  has('macunix')
-  let g:unite_data_directory = '/Volumes/RamDisk/.unite'
+  let g:unite_data_directory = '~/.unite'
 else
   let g:unite_data_directory = '~/.unite'
 endif
@@ -262,7 +258,7 @@ endfunction
 if has('win32')
   let g:vimfiler_data_directory = 'R:\.vimfiler'
 elseif  has('macunix')
-  let g:vimfiler_data_directory = '/Volumes/RamDisk/.vimfiler'
+  let g:vimfiler_data_directory = '~/.vimfiler'
 else
   let g:vimfiler_data_directory = '~/.vimfiler'
 endif
@@ -464,3 +460,21 @@ augroup vimrc-auto-cursorline
     endif
   endfunction
 augroup END
+
+" for Haskell
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'thinca/vim-quickrun'
+" runner/vimproc/updatetime で出力バッファの更新間隔をミリ秒で設定できます
+" updatetime が一時的に書き換えられてしまうので注意して下さい
+let g:quickrun_config = {
+\   "_" : {
+\       "runner" : "vimproc",
+\       "runner/vimproc/updatetime" : 60,
+\       "outputter/buffer/split" : ":botright",
+\       "outputter/buffer/close_on_empty" : 1
+\   },
+\}
+
