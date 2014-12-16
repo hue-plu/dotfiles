@@ -118,7 +118,6 @@ set whichwrap=b,s,h,l
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
-set hlsearch
 set synmaxcol=200
 let mapleader = ","
 
@@ -137,7 +136,7 @@ let g:unite_split_rule = "rightbelow"
 noremap <Leader>o <ESC>:Unite -vertical -winwidth=40 outline<Return>
 
 syntax enable
-NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'ajh17/Spacegray.vim'
 
 "背景の明暗
 set background=dark
@@ -145,7 +144,7 @@ set background=dark
 "カラースキームの設定
 "
 autocmd ColorScheme * highlight LineNr ctermfg=14 guifg=#81a2be
-colorscheme hybrid
+colorscheme spacegray
 filetype plugin on
 filetype indent on
 
@@ -200,6 +199,23 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 " lingr chat vim
 NeoBundle 'tsukkee/lingr-vim'
 
+" incsearch.vim
+NeoBundle 'haya14busa/incsearch.vim'
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+let g:incsearch#magic = '\v'
 
 " vim undo
 if has('persistent_undo')
