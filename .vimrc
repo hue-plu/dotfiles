@@ -52,10 +52,6 @@ elseif neobundle#is_installed('neocomplcache')
 endif
 
 " NeoComplete setting
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
@@ -122,7 +118,6 @@ set whichwrap=b,s,h,l
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
-set hlsearch
 set synmaxcol=200
 let mapleader = ","
 
@@ -141,7 +136,7 @@ let g:unite_split_rule = "rightbelow"
 noremap <Leader>o <ESC>:Unite -vertical -winwidth=40 outline<Return>
 
 syntax enable
-NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'ajh17/Spacegray.vim'
 
 "背景の明暗
 set background=dark
@@ -149,7 +144,7 @@ set background=dark
 "カラースキームの設定
 "
 autocmd ColorScheme * highlight LineNr ctermfg=14 guifg=#81a2be
-colorscheme hybrid
+colorscheme spacegray
 filetype plugin on
 filetype indent on
 
@@ -204,6 +199,23 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 " lingr chat vim
 NeoBundle 'tsukkee/lingr-vim'
 
+" incsearch.vim
+NeoBundle 'haya14busa/incsearch.vim'
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+let g:incsearch#magic = '\v'
 
 " vim undo
 if has('persistent_undo')
@@ -233,7 +245,7 @@ let g:unite_source_file_mru_filename_format = ''
 if has('win32')
   let g:unite_data_directory = 'R:\.unite'
 elseif  has('macunix')
-  let g:unite_data_directory = '/Volumes/RamDisk/.unite'
+  let g:unite_data_directory = '~/.unite'
 else
   let g:unite_data_directory = '~/.unite'
 endif
@@ -262,7 +274,7 @@ endfunction
 if has('win32')
   let g:vimfiler_data_directory = 'R:\.vimfiler'
 elseif  has('macunix')
-  let g:vimfiler_data_directory = '/Volumes/RamDisk/.vimfiler'
+  let g:vimfiler_data_directory = '~/.vimfiler'
 else
   let g:vimfiler_data_directory = '~/.vimfiler'
 endif
@@ -464,3 +476,21 @@ augroup vimrc-auto-cursorline
     endif
   endfunction
 augroup END
+
+" for Haskell
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'thinca/vim-quickrun'
+" runner/vimproc/updatetime で出力バッファの更新間隔をミリ秒で設定できます
+" updatetime が一時的に書き換えられてしまうので注意して下さい
+let g:quickrun_config = {
+\   "_" : {
+\       "runner" : "vimproc",
+\       "runner/vimproc/updatetime" : 60,
+\       "outputter/buffer/split" : ":botright",
+\       "outputter/buffer/close_on_empty" : 1
+\   },
+\}
+
