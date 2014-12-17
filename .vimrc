@@ -25,6 +25,7 @@ NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'tpope/vim-abolish'
 
 " if_lua executable
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
