@@ -465,6 +465,7 @@ set encoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,cp932
 set fileformats=unix,dos,mac
 
+" vim tags
 au BufNewFile,BufRead *.php set tags+=$HOME/.tags/php.tags
 
 " vim cursorline settings
