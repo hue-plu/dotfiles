@@ -130,7 +130,6 @@ set list
 set modeline
 set noerrorbells
 set nrformats=
-set number
 set scrolloff=5
 set swapfile
 set ttyfast
@@ -222,6 +221,10 @@ NeoBundle 'tsukkee/lingr-vim'
 
 " incsearch.vim
 NeoBundle 'haya14busa/incsearch.vim'
+
+" buffer display
+NeoBundle 'junegunn/vim-peekaboo'
+
 " :h g:incsearch#auto_nohlsearch
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
@@ -462,8 +465,8 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,cp932
-set fileformats=unix,dos,mac
+"set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,cp932
+"set fileformats=unix,dos,mac
 
 " vim tags
 au BufNewFile,BufRead *.php set tags+=$HOME/.tags/php.tags
@@ -523,6 +526,11 @@ NeoBundle 'tyru/open-browser.vim'
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " for ruby
+NeoBundleLazy 'marcus/rsense', {
+      \ 'autoload': {
+      \   'filetypes': 'ruby',
+      \ },
+      \ }
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
   \ 'insert' : 1,
   \ 'filetypes': 'ruby',
@@ -536,3 +544,5 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 " 環境変数RSENSE_HOMEに'/usr/local/bin/rsense'を指定しても動く
 let g:neocomplete#sources#rsense#home_directory = '/usr/local/bin/rsense'
+
+
