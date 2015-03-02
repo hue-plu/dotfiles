@@ -526,6 +526,11 @@ NeoBundle 'tyru/open-browser.vim'
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " for ruby
+augroup filetypedetect
+  " Cのタブ幅は4で
+  au BufNewFile,BufRead *.rb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
+augroup END
+
 NeoBundleLazy 'marcus/rsense', {
       \ 'autoload': {
       \   'filetypes': 'ruby',
