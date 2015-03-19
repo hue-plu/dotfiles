@@ -553,3 +553,6 @@ let g:neocomplete#sources#rsense#home_directory = '/usr/local/bin/rsense'
 " align
 NeoBundle 'junegunn/vim-easy-align'
 vmap <Enter> <Plug>(EasyAlign)
+
+" ergonomic
+NeoBundle 'cloudformdesign/vim.ergonomic'
