@@ -155,6 +155,9 @@ NeoBundle 'Shougo/unite-outline'
 let g:unite_split_rule = "rightbelow"
 noremap <Leader>o <ESC>:Unite -vertical -winwidth=40 outline<Return>
 
+" Coffee Script
+NeoBundle 'kchmck/vim-coffee-script'
+
 syntax enable
 NeoBundle 'ajh17/Spacegray.vim'
 
@@ -556,3 +559,4 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " ergonomic
 NeoBundle 'cloudformdesign/vim.ergonomic'
+
