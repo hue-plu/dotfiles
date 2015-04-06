@@ -1,22 +1,21 @@
 # README #
-##  Settings
+## Settings
 execute setup.sh
 ```bash
 $dotfiles/setup.sh
 ```
 
-> .zshenv (optional)
+*.zshenv (optional)*
+
 ```
 #!zsh
  path=(
         ~/local/bin
         $path
  )
-
-
 ```
 
-##  Vim configure 
+## Vim configure 
 
 ./configure \
  --prefix=~/local\
