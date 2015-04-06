@@ -1,22 +1,22 @@
 # README #
-* wish-list
-* tmuxinator 用xmlの自動生成ツール
+##  Settings
+execute setup.sh
+```bash
+$dotfiles/setup.sh
+```
 
-
-alias settings
-
+> .zshenv (optional)
+```
+#!zsh
+ path=(
+        ~/local/bin
+        $path
+ )
 
 
 ```
-#!bash
-ln -s ~/rcfiles/.vimrc ~/.vimrc
-ln -s ~/rcfiles/.zsh ~/.zsh
-ln -s ~/rcfiles/.zshenv ~/.zshenv
-ln -s ~/rcfiles/.zshrc ~/.zshrc
 
-wget https://github.com/peco/peco/releases/download/v0.2.10/peco_linux_386.tar.gz
-tar xzvf peco_linux_386.tar.gz
-```
+##  Vim configure 
 
 ./configure \
  --prefix=~/local\
@@ -35,13 +35,10 @@ tar xzvf peco_linux_386.tar.gz
  --enable-largefile
 
 
-use command
+## Dependency
 
-lua-jit (vimproc)
+### lua-jit (vimproc)
 brew install vim --withlua-jit
-
-
-
 ```
 #!bash
  LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/lib
@@ -49,44 +46,18 @@ brew install vim --withlua-jit
 
 ```
 
-
-
-
-ag
+### ag
 http://blog.glidenote.com/blog/2013/02/28/the-silver-searcher-better-than-ack/
 
+### peco
 
-percol
-autojump
+### cdr
+zsh 4.3.11 ↑
 
-
-
-http://blog.zoncoen.net/blog/2014/01/14/percol-autojump-with-zsh/
-
-
-
-.zshenv example
-
-```
-#!zsh
- path=(
-        ~/local/bin
-        $path
- )
-
-
-```
-use tmuxinator
-
-
-
-need ruby version update and install tmuxinator
-http://tactosh.com/2014/01/tmux-window-pane-tmuxinator/
-
-for haskell
+### for haskell
 .vim/ftplugin/haskell.vim 
 setlocal omnifunc=necoghc#omnifunc
 $cabal install happy
 
-
-require cdr (zsh zsh 4.3.11 ↑)
+* wish-list
+* tmuxinator 用xmlの自動生成ツール
