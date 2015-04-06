@@ -18,7 +18,7 @@ HISTSIZE=100000
 # 保存する履歴の数
 SAVEHIST=100000
 
-fpath=(~/rcfiles/.zsh/completion $fpath)
+fpath=(~/dotfiles/.zsh/completion $fpath)
 
 autoload -U compinit
 # 補完機能の強化
@@ -100,22 +100,6 @@ setopt noautoremoveslash
 
 # setting for peco
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
-bindkey '^r' peco-select-history
-
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
 
 # os settings
 if [[ "$OSTYPE" =~ "cygwin" ]];then
@@ -123,4 +107,14 @@ else
 	export LANG=ja_JP.UTF-8
 fi
 
+# cdr, add-zsh-hook を有効にする
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+  
+# cdr の設定
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':chpwd:*' recent-dirs-max 500
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
+zstyle ':chpwd:*' recent-dirs-pushd true
 
