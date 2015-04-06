@@ -87,3 +87,6 @@ for haskell
 .vim/ftplugin/haskell.vim 
 setlocal omnifunc=necoghc#omnifunc
 $cabal install happy
+
+
+require cdr (zsh zsh 4.3.11 ↑)
