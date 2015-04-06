@@ -1,13 +1,13 @@
 # README #
 ## Settings
 execute setup.sh
-```bash
+```shell
 $dotfiles/setup.sh
 ```
 
 *.zshenv (optional)*
 
-```
+```zsh
 #!zsh
  path=(
         ~/local/bin
@@ -17,6 +17,7 @@ $dotfiles/setup.sh
 
 ## Vim configure 
 
+```shell
 ./configure \
  --prefix=~/local\
  --enable-cscope\
@@ -32,7 +33,7 @@ $dotfiles/setup.sh
  --with-ruby-command=/usr/bin/ruby \
  --enable-fail-if-missing \
  --enable-largefile
-
+```
 
 ## Dependency
 
