@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # create symbolic link
-ln -s {,~/}.tmux.conf
-ln -s {,~/}.vimrc
-ln -s {,~/}.zsh
-ln -s {,~/}.zshrc
+ln -s {~/dotfiles/,~/}.tmux.conf
+ln -s {~/dotfiles/,~/}.vimrc
+ln -s {~/dotfiles/,~/}.zsh
+ln -s {~/dotfiles/,~/}.zshrc
 
 mkdir -p $HOME/.cache/shell/
