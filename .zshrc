@@ -118,3 +118,6 @@ zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
 zstyle ':chpwd:*' recent-dirs-pushd true
 
+# mysql
+export MYSQL_PS1='\u@\h[\d]> '
+
