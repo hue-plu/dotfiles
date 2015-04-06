@@ -1,5 +1,6 @@
 # README #
 ## Settings
+---
 execute setup.sh
 ```shell
 $dotfiles/setup.sh
@@ -53,6 +54,8 @@ http://blog.glidenote.com/blog/2013/02/28/the-silver-searcher-better-than-ack/
 
 ### cdr
 zsh 4.3.11 ↑
+
+---
 
 ### for haskell
 .vim/ftplugin/haskell.vim 
