@@ -64,3 +64,5 @@ $cabal install happy
 
 * wish-list
 * tmuxinator 用xmlの自動生成ツール
+
+[http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca]{ウィンドウ、タブ関連のキーマップ}
