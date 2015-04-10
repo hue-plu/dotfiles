@@ -580,3 +580,7 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
+
+" simplenote
+NeoBundle 'mrtazz/simplenote.vim'
+source ~/.simplenoterc 

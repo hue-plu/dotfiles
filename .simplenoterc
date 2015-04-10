@@ -1,0 +1,3 @@
+let g:SimplenoteUsername = "test"
+let g:SimplenotePassword = "pass"
+
