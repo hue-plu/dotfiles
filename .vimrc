@@ -530,7 +530,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 
 " for ruby
 augroup filetypedetect
-  " Cのタブ幅は4で
+  " ruby のタブ幅は4で
   au BufNewFile,BufRead *.rb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
 
@@ -544,6 +544,8 @@ NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
   \ 'filetypes': 'ruby',
   \ }}
 
+NeoBundle 'yuku-t/vim-ref-ri'
+
 " .や::を入力したときにオムニ補完が有効になるようにする
 if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
@@ -551,7 +553,10 @@ endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 " 環境変数RSENSE_HOMEに'/usr/local/bin/rsense'を指定しても動く
-let g:neocomplete#sources#rsense#home_directory = '/usr/local/bin/rsense'
+let g:neocomplete#sources#rsense#home_directory = '/usr/local/lib/rsense-0.3/bin/rsense'
+
+let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
 
 " align
 NeoBundle 'junegunn/vim-easy-align'
