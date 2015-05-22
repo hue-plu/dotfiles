@@ -186,7 +186,6 @@ endif
 set laststatus=2
 
 NeoBundle 'Yggdroot/indentLine'
-set list listchars=tab:\¦\ 
 let g:indentLine_faster = 1
 nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 
