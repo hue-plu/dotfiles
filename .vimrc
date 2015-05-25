@@ -5,28 +5,77 @@ set lazyredraw
 set ttyfast
 filetype off
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	call neobundle#begin(expand('~/.vim/bundle/'))
-	NeoBundleFetch 'Shougo/neobundle.vim'
-	call neobundle#end()
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  NeoBundle 'Shougo/vimproc.vim', {
+  \ 'build' : {
+  \     'windows' : 'tools\\update-dll-mingw',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'linux' : 'make',
+  \     'unix' : 'gmake',
+  \    },
+  \ }
+  NeoBundle 'Shougo/vimshell.vim'
+  NeoBundle 'Shougo/vimfiler'
+  NeoBundle 'Shougo/vimshell.vim'
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'thinca/vim-qfreplace'
+  NeoBundle 'tpope/vim-abolish'
+  " if_lua executable
+  NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/unite-outline'
+  NeoBundle 'kchmck/vim-coffee-script'
+  NeoBundle 'ajh17/Spacegray.vim'
+
+  if &t_Co >= 16
+    NeoBundle 'itchyny/lightline.vim'
+  elseif
+    set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+    NeoBundle 'molok/vim-smartusline'
+  endif
+
+  NeoBundle 'Yggdroot/indentLine'
+  NeoBundle 'kien/ctrlp.vim'
+  NeoBundle 'rhysd/clever-f.vim'
+  NeoBundle 'rking/ag.vim'
+  NeoBundle 'tsukkee/lingr-vim'
+  NeoBundle 'haya14busa/incsearch.vim'
+  NeoBundle 'junegunn/vim-peekaboo'
+  NeoBundle 'scrooloose/syntastic'
+  NeoBundle 'eagletmt/neco-ghc'
+  NeoBundle 'eagletmt/ghcmod-vim'
+  NeoBundle 'thinca/vim-ref'
+  NeoBundle 'ujihisa/ref-hoogle'
+  NeoBundle 'thinca/vim-quickrun'
+  NeoBundle 'plasticboy/vim-markdown'
+  NeoBundle 'kannokanno/previm'
+  NeoBundle 'tyru/open-browser.vim'
+  NeoBundleLazy 'marcus/rsense', {
+        \ 'autoload': {
+        \   'filetypes': 'ruby',
+        \ },
+        \ }
+  NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
+    \ 'insert' : 1,
+    \ 'filetypes': 'ruby',
+    \ }}
+  
+  NeoBundle 'yuku-t/vim-ref-ri'
+  NeoBundle 'junegunn/vim-easy-align'
+  NeoBundle 'mrtazz/simplenote.vim'
+  NeoBundle 'haya14busa/vim-asterisk'
+  NeoBundle 'osyo-manga/vim-anzu'
+  NeoBundleCheck
+  call neobundle#end()
 endif
 
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-" Plugin key-mappings.
+" @neosnippet
+
+" " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
@@ -44,32 +93,30 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-NeoBundle 'thinca/vim-qfreplace'
-NeoBundle 'tpope/vim-abolish'
+" /@neosnippet
 
-" if_lua executable
-NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+
 
 if neobundle#is_installed('neocomplete')
-	" neocomplete
-	let g:neocomplete#enable_at_startup = 1
-	let g:neocomplete#enable_ignore_case = 1
-	let g:neocomplete#enable_smart_case = 1
-	if !exists('g:neocomplete#keyword_patterns')
-		let g:neocomplete#keyword_patterns = {}
-	endif
-	let g:neocomplete#keyword_patterns._ = '\h\w*'
+  " neocomplete
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_ignore_case = 1
+  let g:neocomplete#enable_smart_case = 1
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns._ = '\h\w*'
 elseif neobundle#is_installed('neocomplcache')
-	" neocomplcache
-	let g:neocomplcache_enable_at_startup = 1
-	let g:neocomplcache_enable_ignore_case = 1
-	let g:neocomplcache_enable_smart_case = 1
-	if !exists('g:neocomplcache_keyword_patterns')
-		let g:neocomplcache_keyword_patterns = {}
-	endif
-	let g:neocomplcache_keyword_patterns._ = '\h\w*'
-	let g:neocomplcache_enable_camel_case_completion = 1
-	let g:neocomplcache_enable_underbar_completion = 1
+  " neocomplcache
+  let g:neocomplcache_enable_at_startup = 1
+  let g:neocomplcache_enable_ignore_case = 1
+  let g:neocomplcache_enable_smart_case = 1
+  if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+  endif
+  let g:neocomplcache_keyword_patterns._ = '\h\w*'
+  let g:neocomplcache_enable_camel_case_completion = 1
+  let g:neocomplcache_enable_underbar_completion = 1
 endif
 
 " NeoComplete setting
@@ -126,7 +173,6 @@ set helplang=en
 set hidden
 set laststatus=2
 set lazyredraw
-set list
 set modeline
 set noerrorbells
 set nrformats=
@@ -150,16 +196,12 @@ inoremap <silent> jj <ESC>
 " </*********** key mapping *********** >
 
 " < *********** view settings *********** >
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
 let g:unite_split_rule = "rightbelow"
 noremap <Leader>o <ESC>:Unite -vertical -winwidth=40 outline<Return>
 
 " Coffee Script
-NeoBundle 'kchmck/vim-coffee-script'
 
 syntax enable
-NeoBundle 'ajh17/Spacegray.vim'
 
 "背景の明暗
 set background=dark
@@ -171,82 +213,73 @@ colorscheme spacegray
 filetype plugin on
 filetype indent on
 
-NeoBundleCheck
 if has('win32unix') && &term =~# '^xterm' && &t_Co < 256
-	set t_Co=256  " Extend cygwin terminal color
+  set t_Co=256  " Extend cygwin terminal color
 endif
 
-if &t_Co >= 16
-	NeoBundle 'itchyny/lightline.vim'
-elseif
-	set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-	NeoBundle 'molok/vim-smartusline'
-endif
 
 set laststatus=2
 
-NeoBundle 'Yggdroot/indentLine'
 let g:indentLine_faster = 1
 nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 
 " cursor block enable
 if has('unix')
-	let &t_ti .= "\e[1 q"  
-	let &t_SI .= "\e[5 q"  
-	let &t_EI .= "\e[1 q"  
-	let &t_te .= "\e[0 q"  
+  let &t_ti .= "\e[1 q"  
+  let &t_SI .= "\e[5 q"  
+  let &t_EI .= "\e[1 q"  
+  let &t_te .= "\e[0 q"  
 endif
 
 " </*********** view settings *********** >
 " </*********** Vim init **************>
 
 " plugin ctrlp
-NeoBundle 'kien/ctrlp.vim'
 let g:ctrlp_by_filename         = 1 " refine file name
 
 " plugin clever-f
-NeoBundle 'rhysd/clever-f.vim'
 " current line only 
 let g:clever_f_across_no_line  = 1
 " use migemo
 let g:clever_f_use_migemo  = 1
 
 " plugin ag 
-NeoBundle 'rking/ag.vim'
 
 " ctrlp use ag command
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 
 " lingr chat vim
-NeoBundle 'tsukkee/lingr-vim'
 
-" incsearch.vim
-NeoBundle 'haya14busa/incsearch.vim'
+" @vim-asterisk and vim-anzu
+  set hlsearch
+  let g:incsearch#auto_nohlsearch = 1
+  
+  nmap /  <Plug>(incsearch-forward)
+  nmap ?  <Plug>(incsearch-backward)
+  map n  <Plug>(incsearch-nohl-n)
+  map N  <Plug>(incsearch-nohl-N)
+  
+  map *   <Plug>(incsearch-nohl)<Plug>(asterisk-*)
+  map g*  <Plug>(incsearch-nohl)<Plug>(asterisk-g*)
+  map #   <Plug>(incsearch-nohl)<Plug>(asterisk-#)
+  map g#  <Plug>(incsearch-nohl)<Plug>(asterisk-g#)
+  
+  map z*  <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)
+  map gz* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)
+  map z#  <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)
+  map gz# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)
+  
+  let g:incsearch#magic = '\v'
 
-" buffer display
-NeoBundle 'junegunn/vim-peekaboo'
-
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-let g:incsearch#magic = '\v'
+  " * 時に anzu.vim の出力を行う
+  nmap * <Plug>(asterisk-z*)<Plug>(anzu-update-search-status-with-echo)
+" /@vim-asterisk and vim-anzu
 
 " vim undo
 if has('persistent_undo')
-	set undofile
-	set undodir=./.vimundo,~/.vim/undo
+  set undofile
+  set undodir=./.vimundo,~/.vim/undo
 endif
 
 " when unite start, insert mode
@@ -321,14 +354,13 @@ endfunction
 "}}}
 
 " for php syntastic
-NeoBundle 'scrooloose/syntastic'
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_mode_map = {'mode': 'passive'} 
 augroup AutoSyntastic
     autocmd!
-	autocmd Filetype php InsertLeave Tex * call s:syntastic()
+  autocmd Filetype php InsertLeave Tex * call s:syntastic()
 augroup END
 
 function! s:syntastic()
@@ -505,11 +537,6 @@ augroup vimrc-auto-cursorline
 augroup END
 
 " for Haskell
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'ujihisa/ref-hoogle'
-NeoBundle 'thinca/vim-quickrun'
 " runner/vimproc/updatetime で出力バッファの更新間隔をミリ秒で設定できます
 " updatetime が一時的に書き換えられてしまうので注意して下さい
 let g:quickrun_config = {
@@ -522,9 +549,6 @@ let g:quickrun_config = {
 \}
 
 " for markdown
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " for ruby
@@ -533,17 +557,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.rb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
 
-NeoBundleLazy 'marcus/rsense', {
-      \ 'autoload': {
-      \   'filetypes': 'ruby',
-      \ },
-      \ }
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
-  \ 'insert' : 1,
-  \ 'filetypes': 'ruby',
-  \ }}
-
-NeoBundle 'yuku-t/vim-ref-ri'
 
 " .や::を入力したときにオムニ補完が有効になるようにする
 if !exists('g:neocomplete#force_omni_input_patterns')
@@ -558,7 +571,6 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
 
 " align
-NeoBundle 'junegunn/vim-easy-align'
 vmap <Enter> <Plug>(EasyAlign)
 
 " window tab mapping
@@ -586,5 +598,5 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 
 " simplenote
-NeoBundle 'mrtazz/simplenote.vim'
 source ~/.simplenoterc 
+
