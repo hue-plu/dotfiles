@@ -39,7 +39,7 @@ if has('vim_starting')
   endif
 
   NeoBundle 'Yggdroot/indentLine'
-  NeoBundle 'kien/ctrlp.vim'
+  NeoBundle 'ctrlpvim/ctrlp.vim'
   NeoBundle 'rhysd/clever-f.vim'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'tsukkee/lingr-vim'
@@ -247,7 +247,6 @@ let g:agprg="ag --column"
 
 " ctrlp use ag command
 let g:ctrlp_use_caching = 0
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 
 " lingr chat vim
 
