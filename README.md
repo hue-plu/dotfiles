@@ -68,3 +68,8 @@ $cabal install happy
 ### 参考
 [ウィンドウ、タブのキーマップ](http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca)
 
+
+
+https://github.com/nixprime/cpsm
+
+https://github.com/mattn/files
