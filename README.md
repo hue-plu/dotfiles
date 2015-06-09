@@ -63,13 +63,12 @@ setlocal omnifunc=necoghc#omnifunc
 $cabal install happy
 
 * wish-list
-* tmuxinator 用xmlの自動生成ツール
+ * https://github.com/nixprime/cpsm
+ * https://github.com/mattn/files
  
 ### 参考
 [ウィンドウ、タブのキーマップ](http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca)
 
 
 
-https://github.com/nixprime/cpsm
 
-https://github.com/mattn/files
