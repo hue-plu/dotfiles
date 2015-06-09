@@ -66,7 +66,6 @@ if has('vim_starting')
   
   NeoBundle 'yuku-t/vim-ref-ri'
   NeoBundle 'junegunn/vim-easy-align'
-  NeoBundle 'mrtazz/simplenote.vim'
   NeoBundle 'haya14busa/vim-asterisk'
   NeoBundle 'osyo-manga/vim-anzu'
   NeoBundleCheck
@@ -244,6 +243,7 @@ let g:clever_f_across_no_line  = 1
 let g:clever_f_use_migemo  = 1
 
 " plugin ag 
+let g:agprg="ag --column"
 
 " ctrlp use ag command
 let g:ctrlp_use_caching = 0
@@ -597,6 +597,4 @@ nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 
-" simplenote
-source ~/.simplenoterc 
 
