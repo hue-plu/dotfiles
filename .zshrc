@@ -139,6 +139,7 @@ setopt noautoremoveslash
 
 # setting for peco
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
+for f (~/.zsh/tools/*) source "${f}" # load peco sources
 
 # os settings
 if [[ "$OSTYPE" =~ "cygwin" ]];then
