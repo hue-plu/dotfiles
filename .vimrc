@@ -68,6 +68,7 @@ if has('vim_starting')
   NeoBundle 'junegunn/vim-easy-align'
   NeoBundle 'haya14busa/vim-asterisk'
   NeoBundle 'osyo-manga/vim-anzu'
+  NeoBundle 'cohama/lexima.vim'
   NeoBundleCheck
   call neobundle#end()
 endif
