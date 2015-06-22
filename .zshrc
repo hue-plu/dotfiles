@@ -44,6 +44,8 @@ RPROMPT='[`rprompt-git-current-branch`%~]'
 gst  () { git status -s && git stash list }
 glgg () { git log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d%Creset' }
 glg  () { glgg | head }
+# alias for ls
+alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 
 ## /vcs git
 
