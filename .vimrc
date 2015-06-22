@@ -69,6 +69,9 @@ if has('vim_starting')
   NeoBundle 'haya14busa/vim-asterisk'
   NeoBundle 'osyo-manga/vim-anzu'
   NeoBundle 'cohama/lexima.vim'
+  NeoBundle 'kana/vim-textobj-user'
+  NeoBundle 'kana/vim-operator-user'
+  NeoBundle 'mattn/vim-textobj-url'
   NeoBundleCheck
   call neobundle#end()
 endif
