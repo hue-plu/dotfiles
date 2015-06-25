@@ -46,6 +46,7 @@ if has('vim_starting')
   NeoBundle 'haya14busa/incsearch.vim'
   NeoBundle 'junegunn/vim-peekaboo'
   NeoBundle 'scrooloose/syntastic'
+  NeoBundle 'kana/vim-filetype-haskell'
   NeoBundle 'eagletmt/neco-ghc'
   NeoBundle 'eagletmt/ghcmod-vim'
   NeoBundle 'thinca/vim-ref'
@@ -166,7 +167,7 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 " NeoComplete setting
 
 " < *********** key mapping *********** >
-set autoindent
+set autoindent smarttab expandtab tabstop=4 shiftwidth=4
 set autoread
 set backup
 set backupdir=~/.vim/backup
@@ -184,8 +185,6 @@ set swapfile
 set ttyfast
 set visualbell t_vb=
 set whichwrap=b,s,h,l
-set tabstop=4
-set shiftwidth=4
 set softtabstop=0
 set synmaxcol=200
 let mapleader = ","

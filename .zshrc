@@ -149,6 +149,10 @@ else
 	export LANG=ja_JP.UTF-8
 fi
 
+# haskell need en_US.utf8
+export LANG=en_US.utf8
+
+
 # cdr, add-zsh-hook を有効にする
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
