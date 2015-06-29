@@ -47,18 +47,16 @@ brew install vim --withlua-jit
  export LD_LIBRARY_PATH
 
 ```
-
 ### ag
 ### peco
 ### cdr
 zsh 4.3.11 ↑
-
 ### ctrlp.vim matcher (cpsm,files)
-
 ```shell
 cd ~/.vim/bundle/cpsm/
 sudo pacman -S cmake boost
 ./install.sh
+go get github.com/mattn/files
 ```
 
 ---
@@ -66,11 +64,6 @@ sudo pacman -S cmake boost
 ### for haskell
 $cabal install ghc-mod
 
-* wish-list
- * https://github.com/nixprime/cpsm
- * https://github.com/mattn/files
- 
-## Other
 ### wish-list
 * wish-list
  
