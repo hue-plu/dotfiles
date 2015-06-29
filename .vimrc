@@ -538,7 +538,7 @@ augroup vimrc-auto-cursorline
   endfunction
 augroup END
 
-" for Haskell
+" for haskell
 " runner/vimproc/updatetime で出力バッファの更新間隔をミリ秒で設定できます
 " updatetime が一時的に書き換えられてしまうので注意して下さい
 let g:quickrun_config = {
@@ -549,6 +549,8 @@ let g:quickrun_config = {
 \       "outputter/buffer/close_on_empty" : 1
 \   },
 \}
+map ,t :GhcModType<CR>
+map ,tc :GhcModTypeClear<CR>
 
 " for markdown
 au BufRead,BufNewFile *.md set filetype=markdown
