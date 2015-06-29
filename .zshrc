@@ -167,3 +167,5 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 # mysql
 export MYSQL_PS1='\u@\h[\d]> '
 
+# for golang
+export GOPATH=$HOME/local/gocode

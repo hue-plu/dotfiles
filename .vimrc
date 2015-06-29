@@ -39,7 +39,12 @@ if has('vim_starting')
   endif
 
   NeoBundle 'Yggdroot/indentLine'
+
+  " @ctrlp
   NeoBundle 'ctrlpvim/ctrlp.vim'
+  NeoBundle 'nixprime/cpsm'
+  " /@ctrlp
+
   NeoBundle 'rhysd/clever-f.vim'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'tsukkee/lingr-vim'
@@ -236,8 +241,12 @@ endif
 " </*********** view settings *********** >
 " </*********** Vim init **************>
 
-" plugin ctrlp
-let g:ctrlp_by_filename         = 1 " refine file name
+" @ctrlp
+let g:ctrlp_user_command = 'files -p %s'
+let g:ctrlp_by_filename = 1 " refine file name
+let g:ctrlp_use_caching = 0
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+" /@ctrlp
 
 " plugin clever-f
 " current line only 
@@ -248,8 +257,6 @@ let g:clever_f_use_migemo  = 1
 " plugin ag 
 let g:agprg="ag --column"
 
-" ctrlp use ag command
-let g:ctrlp_use_caching = 0
 
 " lingr chat vim
 

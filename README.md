@@ -1,7 +1,8 @@
 # README #
+
 ## Settings
 ---
-execute setup.sh
+
 ```shell
 $dotfiles/setup.sh
 ```
@@ -48,25 +49,32 @@ brew install vim --withlua-jit
 ```
 
 ### ag
-http://blog.glidenote.com/blog/2013/02/28/the-silver-searcher-better-than-ack/
-
 ### peco
-
 ### cdr
 zsh 4.3.11 ↑
 
----
+### ctrlp.vim matcher (cpsm,files)
 
+```shell
+cd ~/.vim/bundle/cpsm/
+sudo pacman -S cmake boost
+./install.sh
+```
+
+---
+## Optional
 ### for haskell
-.vim/ftplugin/haskell.vim 
-setlocal omnifunc=necoghc#omnifunc
-$cabal install happy
+$cabal install ghc-mod
 
 * wish-list
  * https://github.com/nixprime/cpsm
  * https://github.com/mattn/files
  
-### 参考
+## Other
+### wish-list
+* wish-list
+ 
+### reference
 [ウィンドウ、タブのキーマップ](http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca)
 
 
