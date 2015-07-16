@@ -73,6 +73,8 @@ if has('vim_starting')
   NeoBundle 'kana/vim-textobj-user'
   NeoBundle 'kana/vim-operator-user'
   NeoBundle 'mattn/vim-textobj-url'
+  NeoBundle 'osyo-manga/vim-brightest'
+
   NeoBundleCheck
   call neobundle#end()
 endif
@@ -167,7 +169,7 @@ let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 " NeoComplete setting
 
 " < *********** key mapping *********** >
-set autoindent smarttab expandtab tabstop=4 shiftwidth=4
+set autoindent smarttab noexpandtab tabstop=4 shiftwidth=4
 set autoread
 set backup
 set backupdir=~/.vim/backup
@@ -249,7 +251,7 @@ let g:clever_f_use_migemo  = 1
 let g:agprg="ag --column"
 
 " ctrlp use ag command
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 
 " lingr chat vim
 
@@ -504,9 +506,6 @@ set encoding=utf-8
 "set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,cp932
 "set fileformats=unix,dos,mac
 
-" vim tags
-au BufNewFile,BufRead *.php set tags+=$HOME/.tags/php.tags
-
 " vim cursorline settings
 augroup vimrc-auto-cursorline
   autocmd!
@@ -576,6 +575,14 @@ let g:syntastic_ruby_checkers = ['rubocop']
 
 " align
 vmap <Enter> <Plug>(EasyAlign)
+
+" @vim-brightest
+let g:brightest#highlight = {
+\   "group" : "BrightestUnderline"
+\}
+" default -> <cword>
+let g:brightest#pattern = '\k\+'
+" /@vim-brightest
 
 " window tab mapping
 nnoremap s <Nop>
