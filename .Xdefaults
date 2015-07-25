@@ -32,15 +32,13 @@ URxvt*letterSpace: -4
 URxvt.scrollStyle:          rxvt
 URxvt.scrollBar:            false
 
+! Reference:
+! https://nixmeal.wordpress.com/2012/07/24/copypaste-text-in-urxvt-rxvt-unicode-using-keyboard/
 ! Perl extensions
-URxvt.perl-ext-common:      default,tabbedex,clipboard
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          google-chrome
-URxvt.keysym.M-t:           perl:tabbedex:new_tab
-URxvt.keysym.M-n:           perl:tabbedex:next_tab
-URxvt.keysym.M-p:           perl:tabbedex:prev_tab
-URxvt.tabbed.no-tabbedex-keys: true
-URxvt.tabbed.not-consumable-keys: 0xff22, 0xff23, 0xff2a
+URxvt.perl-lib: ~/.urxvt/ext/
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,clipboard
 
 ! Cursor
 URxvt.cursorBlink:          true
@@ -94,14 +92,5 @@ URxvt*color14 : #527c77
 ! white
 URxvt*color7  : #606360
 URxvt*color15 : #dde3dc
-!-------------------------------------------------------------------------------
-! Emacs settings
-!-------------------------------------------------------------------------------
-! 透明にできない...
-Emacs*foreground: white
-Emacs*background: black
 
-!emacs.transparent: false
-!emacs*shading: 10
 
-Emacs*useXIM: true
