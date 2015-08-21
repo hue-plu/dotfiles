@@ -108,6 +108,8 @@ setopt numeric_glob_sort
 setopt print_eight_bit
 # ヒストリを共有
 setopt share_history
+# 補完の判定を大文字小文字どちらでも
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # 補完候補のカーソル選択を有効に
 zstyle ':completion:*:default' menu select=1
 # 補完候補の色づけ
