@@ -169,3 +169,5 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 # mysql
 export MYSQL_PS1='\u@\h[\d]> '
 
+eval "$(rbenv init -)"
+
