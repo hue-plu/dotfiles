@@ -1,5 +1,6 @@
 # README #
 ## Settings
+https://gist.github.com/hue-plu/e7e303feb2a16de3a944#file-arch-linux
 ---
 ```shell
 pacman -Syy
