@@ -1,19 +1,11 @@
 # README #
 ## Settings
 ---
-execute setup.sh
 ```shell
+pacman -Syy
+pacman -S the_silver_searcher tmux git vim wget mlocate zsh
+yaourt -S peco
 $dotfiles/setup.sh
-```
-
-*.zshenv (optional)*
-
-```zsh
-#!zsh
- path=(
-        ~/local/bin
-        $path
- )
 ```
 
 ## Vim configure 
@@ -61,10 +53,6 @@ zsh 4.3.11 ↑
 .vim/ftplugin/haskell.vim 
 setlocal omnifunc=necoghc#omnifunc
 $cabal install happy
-
-* wish-list
- * https://github.com/nixprime/cpsm
- * https://github.com/mattn/files
  
 ### 参考
 [ウィンドウ、タブのキーマップ](http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca)
