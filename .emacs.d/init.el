@@ -64,10 +64,6 @@
 ;;; メニューバーとツールバーとスクロールバーを消す
 (menu-bar-mode -1)
 
-;;; デフォルトディレクトリ
-(setq default-directory "~/")
-(setq command-line-default-directory "~/")
-
 ;;; package.el settings
 ;;; color theme
 (load-theme 'spacegray t t)
@@ -77,13 +73,22 @@
 (ac-config-default)
 
 ;;; helm
+(unless (package-installed-p 'helm)
+  (package-refresh-contents) (package-install 'helm))
 (require 'helm-config)
 (helm-mode 1)
 
+;;; helm-ls-git
+(unless (package-installed-p 'helm-ls-git)
+  (package-refresh-contents) (package-install 'helm-ls-git))
+(global-set-key (kbd "C-c p") 'helm-ls-git-ls)
+
 ;;; helm-ag
-(require 'helm-ag)
-(setq helm-ag-base-command "ag --nocolor --nogrou")
-(global-set-key (kbd "C-c s") 'helm-ag)
+(unless (package-installed-p 'helm-ag)
+    (package-refresh-contents) (package-install 'helm-ag))
+(require 'helm-ag-r)
+(setq helm-ag-base-command "ag --nocolor --nogroup")
+(global-set-key (kbd "C-c s") 'helm-ag-r)
 
 ;;; for haskell
 (require 'ghc)
