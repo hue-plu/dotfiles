@@ -63,12 +63,12 @@
 
 ;;; メニューバーとツールバーとスクロールバーを消す
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
 
 ;;; package.el settings
 ;;; color theme
 (load-theme 'railscast t t)
 (enable-theme 'railscast)
 
-
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
