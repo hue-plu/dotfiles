@@ -64,11 +64,56 @@
 ;;; メニューバーとツールバーとスクロールバーを消す
 (menu-bar-mode -1)
 
+;;; デフォルトディレクトリ
+(setq default-directory "~/")
+(setq command-line-default-directory "~/")
+
 ;;; package.el settings
 ;;; color theme
-(load-theme 'railscast t t)
-(enable-theme 'railscast)
+(load-theme 'spacegray t t)
 
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+;;; helm
+(require 'helm-config)
+(helm-mode 1)
+
+;;; helm-ag
+(require 'helm-ag)
+(setq helm-ag-base-command "ag --nocolor --nogrou")
+(global-set-key (kbd "C-c s") 'helm-ag)
+
+;;; for haskell
+(require 'ghc)
+(autoload 'haskell-mode "haskell-mode" nil t)
+(autoload 'haskell-cabal "haskell-cabal" nil t)
+
+(add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.lhs$" . literate-haskell-mode))
+(add-to-list 'auto-mode-alist '("\\.cabal\\'" . haskell-cabal-mode))
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'font-lock-mode)
+(add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
+
+(setq haskell-program-name "~/local/bin/ghci")
+
+(add-hook 'haskell-mode-hook 'inf-haskell-mode)
+
+(defadvice inferior-haskell-load-file (after change-focus-after-load)
+  "Change focus to GHCi window after C-c C-l command"
+  (other-window 1))
+(ad-activate 'inferior-haskell-load-file)
+
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+
+(require 'ac-haskell-process) ; if not installed via package.el
+(add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
+(add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
+(eval-after-load "auto-complete"
+    '(add-to-list 'ac-modes 'haskell-interactive-mode))
