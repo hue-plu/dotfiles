@@ -64,10 +64,6 @@
 ;;; メニューバーとツールバーとスクロールバーを消す
 (menu-bar-mode -1)
 
-;;; デフォルトディレクトリ
-(setq default-directory "~/")
-(setq command-line-default-directory "~/")
-
 ;;; package.el settings
 ;;; color theme
 (load-theme 'spacegray t t)
