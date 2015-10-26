@@ -72,6 +72,10 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+;;; undo-tree
+(when (require 'undo-tree nil t)
+(global-undo-tree-mode))
+
 ;;; helm
 (unless (package-installed-p 'helm)
   (package-refresh-contents) (package-install 'helm))
@@ -121,4 +125,6 @@
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
 (eval-after-load "auto-complete"
-    '(add-to-list 'ac-modes 'haskell-interactive-mode))
+  '(add-to-list 'ac-modes 'haskell-interactive-mode))
+
+
