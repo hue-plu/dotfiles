@@ -1,4 +1,4 @@
-bindkey '^o' peco-cdr
+bindkey '^@' peco-cdr
 
 function peco-cdr() {
     local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
