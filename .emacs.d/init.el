@@ -64,6 +64,9 @@
 ;;; メニューバーとツールバーとスクロールバーを消す
 (menu-bar-mode -1)
 
+;;; バックアップファイル filename~ を作らない
+(setq make-backup-files nil)
+
 ;;; package.el settings
 ;;; color theme
 (load-theme 'spacegray t t)
