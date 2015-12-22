@@ -55,15 +55,6 @@ if has('vim_starting')
   NeoBundle 'plasticboy/vim-markdown'
   NeoBundle 'kannokanno/previm'
   NeoBundle 'tyru/open-browser.vim'
-  NeoBundleLazy 'marcus/rsense', {
-        \ 'autoload': {
-        \   'filetypes': 'ruby',
-        \ },
-        \ }
-  NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
-    \ 'insert' : 1,
-    \ 'filetypes': 'ruby',
-    \ }}
   
   NeoBundle 'yuku-t/vim-ref-ri'
   NeoBundle 'junegunn/vim-easy-align'
@@ -74,6 +65,17 @@ if has('vim_starting')
   NeoBundle 'kana/vim-operator-user'
   NeoBundle 'mattn/vim-textobj-url'
   NeoBundle 'osyo-manga/vim-brightest'
+
+"----- for ruby
+  NeoBundle 'todesking/ruby_hl_lvar.vim'
+  NeoBundle 'rhysd/vim-textobj-ruby'
+  NeoBundle 'terryma/vim-expand-region'
+  NeoBundle 'vim-ruby/vim-ruby'
+  NeoBundle 'osyo-manga/vim-monster'
+  NeoBundle 'tpope/vim-rails'
+  NeoBundle 'vim-scripts/AnsiEsc.vim'
+  NeoBundle 'bronson/vim-trailing-whitespace'
+"----- for ruby
 
   NeoBundleCheck
   call neobundle#end()
@@ -248,7 +250,7 @@ let g:clever_f_across_no_line  = 1
 let g:clever_f_use_migemo  = 1
 
 " plugin ag 
-let g:agprg="ag --column"
+let g:ag_prg="ag --column"
 
 " ctrlp use ag command
 let g:ctrlp_use_caching = 1
@@ -554,24 +556,28 @@ map ,tc :GhcModTypeClear<CR>
 " for markdown
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" for ruby
+"----- for ruby
 augroup filetypedetect
   " ruby のタブ幅は4で
   au BufNewFile,BufRead *.rb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
+  au BufNewFile,BufRead *.erb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
 
+let g:textobj_ruby_more_mappings = 1
 
-" .や::を入力したときにオムニ補完が有効になるようにする
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
+" Set async completion.
+let g:monster#completion#rcodetools#backend = "async_rct_complete"
+
+" Use neocomplete.vim
+let g:neocomplete#sources#omni#input_patterns = {
+\   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+\}
+
+if !exists('loaded_matchit')
+	runtime macros/matchit.vim
 endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
-" 環境変数RSENSE_HOMEに'/usr/local/bin/rsense'を指定しても動く
-let g:neocomplete#sources#rsense#home_directory = '/usr/local/lib/rsense-0.3/bin/rsense'
-
-let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
-let g:syntastic_ruby_checkers = ['rubocop']
+"----- for ruby
 
 " align
 vmap <Enter> <Plug>(EasyAlign)
