@@ -15,7 +15,7 @@ mkdir -p $HOME/local/{src,bin}
 
 # vim settings
 if which git >/dev/null 2>&1; then
-	mkdir -p $HOME/.vim/{backup,swap,bundle}
+	mkdir -p $HOME/.vim/{backup,swap,bundle,undo}
 	git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 fi
 

@@ -77,6 +77,8 @@ if has('vim_starting')
   NeoBundle 'bronson/vim-trailing-whitespace'
 "----- for ruby
 
+  NeoBundle 'sjl/gundo.vim'
+
   NeoBundleCheck
   call neobundle#end()
 endif
