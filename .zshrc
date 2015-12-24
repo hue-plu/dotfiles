@@ -46,6 +46,7 @@ glgg () { git log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s
 glg  () { glgg | head }
 # alias for ls
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias ls='ls -G'
 
 ## /vcs git
 
@@ -152,7 +153,8 @@ else
 fi
 
 # haskell need en_US.utf8
-export LANG=en_US.utf8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 
 # cdr, add-zsh-hook を有効にする
@@ -170,4 +172,7 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 export MYSQL_PS1='\u@\h[\d]> '
 
 eval "$(rbenv init -)"
+eval "$(ndenv init -)"
+# github tool for cli
+eval "$(hub alias -s)"
 
