@@ -1,0 +1,15 @@
+{
+  "mod1": [
+    "option"
+  ],
+  "mod2": [
+    "option",
+    "shift"
+  ],
+  "mouse-follows-focus": true,
+  "focus-follows-mouse": true,
+  "floating": [
+    "com.apple.systempreferences",
+  ],
+}
+

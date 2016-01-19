@@ -55,7 +55,7 @@ if has('vim_starting')
   NeoBundle 'plasticboy/vim-markdown'
   NeoBundle 'kannokanno/previm'
   NeoBundle 'tyru/open-browser.vim'
-  
+
   NeoBundle 'yuku-t/vim-ref-ri'
   NeoBundle 'junegunn/vim-easy-align'
   NeoBundle 'haya14busa/vim-asterisk'
@@ -65,6 +65,7 @@ if has('vim_starting')
   NeoBundle 'kana/vim-operator-user'
   NeoBundle 'mattn/vim-textobj-url'
   NeoBundle 'osyo-manga/vim-brightest'
+  NeoBundle 'tpope/vim-surround'
 
 "----- for ruby
   NeoBundle 'todesking/ruby_hl_lvar.vim'
