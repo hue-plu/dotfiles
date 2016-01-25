@@ -10,6 +10,7 @@ ln -s {~/dotfiles/,~/}.zshenv
 ln -s {~/dotfiles/,~/}.Xdefaults
 ln -s {~/dotfiles/,~/}.vimperatorrc
 ln -s {~/dotfiles/,~/}.amethyst
+ln -s {~/dotfiles/,~/}.pryrc
 
 # create local dirs
 mkdir -p $HOME/local/{src,bin}

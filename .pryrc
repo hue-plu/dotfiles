@@ -9,8 +9,8 @@ if defined?(RbReadline)
 end
 
 begin
-	  require 'awesome_print'
+  require 'awesome_print'
 rescue LoadError
 else
-	  AwesomePrint.pry!
+  AwesomePrint.pry!
 end
