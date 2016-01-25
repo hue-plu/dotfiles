@@ -1,0 +1,6 @@
+# デフォルトのGemfileを読み込む
+eval_gemfile "Gemfile"
+
+# load gems
+gem "awesome_print"
+gem "pry-coolline"

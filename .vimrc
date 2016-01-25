@@ -76,6 +76,7 @@ if has('vim_starting')
   NeoBundle 'tpope/vim-rails'
   NeoBundle 'vim-scripts/AnsiEsc.vim'
   NeoBundle 'bronson/vim-trailing-whitespace'
+  NeoBundle 'slim-template/vim-slim'
 "----- for ruby
 
   NeoBundle 'sjl/gundo.vim'
@@ -193,7 +194,7 @@ set ttyfast
 set visualbell t_vb=
 set whichwrap=b,s,h,l
 set softtabstop=0
-set synmaxcol=200
+set synmaxcol=1000
 let mapleader = ","
 
 " ,のデフォルトの機能は、\で使えるように退避
@@ -229,7 +230,6 @@ endif
 
 set laststatus=2
 
-let g:indentLine_faster = 1
 nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 
 " cursor block enable

@@ -160,7 +160,7 @@ export LC_ALL=en_US.UTF-8
 # cdr, add-zsh-hook を有効にする
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
-  
+
 # cdr の設定
 zstyle ':completion:*' recent-dirs-insert both
 zstyle ':chpwd:*' recent-dirs-max 500
@@ -176,3 +176,5 @@ eval "$(ndenv init -)"
 # github tool for cli
 eval "$(hub alias -s)"
 
+# load private gems
+export BUNDLE_GEMFILE="Gemfile.local"
