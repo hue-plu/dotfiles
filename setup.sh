@@ -22,6 +22,7 @@ if which git >/dev/null 2>&1; then
 fi
 mkdir -p $HOME/.cache/shell/
 
+# for osx
 if [[ ! -e "`which brew`" ]]; then
 	echo "Homebrew is required: http://brew.sh"
 	exit 1
