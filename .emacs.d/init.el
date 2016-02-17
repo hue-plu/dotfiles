@@ -66,6 +66,7 @@
 
 ;;; バックアップファイル filename~ を作らない
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 ;;; package.el settings
 ;;; color theme
@@ -130,4 +131,6 @@
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'haskell-interactive-mode))
 
-
+;;; for osx
+(when (eq system-type 'darwin)
+    (setq ns-command-modifier (quote meta)))
