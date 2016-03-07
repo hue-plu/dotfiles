@@ -45,6 +45,7 @@ if [[ -e "$KARABINER" ]]; then
 	$KARABINER reloadxml
 	$KARABINER set parameter.keyoverlaidmodifier_timeout 300
 	$KARABINER set private.vim_keybind_apps_esc_with_eisuu
+	$KARABINER set private.change_mission_control_display_with_uiojkl_keys
 	$KARABINER set repeat.initial_wait 300
 	$KARABINER set repeat.wait 40
 else
