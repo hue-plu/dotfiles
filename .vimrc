@@ -40,6 +40,7 @@ if has('vim_starting')
 
   NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'ctrlpvim/ctrlp.vim'
+  NeoBundle 'nixprime/cpsm'
   NeoBundle 'rhysd/clever-f.vim'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'tsukkee/lingr-vim'
@@ -247,6 +248,7 @@ endif
 
 " plugin ctrlp
 let g:ctrlp_by_filename         = 1 " refine file name
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 
 " plugin clever-f
 " current line only 
