@@ -51,3 +51,6 @@ if [[ -e "$KARABINER" ]]; then
 else
 	echo "==> Warning: Karabiner.app not found < https://pqrs.org/osx/karabiner/index.html.en >"
 fi
+
+brew cask install slate
+cat ./.slate.js > "~/.slate.js"
