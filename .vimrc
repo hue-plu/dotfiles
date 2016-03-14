@@ -261,8 +261,11 @@ let g:ag_prg="ag --column"
 
 " ctrlp use ag command
 let g:ctrlp_use_caching = 1
+
+" for ctrlp matcher cpsm
 nnoremap <silent> <C-p> :let g:cpsm_match_empty_query = 0<CR>:CtrlP<CR>
 let g:ctrlp_map = ''
+let g:cpsm_query_inverting_delimiter = ' '
 
 " lingr chat vim
 
