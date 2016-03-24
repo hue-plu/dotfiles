@@ -80,6 +80,10 @@ if has('vim_starting')
   NeoBundle 'slim-template/vim-slim'
 "----- for ruby
 
+"----- for swift
+  NeoBundle 'keith/swift.vim'
+"----- for swift
+
   NeoBundle 'sjl/gundo.vim'
 
   NeoBundleCheck
@@ -626,4 +630,6 @@ nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 
-
+" ノーマルモード時だけ ; と : を入れ替える
+nnoremap ; :
+nnoremap : ;
