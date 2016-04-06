@@ -577,6 +577,7 @@ augroup filetypedetect
   " ruby のタブ幅は4で
   au BufNewFile,BufRead *.rb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
   au BufNewFile,BufRead *.erb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
+  au BufNewFile,BufRead *.js    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
 
 let g:textobj_ruby_more_mappings = 1

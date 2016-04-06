@@ -18,6 +18,8 @@ mkdir -p $HOME/local/{src,bin}
 # vim settings
 if which git >/dev/null 2>&1; then
 	mkdir -p $HOME/.vim/{backup,swap,bundle,undo}
+	mkdir -p $HOME/.vimperator/plugin
+	ln -s ~/dotfiles/caret-hint.js ~/.vimperator/plugin/caret-hint.js
 	git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 fi
 mkdir -p $HOME/.cache/shell/

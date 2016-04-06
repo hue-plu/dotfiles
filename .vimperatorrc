@@ -27,3 +27,9 @@ map <S-Left> :tabmove! -1<CR>
 " 検索候補をctrl n pで開く
 cmap <C-n> <Tab>
 cmap <C-p> <S-Tab>
+
+" Firebugのコンソールウィンドウ開閉
+noremap b :js window.Firebug.toggleBar();<CR>
+
+" キャレット幅を変更
+set! ui.caretWidth=2
