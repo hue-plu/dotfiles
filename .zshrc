@@ -177,5 +177,3 @@ eval "$(ndenv init -)"
 # github tool for cli
 eval "$(hub alias -s)"
 
-# load private gems
-export BUNDLE_GEMFILE="Gemfile.local"

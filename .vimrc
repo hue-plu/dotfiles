@@ -46,7 +46,6 @@ if has('vim_starting')
   NeoBundle 'tsukkee/lingr-vim'
   NeoBundle 'haya14busa/incsearch.vim'
   NeoBundle 'junegunn/vim-peekaboo'
-  NeoBundle 'scrooloose/syntastic'
   NeoBundle 'kana/vim-filetype-haskell'
   NeoBundle 'eagletmt/neco-ghc'
   NeoBundle 'eagletmt/ghcmod-vim'
@@ -67,6 +66,7 @@ if has('vim_starting')
   NeoBundle 'mattn/vim-textobj-url'
   NeoBundle 'osyo-manga/vim-brightest'
   NeoBundle 'tpope/vim-surround'
+  NeoBundle 'sjl/gundo.vim'
 
 "----- for ruby
   NeoBundle 'todesking/ruby_hl_lvar.vim'
@@ -84,7 +84,10 @@ if has('vim_starting')
   NeoBundle 'keith/swift.vim'
 "----- for swift
 
-  NeoBundle 'sjl/gundo.vim'
+"----- for javascript
+  NeoBundle 'scrooloose/syntastic'
+"----- for javascript
+
 
   NeoBundleCheck
   call neobundle#end()
@@ -555,6 +558,14 @@ augroup vimrc-auto-cursorline
   endfunction
 augroup END
 
+" @vim-brightest
+let g:brightest#highlight = {
+\   "group" : "BrightestUnderline"
+\}
+" default -> <cword>
+let g:brightest#pattern = '\k\+'
+" /@vim-brightest
+
 " for haskell
 " runner/vimproc/updatetime で出力バッファの更新間隔をミリ秒で設定できます
 " updatetime が一時的に書き換えられてしまうので注意して下さい
@@ -596,16 +607,25 @@ endif
 
 "----- for ruby
 
+"----- for javascript
+let g:syntastic_check_on_open=0 "ファイルを開いたときはチェックしない
+let g:syntastic_check_on_save=1 "保存時にはチェック
+let g:syntastic_check_on_wq = 0 " wqではチェックしない
+let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
+let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
+set statusline+=%#warningmsg# "エラーメッセージの書式
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
+let g:syntastic_mode_map = {
+      \ 'mode': 'active',
+      \ 'active_filetypes': ['javascript'],
+      \ 'passive_filetypes': []
+      \ }
+"----- for javascript
+
 " align
 vmap <Enter> <Plug>(EasyAlign)
-
-" @vim-brightest
-let g:brightest#highlight = {
-\   "group" : "BrightestUnderline"
-\}
-" default -> <cword>
-let g:brightest#pattern = '\k\+'
-" /@vim-brightest
 
 " window tab mapping
 nnoremap s <Nop>

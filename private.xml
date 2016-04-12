@@ -26,4 +26,22 @@
     	<identifier>private.change_danish_dollar_to_backquote</identifier>
     	<autogen>--KeyToKey-- KeyCode::DANISH_DOLLAR, KeyCode::BACKQUOTE</autogen>
     </item>
+    <devicevendordef>
+        <vendorname>LENOVO</vendorname>
+        <vendorid>0x17ef</vendorid>
+    </devicevendordef>
+    
+    <deviceproductdef>
+        <productname>LENOVO_0B47189</productname>
+        <productid>0x6048</productid>
+    </deviceproductdef>
+    
+    <item>
+        <name>COMMAND + MIDDLE to MIDDLE_CLICK</name>
+        <appendix>MIDDLE_BUTTON to VK_NONE</appendix>
+        <device_only>DeviceVendor::LENOVO, DeviceProduct::LENOVO_0B47189</device_only>
+        <identifier>thinkpad.trackpoint.commandmiddle2middleclick</identifier>
+        <autogen>__PointingButtonToPointingButton__ PointingButton::MIDDLE, ModifierFlag::COMMAND_L, PointingButton::MIDDLE</autogen>
+        <autogen>__PointingButtonToKey__ PointingButton::MIDDLE, KeyCode::VK_NONE</autogen>
+    </item>
 </root>
