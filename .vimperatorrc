@@ -1,3 +1,6 @@
+" focusさせない
+set focuscontent
+
 " デフォルトの検索エンジン
 set defsearch=google
 

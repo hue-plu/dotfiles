@@ -44,4 +44,13 @@
         <autogen>__PointingButtonToPointingButton__ PointingButton::MIDDLE, ModifierFlag::COMMAND_L, PointingButton::MIDDLE</autogen>
         <autogen>__PointingButtonToKey__ PointingButton::MIDDLE, KeyCode::VK_NONE</autogen>
     </item>
+
+    <item>
+        <name>Shift-R + esdf use cursor key</name>
+        <identifier>private.shift_r_esdf_use_cursor_key</identifier>
+        <autogen>--KeyToKey-- KeyCode::E, ModifierFlag::SHIFT_R, KeyCode::CURSOR_UP</autogen>
+        <autogen>--KeyToKey-- KeyCode::S, ModifierFlag::SHIFT_R, KeyCode::CURSOR_LEFT</autogen>
+        <autogen>--KeyToKey-- KeyCode::D, ModifierFlag::SHIFT_R, KeyCode::CURSOR_DOWN</autogen>
+        <autogen>--KeyToKey-- KeyCode::F, ModifierFlag::SHIFT_R, KeyCode::CURSOR_RIGHT</autogen>
+    </item>
 </root>
