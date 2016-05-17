@@ -3,9 +3,10 @@
 
 ;;; パッケージの設定
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
 (package-initialize)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
 ;;; 右から左に読む言語に対応させないことで描画高速化
 (setq-default bidi-display-reordering nil)
@@ -36,17 +37,11 @@
 ;;; インデントにTABを使わないようにする
 (setq-default indent-tabs-mode nil)
 
-;;; 現在行に色をつける
-(global-hl-line-mode 1)
-
 ;;; ミニバッファ履歴を次回Emacs起動時にも保存する
 (savehist-mode 1)
 
-;;; シェルに合わせるため、C-hは後退に割り当てる
-(global-set-key (kbd "C-h") 'delete-backward-char)
-
-;;; モードラインに時刻を表示する
-(display-time)
+;;; CTRL + H で１文字削除
+(keyboard-translate ?\C-h ?\C-?)
 
 ;;; 行番号・桁番号を表示する
 (line-number-mode 1)
@@ -64,13 +59,12 @@
 ;;; メニューバーとツールバーとスクロールバーを消す
 (menu-bar-mode -1)
 
-;;; バックアップファイル filename~ を作らない
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-
 ;;; package.el settings
 ;;; color theme
 (load-theme 'spacegray t t)
+
+;;; 現在行に色をつける
+(global-hl-line-mode 1)
 
 (require 'auto-complete)
 (require 'auto-complete-config)
@@ -78,7 +72,6 @@
 (add-to-list 'ac-modes 'text-mode)         ;; text-modeでも自動的に有効にする
 (add-to-list 'ac-modes 'fundamental-mode)  ;; fundamental-mode
 (add-to-list 'ac-modes 'org-mode)
-(add-to-list 'ac-modes 'yatex-mode)
 (ac-set-trigger-key "TAB")
 (setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
 
@@ -92,18 +85,29 @@
 
 (require 'helm-config)
 (helm-mode 1)
+(define-key global-map (kbd "M-y")     'helm-show-kill-ring)
+(setq helm-mode-fuzzy-match t)
+(setq helm-completion-in-region-fuzzy-match t)
 
-;;; helm-ls-git
+;;; helm-ls-git - file finder
 (unless (package-installed-p 'helm-ls-git)
   (package-refresh-contents) (package-install 'helm-ls-git))
-(global-set-key (kbd "C-c p") 'helm-ls-git-ls)
+(global-set-key (kbd "C-c C-p") 'helm-ls-git-ls)
+(setq helm-ls-git-fuzzy-match t)
 
-;;; helm-ag
+;;; helm-ag     - search words in project
 (unless (package-installed-p 'helm-ag)
-    (package-refresh-contents) (package-install 'helm-ag))
-(require 'helm-ag-r)
-(setq helm-ag-base-command "ag --nocolor --nogroup")
-(global-set-key (kbd "C-c s") 'helm-ag-r)
+  (package-refresh-contents) (package-install 'helm-ag))
+(custom-set-variables
+ '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+ '(helm-ag-command-option "--all-text")
+  '(helm-ag-insert-at-point 'symbol))
+(global-set-key (kbd "C-c C-s") 'helm-ag-project-root)
+
+;;; magit       - git client
+(unless (package-installed-p 'magit)
+  (package-refresh-contents) (package-install 'magit))
+(global-set-key (kbd "C-x C-g") 'magit-status)
 
 ;;; for haskell
 (require 'ghc)
@@ -138,6 +142,4 @@
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'haskell-interactive-mode))
 
-;;; for osx
-(when (eq system-type 'darwin)
-    (setq ns-command-modifier (quote meta)))
+

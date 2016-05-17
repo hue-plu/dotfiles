@@ -67,6 +67,9 @@ if has('vim_starting')
   NeoBundle 'osyo-manga/vim-brightest'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'sjl/gundo.vim'
+  NeoBundle 'bkad/CamelCaseMotion'
+
+  NeoBundle 'Konfekt/FastFold'
 
 "----- for ruby
   NeoBundle 'todesking/ruby_hl_lvar.vim'
@@ -378,21 +381,6 @@ endfunction
 
 "}}}
 
-" for php syntastic
-
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-let g:syntastic_mode_map = {'mode': 'passive'} 
-augroup AutoSyntastic
-    autocmd!
-  autocmd Filetype php InsertLeave Tex * call s:syntastic()
-augroup END
-
-function! s:syntastic()
-    w
-    SyntasticCheck
-endfunction
-
 " vim lightline
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -591,8 +579,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.js    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
 
-let g:textobj_ruby_more_mappings = 1
-
 " Set async completion.
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
 
@@ -623,6 +609,17 @@ let g:syntastic_mode_map = {
       \ 'passive_filetypes': []
       \ }
 "----- for javascript
+
+"----- CamelCaseMotion
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+"----- CamelCaseMotion
 
 " align
 vmap <Enter> <Plug>(EasyAlign)
