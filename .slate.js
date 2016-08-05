@@ -18,3 +18,4 @@ S.bind('2:ctrl', launch_and_focus('Slack'));
 S.bind('3:ctrl', launch_and_focus('Wunderlist'));
 S.bind('4:ctrl', launch_and_focus('iTerm'));
 S.bind('5:ctrl', launch_and_focus('Xcode'));
+S.bind('6:ctrl', launch_and_focus('Google Chrome'));

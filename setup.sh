@@ -15,6 +15,15 @@ ln -s {~/dotfiles/,~/}.pryrc
 # create local dirs
 mkdir -p $HOME/local/{src,bin}
 
+# tmux settings
+cd $HOME/local/src
+git clone https://github.com/thewtex/tmux-mem-cpu-load.git
+cd tmux-mem-cpu-load
+cmake .
+make
+make install
+cd $HOME
+
 # vim settings
 if which git >/dev/null 2>&1; then
 	mkdir -p $HOME/.vim/{backup,swap,bundle,undo}
@@ -56,3 +65,4 @@ fi
 
 brew cask install slate
 cat ./.slate.js > "~/.slate.js"
+

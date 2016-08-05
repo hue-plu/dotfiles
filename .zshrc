@@ -45,6 +45,7 @@ gst  () { git status -s && git stash list }
 glgg () { git log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d%Creset' }
 glg  () { glgg | head }
 gc   () { git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`}
+
 # alias for ls
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ls='ls -G'
@@ -174,6 +175,4 @@ export MYSQL_PS1='\u@\h[\d]> '
 
 eval "$(rbenv init -)"
 eval "$(ndenv init -)"
-# github tool for cli
-eval "$(hub alias -s)"
 

@@ -9,8 +9,8 @@ set hlsearch
 
 " j/k でのスクロール幅を 1行 から 3行 に変更
 " map j 3jとかすると無限ループして死ぬ
-map j 3<C-e>
-map k 3<C-y>
+nnoremap j 3<C-e>
+nnoremap k 3<C-y>
 
 " ddでタブを閉じる, dでは何もしない
 no dd :tabclose<CR>
@@ -21,8 +21,8 @@ map H <A-Left>
 map L <A-Right>
 
 " H/Lでタブ移動
-map h gT
-map l gt
+nnoremap h gT
+nnoremap l gt
 " Shift + ←/→ で現在のタブの位置変更
 map <S-Right> :tabmove! +1<CR>
 map <S-Left> :tabmove! -1<CR>
@@ -30,9 +30,6 @@ map <S-Left> :tabmove! -1<CR>
 " 検索候補をctrl n pで開く
 cmap <C-n> <Tab>
 cmap <C-p> <S-Tab>
-
-" Firebugのコンソールウィンドウ開閉
-noremap b :js window.Firebug.toggleBar();<CR>
 
 " キャレット幅を変更
 set! ui.caretWidth=2
