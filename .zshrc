@@ -152,9 +152,11 @@ setopt list_packed
 # 最後のスラッシュを自動的に削除しない
 setopt noautoremoveslash
 
-# setting for peco
+# setting for fzf
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
 for f (~/.zsh/tools/*) source "${f}" # load peco sources
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # os settings
 if [[ "$OSTYPE" =~ "cygwin" ]];then
@@ -185,4 +187,3 @@ eval "$(rbenv init -)"
 eval "$(ndenv init -)"
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
