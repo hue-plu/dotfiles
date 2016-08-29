@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'Yggdroot/indentLine'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
   Plug 'rhysd/clever-f.vim'
   Plug 'rking/ag.vim'
   Plug 'tsukkee/lingr-vim'
@@ -458,11 +459,12 @@ nnoremap ; :
 nnoremap : ;
 
 " ----- fzf
-command! FZFMru call fzf#run({
-\  'source':  v:oldfiles,
-\  'sink':    'e',
-\  'options': '-m -x +s',
-\  'down':    '40%'})
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
 
-nnoremap <silent> <C-p> :FZF<CR>
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap <silent> <C-p> :ProjectFiles<CR>
+nnoremap <silent> <M-p> :History<CR>
 " ----- fzf

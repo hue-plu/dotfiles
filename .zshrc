@@ -97,6 +97,8 @@ setopt auto_resume
 setopt auto_list
 # 直前と同じコマンドをヒストリに追加しない
 setopt hist_ignore_dups
+# 履歴中の重複行をファイル記録前に無くす
+setopt hist_ignore_all_dups
 # cd 時に自動で push
 setopt auto_pushd
 # 同じディレクトリを pushd しない
@@ -153,6 +155,9 @@ setopt list_packed
 setopt noautoremoveslash
 
 # setting for fzf
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
 for f (~/.zsh/tools/*) source "${f}" # load peco sources
 
