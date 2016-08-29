@@ -50,10 +50,18 @@ gc   () { git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ls='ls -G'
 
+# alias for neovim
+if type nvim > /dev/null 2>&1; then
+    alias vim='nvim'
+fi
+
 ## /vcs git
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/local/lib
 export LD_LIBRARY_PATH
+
+# XDG CONFIG DIR
+export XDG_CONFIG_HOME=~/.config
 
 #履歴の保存先
 HISTFILE=$HOME/.zsh-history
@@ -176,3 +184,5 @@ export MYSQL_PS1='\u@\h[\d]> '
 eval "$(rbenv init -)"
 eval "$(ndenv init -)"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

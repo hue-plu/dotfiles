@@ -2,18 +2,20 @@
 
 # create symbolic link
 ln -s {~/dotfiles/,~/}.tmux.conf
-ln -s {~/dotfiles/,~/}.vimrc
 ln -s {~/dotfiles/,~/}.emacs.d
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
 ln -s {~/dotfiles/,~/}.Xdefaults
-ln -s {~/dotfiles/,~/}.vimperatorrc
-ln -s {~/dotfiles/,~/}.amethyst
 ln -s {~/dotfiles/,~/}.pryrc
 
 # create local dirs
-mkdir -p $HOME/local/{src,bin}
+mkdir -p $HOME/.local/{src,bin,share}
+
+# neovim config
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -s ~/dotfiles/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
 # tmux settings
 cd $HOME/local/src
@@ -27,9 +29,8 @@ cd $HOME
 # vim settings
 if which git >/dev/null 2>&1; then
 	mkdir -p $HOME/.vim/{backup,swap,bundle,undo}
-	mkdir -p $HOME/.vimperator/plugin
-	ln -s ~/dotfiles/caret-hint.js ~/.vimperator/plugin/caret-hint.js
-	git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 mkdir -p $HOME/.cache/shell/
 
@@ -66,3 +67,9 @@ fi
 brew cask install slate
 cat ./.slate.js > "~/.slate.js"
 
+# install neovim
+brew install neovim/neovim/neovim
+brew install python3
+gem install neovim
+gem install rcodetools
+gem install fastri
