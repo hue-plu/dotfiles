@@ -415,8 +415,6 @@ let g:syntastic_mode_map = {
       \ }
 "----- for javascript
 
-nnoremap <silent> <C-p> :FZF<CR>
-
 "----- CamelCaseMotion
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
@@ -458,3 +456,13 @@ nnoremap sQ :<C-u>bd<CR>
 " ノーマルモード時だけ ; と : を入れ替える
 nnoremap ; :
 nnoremap : ;
+
+" ----- fzf
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+
+nnoremap <silent> <C-p> :FZF<CR>
+" ----- fzf
