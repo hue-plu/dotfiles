@@ -95,7 +95,7 @@ set autoindent smarttab noexpandtab tabstop=4 shiftwidth=4
 set autoread
 set backup
 set clipboard+=unnamedplus
-set backupdir=~/.local/share
+set backupdir=~/.local/share/backup
 set directory=~/.local/share
 set helplang=en
 set hidden
@@ -193,7 +193,7 @@ let g:ag_prg="ag --column"
 " vim undo
 if has('persistent_undo')
   set undofile
-  set undodir=./.vimundo,~/.vim/undo
+  set undodir=./.vimundo,~/.local/share/undo
 endif
 
 "vimfiler {{{
