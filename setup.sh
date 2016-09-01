@@ -28,7 +28,7 @@ cd $HOME
 
 # vim settings
 if which git >/dev/null 2>&1; then
-	mkdir -p $HOME/.vim/{backup,swap,bundle,undo}
+	mkdir -p $HOME/.local/share/{backup,swap,undo}
 	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
