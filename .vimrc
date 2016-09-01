@@ -9,6 +9,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'kchmck/vim-coffee-script'
   Plug 'ajh17/Spacegray.vim'
 
+  Plug 'Shougo/vimfiler.vim'
+  Plug 'Shougo/unite.vim'
+
   if &t_Co >= 16
     Plug 'itchyny/lightline.vim'
   elseif
