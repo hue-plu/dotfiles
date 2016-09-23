@@ -469,8 +469,10 @@ function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-nnoremap <silent> <C-p> :GitFiles<CR>
-nnoremap <silent> <M-p> :History<CR>
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+nnoremap <silent> <C-p> :ProjectFiles<CR>
+nnoremap <expr>   <M-p> ":History\<CR> ".<SID>find_git_root()
 nnoremap <silent> <c-]> :Tags <c-r><c-w><CR>
 
 let g:fzf_tags_command = 'ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
