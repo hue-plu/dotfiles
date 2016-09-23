@@ -67,7 +67,10 @@ call plug#begin('~/.vim/plugged')
 "----- for javascript
   Plug 'scrooloose/syntastic'
 "----- for javascript
-"
+
+"----- test runnner
+  Plug 'janko-m/vim-test'
+"----- test runnner
 
 call plug#end()
 
@@ -372,8 +375,8 @@ let g:quickrun_config = {
 \       "outputter/buffer/close_on_empty" : 1
 \   },
 \}
-map ,t :GhcModType<CR>
-map ,tc :GhcModTypeClear<CR>
+nnoremap ,ht :GhcModType<CR>
+nnoremap ,hc :GhcModTypeClear<CR>
 
 " for markdown
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -466,8 +469,17 @@ function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-command! ProjectFiles execute 'Files' s:find_git_root()
-
-nnoremap <silent> <C-p> :ProjectFiles<CR>
+nnoremap <silent> <C-p> :GitFiles<CR>
 nnoremap <silent> <M-p> :History<CR>
+nnoremap <silent> <c-]> :Tags <c-r><c-w><CR>
+
+let g:fzf_tags_command = 'ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
 " ----- fzf
+
+" ----- vim-test
+nnoremap <silent> <leader>t :TestNearest<CR>
+nnoremap <silent> <leader>T :TestFile<CR>
+nnoremap <silent> <leader>a :TestSuite<CR>
+nnoremap <silent> <leader>l :TestLast<CR>
+nnoremap <silent> <leader>g :TestVisit<CR>
+" ----- vim-test
