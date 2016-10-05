@@ -9,7 +9,8 @@ let options = {
   "mode.normal.tab_select_next": "l",
   "mode.normal.tab_close": "dd",
   "mode.normal.esc": "<force><escape> <force><c-[>",
-  "mode.caret.exit": "<escape><c-[>",
+  "mode.caret.exit": "<escape> <c-[>",
+  "mode.hints.exit": "<escape> <c-[>",
   "mode.find.exit": "<escape>  <c-[>  <enter>",
   "mode.marks.exit": "<escape> <c-[>"
 }
