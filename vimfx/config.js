@@ -1,4 +1,4 @@
-{
+let options = {
   "prevent_autofocus": true,
   "config_file_directory": "~/.config/vimfx",
   "mode.normal.scroll_left": "",
@@ -13,3 +13,5 @@
   "mode.find.exit": "<escape>  <c-[>  <enter>",
   "mode.marks.exit": "<escape> <c-[>"
 }
+
+Object.entries(options).forEach(([option, value]) => vimfx.set(option, value))
