@@ -17,6 +17,9 @@ mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
 ln -s ~/dotfiles/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
+# vimfx config
+ln -s ~/dotfiles/vimfx ~/.config/
+
 # tmux settings
 cd $HOME/local/src
 git clone https://github.com/thewtex/tmux-mem-cpu-load.git
