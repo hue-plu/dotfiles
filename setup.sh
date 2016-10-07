@@ -14,7 +14,7 @@ mkdir -p $HOME/.local/{src,bin,share}
 
 # neovim config
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+mkdir  $XDG_CONFIG_HOME/nvim
 ln -s ~/dotfiles/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
 # tmux settings
@@ -65,7 +65,7 @@ else
 fi
 
 brew cask install slate
-cat ./.slate.js > "~/.slate.js"
+ln -s {~/dotfiles/,~/}.slate.js
 
 # install neovim
 brew install neovim/neovim/neovim
