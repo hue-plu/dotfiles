@@ -46,6 +46,16 @@ glgg () { git log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s
 glg  () { glgg | head }
 gc   () { git checkout `git branch | peco | sed -e "s/\* //g" | awk "{print \$1}"`}
 
+open-pull-request () {
+    merge_commit=$(ruby -e 'print (File.readlines(ARGV[0]) & File.readlines(ARGV[1])).last' <(git rev-list --ancestry-path $1..master) <(git rev-list --first-parent $1..master))
+    if git show $merge_commit | grep -q 'pull request'
+    then
+        pull_request_number=$(git log -1 --format=%B $merge_commit | sed -e 's/^.*#\([0-9]*\).*$/\1/' | head -1)
+        url="`hub browse -u`/pull/${pull_request_number}"
+    fi
+    open $url
+}
+
 # alias for ls
 alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ls='ls -G'
@@ -190,5 +200,6 @@ export MYSQL_PS1='\u@\h[\d]> '
 
 eval "$(rbenv init -)"
 eval "$(ndenv init -)"
+eval "$(hub alias -s)"
 
 

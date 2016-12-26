@@ -7,7 +7,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-abolish'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'kchmck/vim-coffee-script'
-  Plug 'ajh17/Spacegray.vim'
 
   Plug 'Shougo/vimfiler.vim'
   Plug 'Shougo/unite.vim'
@@ -53,6 +52,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'Konfekt/FastFold'
   Plug 'bronson/vim-trailing-whitespace'
 
+"----- colorscheme
+  Plug 'ajh17/Spacegray.vim'
+"----- colorscheme
+
 "----- for ruby
   Plug 'osyo-manga/vim-monster'
   Plug 'tpope/vim-rails'
@@ -71,6 +74,24 @@ call plug#begin('~/.vim/plugged')
 "----- test runnner
   Plug 'janko-m/vim-test'
 "----- test runnner
+
+"----- sql formatter
+  Plug 'mattn/vim-sqlfmt'
+"----- sql formatter
+
+"----- vim-diff
+  Plug 'chrisbra/vim-diff-enhanced'
+  Plug 'AndrewRadev/linediff.vim'
+"----- vim-diff
+
+"----- git
+  Plug 'airblade/vim-gitgutter'
+"-----
+
+"----- roma to jp
+  Plug 'mattn/webapi-vim'
+  Plug 'vimtaku/vim-mlh'
+"-----
 
 call plug#end()
 
@@ -472,7 +493,7 @@ endfunction
 command! ProjectFiles execute 'Files' s:find_git_root()
 
 nnoremap <silent> <C-p> :ProjectFiles<CR>
-nnoremap <expr>   <M-p> ":History\<CR> ".<SID>find_git_root()
+nnoremap <silent> <M-p> :History<CR>
 nnoremap <silent> <c-]> :Tags <c-r><c-w><CR>
 
 let g:fzf_tags_command = 'ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
