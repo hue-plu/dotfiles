@@ -77,3 +77,6 @@ brew install python3
 gem install neovim
 gem install rcodetools
 gem install fastri
+
+# install spacemacs
+# brew install emacs-plus --without-imagemagick

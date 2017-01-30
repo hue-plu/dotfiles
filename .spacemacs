@@ -301,6 +301,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; prevent ruby magic comment
   (setq ruby-insert-encoding-magic-comment nil)
+  (custom-set-faces (if (not window-system) '(default ((t (:background "nil"))))))
 
 )
 ;; Do not write anything past this comment. This is where Emacs will
