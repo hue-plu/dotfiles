@@ -2,12 +2,12 @@
 
 # create symbolic link
 ln -s {~/dotfiles/,~/}.tmux.conf
-ln -s {~/dotfiles/,~/}.emacs.d
-ln -s {~/dotfiles/,~/}.spacemacs
+# ln -s {~/dotfiles/,~/}.emacs.d
+# ln -s {~/dotfiles/,~/}.spacemacs
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
-ln -s {~/dotfiles/,~/}.Xdefaults
+# ln -s {~/dotfiles/,~/}.Xdefaults
 ln -s {~/dotfiles/,~/}.pryrc
 
 # create local dirs
@@ -57,13 +57,14 @@ cat ./private.xml > "$HOME/Library/Application Support/Karabiner/private.xml"
 
 KARABINER="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
 if [[ -e "$KARABINER" ]]; then
-	$KARABINER reloadxml
-	$KARABINER set parameter.keyoverlaidmodifier_timeout 300
-	$KARABINER set private.vim_keybind_apps_esc_with_eisuu
-	$KARABINER set private.change_mission_control_display_with_uiojkl_keys
-	$KARABINER set private.change_danish_dollar_to_backquote
-	$KARABINER set repeat.initial_wait 300
-	$KARABINER set repeat.wait 40
+    $KARABINER reloadxml
+    $KARABINER set parameter.keyoverlaidmodifier_timeout 300
+    $KARABINER set private.vim_keybind_apps_esc_with_eisuu
+    $KARABINER set private.change_mission_control_display_with_uiojkl_keys
+    $KARABINER set private.doublemiddleclick2middleclick
+    $KARABINER set private.change_danish_dollar_to_backquote
+    $KARABINER set repeat.initial_wait 300
+    $KARABINER set repeat.wait 40
 else
 	echo "==> Warning: Karabiner.app not found < https://pqrs.org/osx/karabiner/index.html.en >"
 fi

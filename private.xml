@@ -26,23 +26,24 @@
     	<identifier>private.change_danish_dollar_to_backquote</identifier>
     	<autogen>--KeyToKey-- KeyCode::DANISH_DOLLAR, KeyCode::BACKQUOTE</autogen>
     </item>
-    <devicevendordef>
-        <vendorname>LENOVO</vendorname>
-        <vendorid>0x17ef</vendorid>
-    </devicevendordef>
-    
-    <deviceproductdef>
-        <productname>LENOVO_0B47189</productname>
-        <productid>0x6048</productid>
-    </deviceproductdef>
-    
+
     <item>
-        <name>COMMAND + MIDDLE to MIDDLE_CLICK</name>
-        <appendix>MIDDLE_BUTTON to VK_NONE</appendix>
-        <device_only>DeviceVendor::LENOVO, DeviceProduct::LENOVO_0B47189</device_only>
-        <identifier>thinkpad.trackpoint.commandmiddle2middleclick</identifier>
-        <autogen>__PointingButtonToPointingButton__ PointingButton::MIDDLE, ModifierFlag::COMMAND_L, PointingButton::MIDDLE</autogen>
-        <autogen>__PointingButtonToKey__ PointingButton::MIDDLE, KeyCode::VK_NONE</autogen>
+      <name>DOUBLE_MIDDLE_CLICK to MIDDLE_CLICK</name>
+      <identifier>private.doublemiddleclick2middleclick</identifier>
+      <block>
+          <lastpressedphysicalkey_only>PointingButton::MIDDLE</lastpressedphysicalkey_only>
+          <elapsedtimesincelastpressed_lessthan>Millisecond::RawValue::500</elapsedtimesincelastpressed_lessthan>
+          <autogen>
+              __PointingButtonToPointingButton__
+              PointingButton::MIDDLE,
+              PointingButton::MIDDLE
+          </autogen>
+      </block>
+      <autogen>
+          __PointingButtonToKey__
+          PointingButton::MIDDLE,
+          KeyCode::VK_NONE
+      </autogen>
     </item>
 
     <item>
