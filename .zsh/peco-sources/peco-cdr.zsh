@@ -1,7 +1,7 @@
 bindkey '^{' peco-cdr
 
 function peco-cdr() {
-    local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line

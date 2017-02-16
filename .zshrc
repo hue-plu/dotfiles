@@ -198,8 +198,11 @@ zstyle ':chpwd:*' recent-dirs-pushd true
 # mysql
 export MYSQL_PS1='\u@\h[\d]> '
 
+# tmux
+export FZF_TMUX=1
+
 eval "$(rbenv init -)"
-eval "$(ndenv init -)"
-eval "$(hub alias -s)"
+# eval "$(ndenv init -)"
+# eval "$(hub alias -s)"
 
 
