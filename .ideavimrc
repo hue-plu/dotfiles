@@ -1,3 +1,17 @@
+set ignorecase
+set smartcase
+set scrolloff=3 " 3 lines above/below cursor when scrolling
+
+let mapleader = ","
+
+" leader key mapping
+nmap <leader>o :action FileStructurePopup<cr>
+
+" ctrl key binding
+nmap <C-]> :action GotoDeclaration<cr>
+nmap <C-o> :action Back<cr>
+nmap <C-i> :action Forward<cr>
+
 " window tab mapping
 nnoremap s <Nop>
 nnoremap sj <C-w>j
