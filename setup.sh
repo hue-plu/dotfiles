@@ -18,6 +18,9 @@ mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 mkdir  $XDG_CONFIG_HOME/nvim
 ln -s ~/dotfiles/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
+# intelliJ
+ln -s {~/dotfiles/,~/}.ideavimrc
+
 # vimfx config
 ln -s ~/dotfiles/vimfx ~/.config/
 

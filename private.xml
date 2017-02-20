@@ -13,6 +13,13 @@
 		<autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
     </item>
     <item>
+        <name>IntelliJ Ctrl Bracket And Escape</name>
+        <identifier>private.intellij_ctrl_bracket_and_escape</identifier>
+        <only>IntelliJ</only>
+        <autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+        <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+    </item>
+    <item>
     	<name>Change Mission Control Display with UIOJKL keys</name>
     	<identifier>private.change_mission_control_display_with_uiojkl_keys</identifier>
 		<autogen>--KeyToKey-- KeyCode::U, VK_COMMAND, KeyCode::KEY_1, VK_CONTROL</autogen>
