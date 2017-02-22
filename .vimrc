@@ -188,7 +188,7 @@ let g:clever_f_across_no_line  = 1
 let g:clever_f_use_migemo  = 1
 
 " plugin ag 
-let g:ag_prg="ag --column"
+let g:ag_prg="rg --column"
 
 " lingr chat vim
 
@@ -458,28 +458,28 @@ sunmap ge
 vmap <Enter> <Plug>(EasyAlign)
 
 " window tab mapping
-nnoremap s <Nop>
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
-nnoremap sn gt
-nnoremap sp gT
-nnoremap sr <C-w>r
-nnoremap s= <C-w>=
-nnoremap sw <C-w>w
-nnoremap sN :<C-u>bn<CR>
-nnoremap sP :<C-u>bp<CR>
-nnoremap st :<C-u>tabnew<CR>
-nnoremap sT :<C-u>Unite tab<CR>
-nnoremap ss :<C-u>sp<CR>
-nnoremap sv :<C-u>vs<CR>
-nnoremap sq :<C-u>q<CR>
-nnoremap sQ :<C-u>bd<CR>
+nnoremap <Space> <Nop>
+nnoremap <Space>j <C-w>j
+nnoremap <Space>k <C-w>k
+nnoremap <Space>l <C-w>l
+nnoremap <Space>h <C-w>h
+nnoremap <Space>J <C-w>J
+nnoremap <Space>K <C-w>K
+nnoremap <Space>L <C-w>L
+nnoremap <Space>H <C-w>H
+nnoremap <Space>n gt
+nnoremap <Space>p gT
+nnoremap <Space>r <C-w>r
+nnoremap <Space>= <C-w>=
+nnoremap <Space>w <C-w>w
+nnoremap <Space>N :<C-u>bn<CR>
+nnoremap <Space>P :<C-u>bp<CR>
+nnoremap <Space>t :<C-u>tabnew<CR>
+nnoremap <Space>T :<C-u>Unite tab<CR>
+nnoremap <Space>s :<C-u>sp<CR>
+nnoremap <Space>v :<C-u>vs<CR>
+nnoremap <Space>q :<C-u>q<CR>
+nnoremap <Space>Q :<C-u>bd<CR>
 
 " ノーマルモード時だけ ; と : を入れ替える
 nnoremap ; :
