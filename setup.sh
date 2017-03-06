@@ -10,6 +10,10 @@ ln -s {~/dotfiles/,~/}.zshenv
 # ln -s {~/dotfiles/,~/}.Xdefaults
 ln -s {~/dotfiles/,~/}.pryrc
 
+# before open Amethyst, remove under file
+# rm  ~/Library/Preferences/com.amethyst.Amethyst.plist
+ln -s {~/dotfiles/,~/}.amethyst
+
 # create local dirs
 mkdir -p $HOME/.local/{src,bin,share}
 
