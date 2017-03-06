@@ -57,7 +57,6 @@ open-pull-request () {
 }
 
 # alias for ls
-alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ls='ls -G'
 
 # alias for neovim
@@ -145,8 +144,6 @@ zstyle ':completion:*' list-colors \
 setopt auto_cd
 # カッコの対応などを自動的に補完
 setopt auto_param_keys
-# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-setopt auto_param_slash
 # {a-c} を a b c に展開する機能を使えるようにする
 setopt brace_ccl
 # Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする

@@ -33,7 +33,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'ujihisa/ref-hoogle'
   Plug 'thinca/vim-quickrun'
   Plug 'plasticboy/vim-markdown'
-  Plug 'kannokanno/previm'
   Plug 'tyru/open-browser.vim'
 
   Plug 'yuku-t/vim-ref-ri'
@@ -91,6 +90,10 @@ call plug#begin('~/.vim/plugged')
 "----- roma to jp
   Plug 'mattn/webapi-vim'
   Plug 'vimtaku/vim-mlh'
+"-----
+
+"----- sphinx
+  Plug 'Rykka/riv.vim'
 "-----
 
 call plug#end()
@@ -439,7 +442,7 @@ let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'active_filetypes': ['javascript'],
-      \ 'passive_filetypes': []
+      \ 'passive_filetypes': ['python','rst']
       \ }
 "----- for javascript
 
