@@ -8,7 +8,18 @@
         "shift",
         "command"
     ],
-    "floating": ["com.apple.systempreferences", "com.vmware.fusion"],
+    "layouts": [
+        "tall",
+        "tall-right",
+        "wide",
+		"middle-wide",
+        "fullscreen",
+        "column",
+		"row",
+		"floating",
+		"widescreen-tall"
+    ],
+    "floating": ["com.apple.systempreferences", "com.vmware.fusion", "com.mavens.mavensmate"],
     "float-small-windows": true,
     "mouse-follows-focus": true,
 }
