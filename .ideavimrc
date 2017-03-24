@@ -2,6 +2,7 @@ set incsearch
 set ignorecase
 set smartcase
 set scrolloff=3 " 3 lines above/below cursor when scrolling
+set clipboard=unnamed
 
 let mapleader = ","
 
@@ -9,7 +10,7 @@ let mapleader = ","
 nnoremap <leader>o :action FileStructurePopup<cr>
 nnoremap <leader>r :action Run<cr>
 nnoremap <leader>d :action Debug<cr>
-nnoremap <leader>s :action Stop<cr>
+nnoremap <leader>e :action EvaluateExpression<cr>
 nnoremap <leader>fe :action ActivateProjectToolWindow<cr>
 
 " ctrl key binding

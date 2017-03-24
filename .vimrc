@@ -1,12 +1,9 @@
 "<*********** Vim init **************>
 call plug#begin('~/.vim/plugged')
   Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-  Plug 'Shougo/neosnippet'
-  Plug 'Shougo/neosnippet-snippets'
   Plug 'thinca/vim-qfreplace'
   Plug 'tpope/vim-abolish'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'kchmck/vim-coffee-script'
 
   Plug 'Shougo/vimfiler.vim'
   Plug 'Shougo/unite.vim'
@@ -23,7 +20,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'rhysd/clever-f.vim'
   Plug 'rking/ag.vim'
-  Plug 'tsukkee/lingr-vim'
   Plug 'haya14busa/incsearch.vim'
   Plug 'junegunn/vim-peekaboo'
   Plug 'kana/vim-filetype-haskell'
@@ -46,7 +42,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'osyo-manga/vim-brightest'
   Plug 'tpope/vim-surround'
   Plug 'sjl/gundo.vim'
-  Plug 'bkad/CamelCaseMotion'
 
   Plug 'Konfekt/FastFold'
   Plug 'bronson/vim-trailing-whitespace'
@@ -401,17 +396,43 @@ let g:quickrun_config = {
 \}
 nnoremap ,ht :GhcModType<CR>
 nnoremap ,hc :GhcModTypeClear<CR>
+let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
+function! GhcModQuickFix()
+  " for unite.vim and unite-quickfix
+  :Unite -no-empty quickfix
+
+  " for ctrlp
+  ":CtrlPQuickfix
+
+  " for FuzzyFinder
+  ":FufQuickfix
+endfunction
+
+augroup filetypedetect
+  " haskell のタブ幅は2で
+  au BufNewFile,BufRead *.hs    setlocal tabstop=2 autoindent expandtab shiftwidth=2
+  au BufNewFile,BufRead *.cabal    setlocal tabstop=2 autoindent expandtab shiftwidth=2
+augroup END
+
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
+" /for haskell
 
 " for markdown
 au BufRead,BufNewFile *.md set filetype=markdown
 
 "----- for ruby
 augroup filetypedetect
-  " ruby のタブ幅は4で
+  " ruby のタブ幅は2で
   au BufNewFile,BufRead *.rb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
   au BufNewFile,BufRead *.erb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
   au BufNewFile,BufRead *.js    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
+if (&ft=='ruby')
+  let g:fzf_tags_command = 'ctags -Rf.git/tags.$$ --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
+endif
 
 " Use deoplete.vim
 let g:deoplete#enable_at_startup = 1
@@ -445,17 +466,6 @@ let g:syntastic_mode_map = {
       \ 'passive_filetypes': ['python','rst']
       \ }
 "----- for javascript
-
-"----- CamelCaseMotion
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
-"----- CamelCaseMotion
 
 " align
 vmap <Enter> <Plug>(EasyAlign)
@@ -499,7 +509,7 @@ nnoremap <silent> <C-p> :ProjectFiles<CR>
 nnoremap <silent> <M-p> :History<CR>
 nnoremap <silent> <c-]> :Tags <c-r><c-w><CR>
 
-let g:fzf_tags_command = 'ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
+let g:fzf_tags_command = 'ctags -R'
 
 function! s:fzf_statusline()
   " Override statusline as you like
@@ -519,3 +529,12 @@ nnoremap <silent> <leader>a :TestSuite<CR>
 nnoremap <silent> <leader>l :TestLast<CR>
 nnoremap <silent> <leader>g :TestVisit<CR>
 " ----- vim-test
+
+" ----- vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+" ----- vim-easy-align
+"
+" ----- vim-peekaboo
+let g:peekaboo_window  = 'vert bo 100new'
+" ----- vim-peekaboo

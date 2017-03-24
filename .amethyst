@@ -19,7 +19,7 @@
 		"floating",
 		"widescreen-tall"
     ],
-    "floating": ["com.apple.systempreferences", "com.vmware.fusion", "com.mavens.mavensmate"],
+    "floating": ["com.apple.systempreferences", "com.vmware.fusion", "com.mavens.mavensmate", "com.jetbrains.intellij.ce"],
     "float-small-windows": true,
     "mouse-follows-focus": true,
 }
