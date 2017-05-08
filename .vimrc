@@ -28,7 +28,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'thinca/vim-ref'
   Plug 'ujihisa/ref-hoogle'
   Plug 'thinca/vim-quickrun'
+
   Plug 'plasticboy/vim-markdown'
+  Plug 'kannokanno/previm'
   Plug 'tyru/open-browser.vim'
 
   Plug 'yuku-t/vim-ref-ri'
@@ -80,6 +82,8 @@ call plug#begin('~/.vim/plugged')
 
 "----- git
   Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
 "-----
 
 "----- roma to jp
@@ -430,9 +434,8 @@ augroup filetypedetect
   au BufNewFile,BufRead *.erb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
   au BufNewFile,BufRead *.js    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
-if (&ft=='ruby')
-  let g:fzf_tags_command = 'ctags -Rf.git/tags.$$ --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
-endif
+
+let g:fzf_tags_command = 'ctags -Rf`git rev-parse --show-cdup`.git/tags --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
 
 " Use deoplete.vim
 let g:deoplete#enable_at_startup = 1
@@ -448,6 +451,7 @@ if !exists('loaded_matchit')
 	runtime macros/matchit.vim
 endif
 
+let g:syntastic_ruby_checkers = ['rubocop'] "ESLintを使う
 "----- for ruby
 
 "----- for javascript
@@ -462,7 +466,7 @@ set statusline+=%*
 let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
-      \ 'active_filetypes': ['javascript'],
+      \ 'active_filetypes': ['javascript','ruby'],
       \ 'passive_filetypes': ['python','rst']
       \ }
 "----- for javascript
@@ -508,8 +512,6 @@ command! ProjectFiles execute 'Files' s:find_git_root()
 nnoremap <silent> <C-p> :ProjectFiles<CR>
 nnoremap <silent> <M-p> :History<CR>
 nnoremap <silent> <c-]> :Tags <c-r><c-w><CR>
-
-let g:fzf_tags_command = 'ctags -R'
 
 function! s:fzf_statusline()
   " Override statusline as you like

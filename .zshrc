@@ -45,6 +45,7 @@ gst  () { git status -s && git stash list }
 glgg () { git log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d%Creset' }
 glg  () { glgg | head }
 gc   () { git checkout `git branch | fzf | sed -e "s/\* //g" | awk "{print \$1}"`}
+rcd  () { cd `bundle show --paths | fzf` }
 
 open-pull-request () {
     merge_commit=$(ruby -e 'print (File.readlines(ARGV[0]) & File.readlines(ARGV[1])).last' <(git rev-list --ancestry-path $1..master) <(git rev-list --first-parent $1..master))
@@ -203,3 +204,4 @@ eval "$(rbenv init -)"
 # eval "$(hub alias -s)"
 
 
+export PGDATA=/usr/local/var/postgres
