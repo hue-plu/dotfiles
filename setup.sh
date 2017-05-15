@@ -36,6 +36,8 @@ cmake .
 make
 make install
 cd $HOME
+brew tap greymd/tools
+brew install tmux-xpanes
 
 # vim settings
 if which git >/dev/null 2>&1; then
