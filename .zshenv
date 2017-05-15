@@ -8,6 +8,7 @@
     /usr/local/share/git-core/contrib/diff-highlight
     ~/.local/src/site-packages/
     ~/go/bin
+    ~/Library/Python/2.7/bin
  )
 
 export TERMINFO=~/.terminfo

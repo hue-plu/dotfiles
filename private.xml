@@ -13,9 +13,9 @@
 		<autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
     </item>
     <item>
-    	<name>IntelliJ Ctrl Bracket And Escape</name>
-    	<identifier>private.intellij_ctrl_bracket_and_escape</identifier>
-    	<only>IntelliJ</only>
+    	<name>Vimtools Ctrl Bracket And Escape</name>
+    	<identifier>private.vimtools_ctrl_bracket_and_escape</identifier>
+    	<only>IntelliJ,SUBLIMETEXT</only>
 		<autogen>--KeyToKey-- KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::JIS_BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
 		<autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::BRACKET_LEFT, VK_CONTROL, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
     </item>

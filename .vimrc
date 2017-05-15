@@ -431,7 +431,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 augroup filetypedetect
   " ruby のタブ幅は2で
   au BufNewFile,BufRead *.rb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
-  au BufNewFile,BufRead *.erb    setlocal tabstop=2 autoindent expandtab shiftwidth=2
+  au BufNewFile,BufRead *.erb   setlocal tabstop=2 autoindent expandtab shiftwidth=2
+  au BufNewFile,BufRead *.rake  setlocal tabstop=2 autoindent expandtab shiftwidth=2
   au BufNewFile,BufRead *.js    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
 

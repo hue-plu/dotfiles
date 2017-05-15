@@ -79,6 +79,8 @@ HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 # 保存する履歴の数
 SAVEHIST=100000
+# 補完リストの上限
+LISTMAX=100000
 
 fpath=(~/dotfiles/.zsh/completion $fpath)
 
@@ -103,8 +105,6 @@ setopt long_list_jobs
 setopt list_types
 # サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
 setopt auto_resume
-# 補完候補を一覧表示
-setopt auto_list
 # 直前と同じコマンドをヒストリに追加しない
 setopt hist_ignore_dups
 # 履歴中の重複行をファイル記録前に無くす
@@ -117,8 +117,6 @@ setopt pushd_ignore_dups
 setopt extended_glob
 # TAB で順に補完候補を切り替える
 setopt auto_menu
-# zsh の開始, 終了時刻をヒストリファイルに書き込む
-setopt extended_history
 # =command を command のパス名に展開する
 setopt equals
 # --prefix=/usr などの = 以降も補完
@@ -133,8 +131,6 @@ setopt print_eight_bit
 setopt share_history
 # 補完の判定を大文字小文字どちらでも
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# 補完候補のカーソル選択を有効に
-zstyle ':completion:*:default' menu select=1
 # 補完候補の色づけ
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
@@ -145,8 +141,6 @@ zstyle ':completion:*' list-colors \
 setopt auto_cd
 # カッコの対応などを自動的に補完
 setopt auto_param_keys
-# {a-c} を a b c に展開する機能を使えるようにする
-setopt brace_ccl
 # Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
 setopt NO_flow_control
 # コマンドラインの先頭がスペースで始まる場合ヒストリに追加しない
