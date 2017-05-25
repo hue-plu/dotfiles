@@ -436,8 +436,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.js    setlocal tabstop=2 autoindent expandtab shiftwidth=2
 augroup END
 
-let g:fzf_tags_command = 'ctags -Rf`git rev-parse --show-cdup`.git/tags --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
-
 " Use deoplete.vim
 let g:deoplete#enable_at_startup = 1
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
@@ -452,10 +450,10 @@ if !exists('loaded_matchit')
 	runtime macros/matchit.vim
 endif
 
-let g:syntastic_ruby_checkers = ['rubocop'] "ESLintを使う
 "----- for ruby
 
-"----- for javascript
+"----- syntastic
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open=0 "ファイルを開いたときはチェックしない
 let g:syntastic_check_on_save=1 "保存時にはチェック
 let g:syntastic_check_on_wq = 0 " wqではチェックしない
@@ -464,13 +462,16 @@ let g:syntastic_loc_list_height=6 "エラー表示ウィンドウの高さ
 set statusline+=%#warningmsg# "エラーメッセージの書式
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_ruby_checkers = ['rubocop'] "ESLintを使う
 let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'active_filetypes': ['javascript','ruby'],
       \ 'passive_filetypes': ['python','rst']
       \ }
-"----- for javascript
+
+ autocmd WinLeave * lclose
+"----- syntastic
 
 " align
 vmap <Enter> <Plug>(EasyAlign)
@@ -523,6 +524,7 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+let g:fzf_tags_command = 'ctags -Rf`git rev-parse --show-cdup`.git/tags --exclude=.git --exclude=tmp --exclude=public --exclude=app/assets --languages=ruby `bundle show --paths` .'
 " ----- fzf
 
 " ----- vim-test
