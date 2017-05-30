@@ -400,17 +400,6 @@ let g:quickrun_config = {
 \}
 nnoremap ,ht :GhcModType<CR>
 nnoremap ,hc :GhcModTypeClear<CR>
-let g:ghcmod_open_quickfix_function = 'GhcModQuickFix'
-function! GhcModQuickFix()
-  " for unite.vim and unite-quickfix
-  :Unite -no-empty quickfix
-
-  " for ctrlp
-  ":CtrlPQuickfix
-
-  " for FuzzyFinder
-  ":FufQuickfix
-endfunction
 
 augroup filetypedetect
   " haskell のタブ幅は2で
@@ -419,7 +408,6 @@ augroup filetypedetect
 augroup END
 
 " Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
 " /for haskell
@@ -470,7 +458,7 @@ let g:syntastic_mode_map = {
       \ 'passive_filetypes': ['python','rst']
       \ }
 
- autocmd WinLeave * lclose
+ autocmd WinLeave * SyntasticReset
 "----- syntastic
 
 " align
