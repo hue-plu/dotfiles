@@ -155,7 +155,7 @@ syntax enable
 
 "背景の明暗
 set background=dark
- 
+
 "カラースキームの設定
 "
 autocmd ColorScheme * highlight LineNr ctermfg=14 guifg=#81a2be
@@ -174,22 +174,22 @@ nmap <silent><Leader>i :<C-u>IndentLinesToggle<CR>
 
 " cursor block enable
 if has('unix')
-  let &t_ti .= "\e[1 q"  
-  let &t_SI .= "\e[5 q"  
-  let &t_EI .= "\e[1 q"  
-  let &t_te .= "\e[0 q"  
+  let &t_ti .= "\e[1 q"
+  let &t_SI .= "\e[5 q"
+  let &t_EI .= "\e[1 q"
+  let &t_te .= "\e[0 q"
 endif
 
 " </*********** view settings *********** >
 " </*********** Vim init **************>
 
 " plugin clever-f
-" current line only 
+" current line only
 let g:clever_f_across_no_line  = 1
 " use migemo
 let g:clever_f_use_migemo  = 1
 
-" plugin ag 
+" plugin ag
 let g:ag_prg="rg --column"
 
 " lingr chat vim
@@ -197,22 +197,22 @@ let g:ag_prg="rg --column"
 " @vim-asterisk and vim-anzu
   set hlsearch
   let g:incsearch#auto_nohlsearch = 1
-  
+
   nmap /  <Plug>(incsearch-forward)
   nmap ?  <Plug>(incsearch-backward)
   map n  <Plug>(incsearch-nohl-n)
   map N  <Plug>(incsearch-nohl-N)
-  
+
   map *   <Plug>(incsearch-nohl)<Plug>(asterisk-*)
   map g*  <Plug>(incsearch-nohl)<Plug>(asterisk-g*)
   map #   <Plug>(incsearch-nohl)<Plug>(asterisk-#)
   map g#  <Plug>(incsearch-nohl)<Plug>(asterisk-g#)
-  
+
   map z*  <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)
   map gz* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)
   map z#  <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)
   map gz# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)
-  
+
   let g:incsearch#magic = '\v'
 
   " * 時に anzu.vim の出力を行う

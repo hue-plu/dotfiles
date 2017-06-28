@@ -9,6 +9,7 @@
     ~/.local/src/site-packages/
     ~/go/bin
     ~/Library/Python/2.7/bin
+    /usr/local/bin
  )
 
 export TERMINFO=~/.terminfo
