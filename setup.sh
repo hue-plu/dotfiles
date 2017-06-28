@@ -2,8 +2,7 @@
 
 # create symbolic link
 ln -s {~/dotfiles/,~/}.tmux.conf
-# ln -s {~/dotfiles/,~/}.emacs.d
-# ln -s {~/dotfiles/,~/}.spacemacs
+ln -s {~/dotfiles/,~/}.spacemacs
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
@@ -91,4 +90,7 @@ gem install rcodetools
 gem install fastri
 
 # install spacemacs
-# brew install emacs-plus --without-imagemagick
+brew tap d12frosted/emacs-plus
+brew install emacs-plus --without-imagemagick
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
