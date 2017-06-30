@@ -325,6 +325,14 @@ you should place your code here."
     (global-set-key (kbd "C-x j") 'skk-auto-fill-mode)
     (setq default-input-method "japanese-skk")
     (require 'skk-study))
+
+  ;; mouse disabled
+  (defun silence ()
+    (interactive))
+  ;; don't jump the cursor around in the window on clicking
+  (define-key evil-motion-state-map [down-mouse-1] 'silence)
+  ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
+  (define-key evil-motion-state-map [mouse-4] 'silence)
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
