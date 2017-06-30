@@ -14,3 +14,10 @@
 
 export TERMINFO=~/.terminfo
 export PYTHONPATH=~/.local/src/site-packages/
+
+# ref: https://github.com/hitode909/google-ime-skk
+# emacs skk server connect to google-ime
+if lsof -n -iTCP:55100 | grep LISTEN > /dev/null 2>&1; then
+else
+  ~/.rbenv/versions/2.4.0/bin/google-ime-skk > /dev/null 2>&1 &
+fi

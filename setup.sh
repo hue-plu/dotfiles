@@ -3,6 +3,7 @@
 # create symbolic link
 ln -s {~/dotfiles/,~/}.tmux.conf
 ln -s {~/dotfiles/,~/}.spacemacs
+ln -s {~/dotfiles/,~/}.skk
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
