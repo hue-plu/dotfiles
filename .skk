@@ -1,4 +1,4 @@
-(setq skk-server-prog "~/.rbenv/shims/google-ime-skk") ; google-ime-skkの場所
-(setq skk-server-host "localhost") ; サーバー機能を利用
-(setq skk-server-portnum 55100)     ; ポートはgoogle-ime-skk
-(setq skk-share-private-jisyo t)   ; 複数 skk 辞書を共有
+(setq skk-server-prog "~/.rbenv/shims/google-ime-skk")
+(setq skk-server-host "localhost")
+(setq skk-server-portnum 55100)
+(setq skk-share-private-jisyo t)
