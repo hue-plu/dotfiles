@@ -327,12 +327,13 @@ you should place your code here."
     (require 'skk-study))
 
   ;; mouse disabled
-  (defun silence ()
-    (interactive))
-  ;; don't jump the cursor around in the window on clicking
-  (define-key evil-motion-state-map [down-mouse-1] 'silence)
-  ;; also avoid any '<mouse-1> is undefined' when setting to 'undefined
-  (define-key evil-motion-state-map [mouse-4] 'silence)
+  (defun nothing())
+  (define-key evil-normal-state-map (kbd "<down-mouse-1>") 'nothing)
+  (dolist (mouse '("<down-mouse-1>" "<mouse-1>"))
+    (global-unset-key (kbd mouse)))
+
+  ;; ctrl-i binding jump forward
+  (global-set-key [?\C-i] 'evil-jump-forward)
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
