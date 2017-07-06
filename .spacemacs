@@ -306,6 +306,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (load-file "~/spacemacs/dash.el")
   (load-file "~/spacemacs/autothemer.el")
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+  (setq exec-path (append exec-path '("/usr/local/bin")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -339,6 +341,12 @@ you should place your code here."
   ;; custom shortcut
   (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
   (define-key evil-normal-state-map (kbd "M-p") 'helm-projectile-recentf)
+  (evil-leader/set-key-for-mode 'ruby-mode "fe" 'neotree-find-project-root)
+
+  (define-key evil-visual-state-map (kbd "RET")
+    (lambda()
+      (interactive)
+      (call-interactively 'spacemacs/align-repeat)))
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
