@@ -341,6 +341,7 @@ you should place your code here."
   ;; custom shortcut
   (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
   (define-key evil-normal-state-map (kbd "M-p") 'helm-projectile-recentf)
+  (define-key evil-normal-state-map (kbd "C-]") 'spacemacs/jump-to-definition)
   (evil-leader/set-key-for-mode 'ruby-mode "fe" 'neotree-find-project-root)
 
   (define-key evil-visual-state-map (kbd "RET")
