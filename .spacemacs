@@ -348,6 +348,8 @@ you should place your code here."
     (lambda()
       (interactive)
       (call-interactively 'spacemacs/align-repeat)))
+
+  (eval-after-load 'evil-vars '(evil-set-initial-state 'term-mode 'emacs))
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
