@@ -95,3 +95,7 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus --without-imagemagick
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
+
+# docker zsh completion
+# https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
