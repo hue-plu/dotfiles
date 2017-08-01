@@ -199,3 +199,4 @@ eval "$(rbenv init -)"
 
 
 export PGDATA=/usr/local/var/postgres
+source _project_env.sh
