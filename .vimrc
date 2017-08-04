@@ -466,27 +466,28 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " window tab mapping
 nnoremap <Space> <Nop>
-nnoremap <Space>j <C-w>j
-nnoremap <Space>k <C-w>k
-nnoremap <Space>l <C-w>l
-nnoremap <Space>h <C-w>h
-nnoremap <Space>J <C-w>J
-nnoremap <Space>K <C-w>K
-nnoremap <Space>L <C-w>L
-nnoremap <Space>H <C-w>H
-nnoremap <Space>n gt
-nnoremap <Space>p gT
-nnoremap <Space>r <C-w>r
-nnoremap <Space>= <C-w>=
-nnoremap <Space>w <C-w>w
-nnoremap <Space>N :<C-u>bn<CR>
-nnoremap <Space>P :<C-u>bp<CR>
-nnoremap <Space>t :<C-u>tabnew<CR>
-nnoremap <Space>T :<C-u>Unite tab<CR>
-nnoremap <Space>s :<C-u>sp<CR>
-nnoremap <Space>v :<C-u>vs<CR>
-nnoremap <Space>q :<C-u>q<CR>
-nnoremap <Space>Q :<C-u>bd<CR>
+nnoremap <Space>wj <C-w>j
+nnoremap <Space>wk <C-w>k
+nnoremap <Space>wl <C-w>l
+nnoremap <Space>wh <C-w>h
+nnoremap <Space>wJ <C-w>J
+nnoremap <Space>wK <C-w>K
+nnoremap <Space>wL <C-w>L
+nnoremap <Space>wH <C-w>H
+nnoremap <Space>wn gt
+nnoremap <Space>wp gT
+nnoremap <Space>wr <C-w>r
+nnoremap <Space>w= <C-w>=
+nnoremap <Space>ww <C-w>w
+nnoremap <Space>wN :<C-u>bn<CR>
+nnoremap <Space>wP :<C-u>bp<CR>
+nnoremap <Space>wt :<C-u>tabnew<CR>
+nnoremap <Space>wT :<C-u>Unite tab<CR>
+nnoremap <Space>ws :<C-u>sp<CR>
+nnoremap <Space>wv :<C-u>vs<CR>
+nnoremap <Space>wq :<C-u>q<CR>
+nnoremap <Space>wd :<C-u>q<CR>
+nnoremap <Space>wQ :<C-u>bd<CR>
 
 " ノーマルモード時だけ ; と : を入れ替える
 nnoremap ; :
