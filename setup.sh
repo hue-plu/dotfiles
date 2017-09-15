@@ -93,6 +93,7 @@ gem install fastri
 # install spacemacs
 brew tap d12frosted/emacs-plus
 brew install emacs-plus --without-imagemagick
+brew install cmigemo --HEAD
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 
