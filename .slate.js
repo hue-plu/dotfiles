@@ -13,9 +13,9 @@ var launch_and_focus = function (target) {
         win.doOperation(S.operation('focus', { app: target }));
     };
 };
-S.bind('u:cmd', launch_and_focus('FirefoxDeveloperEdition'));
+S.bind('u:cmd', launch_and_focus('Vivaldi'));
 S.bind('i:cmd', launch_and_focus('Slack'));
-S.bind('o:cmd', launch_and_focus('Vivaldi'));
-S.bind('j:cmd', launch_and_focus('alacritty'));
+// S.bind('o:cmd', launch_and_focus('FirefoxDeveloperEdition'));
+S.bind('j:cmd', launch_and_focus('Alacritty'));
 // S.bind('h:cmd', launch_and_focus('Emacs'));
-S.bind('g:cmd', launch_and_focus('Sublime Text'));
+// S.bind('g:cmd', launch_and_focus('Sublime Text'));

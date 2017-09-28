@@ -1,0 +1,17 @@
+.searchfield {
+    position: relative;
+    flex: 0 1 175px;
+    display: flex;
+    order: 1;
+}
+.addressfield {
+    position: relative;
+    flex: 1 0 auto;
+    display: flex;
+    margin-left: 4px;
+    order: 2;
+}
+.extensions-wrapper {
+    display: flex;
+    order: 3;
+}

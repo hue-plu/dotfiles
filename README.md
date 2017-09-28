@@ -71,4 +71,13 @@ $cabal install happy
     }
 
 ```
+### Vivaldi Custom
+cp vivaldi_custom_css/custom.css /Applications/Vivaldi.app/Contents/Versions/1.12.955.36/Vivaldi\ Framework.framework/Resources/vivaldi/style/custom.css
 
+write common.css to import custom.css
+```common.css
+@import "custom.css";
+```
+
+* debug
+ * open -a /Applications/Vivaldi.app  --args --debug-packed-apps --silent-debugger-extension-api
