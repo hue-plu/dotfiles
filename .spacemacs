@@ -317,6 +317,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
   (setq exec-path (append exec-path '("/usr/local/bin")))
+
+  ;; gtags
+  (setenv "GTAGSLABEL" "pygments")
+  (setq tags-table-list
+        '("~/project" "~/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems"))
+
   )
 
 (defun dotspacemacs/user-config ()
