@@ -327,8 +327,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;;     , g f -> find file name
   ;;     , g s -> search from function name list
   (setenv "GTAGSLABEL" "ctags")
-  (setq tags-table-list
-        '("~/project" "~/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems"))
+  (setenv "GTAGSLIBPATH" "/Users/b-51/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems:/Users/b-51/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems")
 
   )
 
