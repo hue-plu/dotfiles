@@ -230,6 +230,7 @@ key_bindings:
   - { key: P,        mods: Alt,     chars: "\x1bp"                       }
   - { key: F,        mods: Alt,     chars: "\x1bf"                       }
   - { key: B,        mods: Alt,     chars: "\x1bb"                       }
+  - { key: X,        mods: Alt,     chars: "\x1bx"                       }
 
 # Mouse bindings
 #
