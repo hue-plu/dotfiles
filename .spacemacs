@@ -345,6 +345,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; node_modules/.bin
+  (setq-default js2-basic-offset 2
+                js-indent-level 2)
   (with-eval-after-load 'mmm-mode
     (add-hook 'mmm-js-mode-enter-hook #'add-node-modules-path)
     (add-hook 'mmm-js-mode-enter-hook #'spacemacs/toggle-syntax-checking-on))
