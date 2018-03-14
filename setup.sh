@@ -25,7 +25,7 @@ mkdir  $XDG_CONFIG_HOME/alacritty
 ln -s ~/dotfiles/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 
 # intelliJ
-ln -s {~/dotfiles/,~/}.ideavimrc
+# ln -s {~/dotfiles/,~/}.ideavimrc
 
 # vimfx config
 ln -s ~/dotfiles/vimfx ~/.config/
@@ -61,25 +61,6 @@ brew tap caskroom/versions
 
 brew update
 
-brew cask install karabiner
-
-mkdir -p "$HOME/Library/Application Support/Karabiner"
-cat ./private.xml > "$HOME/Library/Application Support/Karabiner/private.xml"
-
-KARABINER="/Applications/Karabiner.app/Contents/Library/bin/karabiner"
-if [[ -e "$KARABINER" ]]; then
-    $KARABINER reloadxml
-    $KARABINER set parameter.keyoverlaidmodifier_timeout 300
-    $KARABINER set private.vim_keybind_apps_esc_with_eisuu
-    $KARABINER set private.change_mission_control_display_with_uiojkl_keys
-    $KARABINER set private.doublemiddleclick2middleclick
-    $KARABINER set private.change_danish_dollar_to_backquote
-    $KARABINER set repeat.initial_wait 300
-    $KARABINER set repeat.wait 40
-else
-	echo "==> Warning: Karabiner.app not found < https://pqrs.org/osx/karabiner/index.html.en >"
-fi
-
 brew cask install slate
 ln -s {~/dotfiles/,~/}.slate.js
 
@@ -95,6 +76,7 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus --without-imagemagick
 brew install cmigemo --HEAD
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+brew install ripgrep
 
 
 # docker zsh completion
