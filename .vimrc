@@ -95,6 +95,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'Rykka/riv.vim'
 "-----
 
+"----- rfc manager
+  Plug 'mhinz/vim-rfc'
+  Plug 'vim-scripts/rfc-syntax', { 'for': 'rfc' } " optional syntax highlighting for RFC files
+"-----
+
 call plug#end()
 
 " @neosnippet
