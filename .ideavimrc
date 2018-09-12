@@ -25,15 +25,16 @@ nnoremap : ;
 
 " window tab mapping
 nnoremap <Space> <Nop>
-nnoremap <Space>j <C-w>j
-nnoremap <Space>k <C-w>k
-nnoremap <Space>l <C-w>l
-nnoremap <Space>h <C-w>h
-nnoremap <Space>n gt
-nnoremap <Space>p gT
-nnoremap <Space>s :<C-u>sp<CR>
-nnoremap <Space>v :<C-u>vs<CR>
-nnoremap <Space>q :<C-u>q<CR>
+nnoremap <Space>wj <C-w>j
+nnoremap <Space>wk <C-w>k
+nnoremap <Space>wl <C-w>l
+nnoremap <Space>wh <C-w>h
+nnoremap <Space>wn gt
+nnoremap <Space>wp gT
+nnoremap <Space>ws :<C-u>sp<CR>
+nnoremap <Space>wv :<C-u>vs<CR>
+nnoremap <Space>wq :<C-u>q<CR>
+nnoremap <Space>wd :<C-u>q<CR>
 
 " ideavim action list
 " --- Actions ---
