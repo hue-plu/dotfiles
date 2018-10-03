@@ -385,19 +385,9 @@ you should place your code here."
 
   ;; custom shortcut
   (define-key evil-normal-state-map (kbd "C-p") 'helm-projectile-find-file)
-  (define-key evil-normal-state-map (kbd "M-p") 'helm-projectile-recentf)
   (define-key evil-normal-state-map (kbd "C-]") 'spacemacs/jump-to-definition)
   (define-key evil-normal-state-map (kbd "/")   'isearch-forward)
   (define-key evil-normal-state-map (kbd "?")   'isearch-backward)
-  (evil-leader/set-key-for-mode 'ruby-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'js2-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'js-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'js-jsx-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'slim-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'vue-html-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'vue-html-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'yaml-mode "fe" 'neotree-find-project-root)
-  (evil-leader/set-key-for-mode 'haml-mode "fe" 'neotree-find-project-root)
 
   ;; align-repeat by RET key in visual state
   (define-key evil-visual-state-map (kbd "RET")
@@ -424,11 +414,12 @@ you should place your code here."
   (setq migemo-coding-system 'utf-8-unix)
   (migemo-init)
 
+  (with-eval-after-load "helm" (helm-migemo-mode +1))
+
   ;; neotree icons
   ;; see: https://github.com/jaypei/emacs-neotree#theme-config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-  (with-eval-after-load "helm" (helm-migemo-mode +1))
 
 )
 ;; Do not write anything past this comment. This is where Emacs will
