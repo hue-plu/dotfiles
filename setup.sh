@@ -23,6 +23,8 @@ mkdir  $XDG_CONFIG_HOME/nvim
 ln -s ~/dotfiles/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 mkdir  $XDG_CONFIG_HOME/alacritty
 ln -s ~/dotfiles/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+mkdir  $XDG_CONFIG_HOME/awesome
+ln -s ~/dotfiles/rc.lua $XDG_CONFIG_HOME/awesome/rc.rua
 
 # intelliJ
 # ln -s {~/dotfiles/,~/}.ideavimrc
