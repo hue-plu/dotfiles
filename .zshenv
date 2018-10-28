@@ -10,6 +10,7 @@
     ~/go/bin
     ~/Library/Python/2.7/bin
     /usr/local/bin
+    ~/.cargo/bin
  )
 
 export TERMINFO=~/.terminfo
