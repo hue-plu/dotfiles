@@ -324,20 +324,20 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (load-file "~/spacemacs/autothemer.el")
 
   ;; env for project
+  ;; should set GTAGSLIBPATH
   (load-file "~/_project_env.el")
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
   (setq exec-path (append exec-path '("/usr/local/bin")))
 
   ;; gtags
+  ;;   with ruby. need ctags and pygments
+  ;;   @see: https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btags/gtags#install-recommended-dependencies
+  ;;
   ;;   command: gtags --gtagslabel=ctags (ruby)
   ;;   usage
   ;;     , g d -> find function name
-  ;;     , g r -> find function name used location
-  ;;     , g f -> find file name
-  ;;     , g s -> search from function name list
   (setenv "GTAGSLABEL" "ctags")
-  (setenv "GTAGSLIBPATH" "/Users/b-51/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems:/Users/b-51/.rbenv/versions/2.4.2/lib/ruby/gems/2.4.0/gems")
 
   ;; using ripgrep
   (custom-set-variables
@@ -411,7 +411,7 @@ you should place your code here."
   (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
-  (setq migemo-coding-system 'utf-8-unix)
+  (setq migemo-coding-system 'utf-8)
   (migemo-init)
 
   (with-eval-after-load "helm" (helm-migemo-mode +1))
