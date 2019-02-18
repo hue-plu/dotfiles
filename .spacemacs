@@ -574,6 +574,7 @@ before packages are loaded."
     (require 'org-projectile)
     (setq org-directory "~/org/")
     (setq org-agenda-files (append (org-projectile-todo-files) (list org-directory))))
+    (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
 
   )
 
