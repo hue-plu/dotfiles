@@ -35,14 +35,14 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(
      sql
-	 javascript
-	 rust
-	 yaml
-	 html
-	 gtags
-	 (ruby :variables
-	       ruby-enable-ruby-on-rails-support t)
-	 ruby-on-rails
+     javascript
+     rust
+     yaml
+     html
+     gtags
+     (ruby :variables
+           ruby-enable-ruby-on-rails-support t)
+     ruby-on-rails
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -56,16 +56,17 @@ This function should only modify configuration layer settings."
      ;; markdown
      ;; multiple-cursors
      treemacs
-     org
+     (org :variables org-projectile-file "project.org")
+
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      spell-checking
      syntax-checking
-	 osx
-	 (colors :variables colors-enable-nyan-cat-progress-bar t)
+     osx
+     (colors :variables colors-enable-nyan-cat-progress-bar t)
      ;; version-control
-     )
+  )
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
