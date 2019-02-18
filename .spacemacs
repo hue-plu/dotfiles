@@ -569,6 +569,12 @@ before packages are loaded."
   ;; see: https://github.com/jaypei/emacs-neotree#theme-config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
+  ;; org-mode
+  (with-eval-after-load 'org-agenda
+    (require 'org-projectile)
+    (setq org-directory "~/org/")
+    (setq org-agenda-files (append (org-projectile-todo-files) (list org-directory))))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
