@@ -575,6 +575,10 @@ before packages are loaded."
     (setq org-directory "~/org/")
     (setq org-agenda-files (append (org-projectile-todo-files) (list org-directory))))
     (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+    (setq org-todo-keywords
+          '((sequence "TODO" "WAITING" "|" "DONE" )))
+    (setq org-todo-keyword-faces
+          '(("WAITING" . org-default)))
 
   )
 
