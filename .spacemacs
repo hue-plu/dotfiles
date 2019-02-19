@@ -568,6 +568,7 @@ before packages are loaded."
   ;; neotree icons
   ;; see: https://github.com/jaypei/emacs-neotree#theme-config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq treemacs-tag-follow-delay 0)
 
   ;; org-mode
   (with-eval-after-load 'org-agenda
