@@ -473,7 +473,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   ;; env for project
   ;; should set GTAGSLIBPATH
-  (load-file "~/_project_env.el")
+  (when (file-readable-p "~/_project_env.el")
+    (load-file "~/_project_env.el"))
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
   (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -574,12 +575,15 @@ before packages are loaded."
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
     (setq org-directory "~/org/")
-    (setq org-agenda-files (append (org-projectile-todo-files) (list org-directory))))
+    (setq org-agenda-files (list org-directory))
     (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
-    (setq org-todo-keywords
-          '((sequence "TODO" "WAITING" "|" "DONE" )))
-    (setq org-todo-keyword-faces
-          '(("WAITING" . org-default)))
+    (setq org-todo-keywords '((sequence "TODO" "WAITING" "|" "DONE" )))
+    (setq org-todo-keyword-faces '(("WAITING" . org-default)))
+
+    ;; e.g. (setq org-agenda-files (append (list "~/projects/xx.org") (org-agenda-files)))
+    (when (file-readable-p "~/_project_org.el")
+          (load-file "~/_project_org.el"))
+    )
 
   )
 
