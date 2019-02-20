@@ -200,3 +200,10 @@ eval "$(rbenv init -)"
 
 export PGDATA=/usr/local/var/postgres
 source ~/_project_env.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/b-51/.sdkman"
+[[ -s "/Users/b-51/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/b-51/.sdkman/bin/sdkman-init.sh"
+
+
+eval "$(direnv hook zsh)"
