@@ -33,7 +33,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(haskell
      sql
      javascript
      rust
@@ -82,6 +82,7 @@ This function should only modify configuration layer settings."
                                        vue-mode
                                        add-node-modules-path
                                        all-the-icons
+                                       gruvbox-theme
                                      )
 
    ;; A list of packages that cannot be updated.
@@ -459,18 +460,6 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
-  ;;As a non-ideal temporary workaround you can make the themes work by manually loading autothemer.el and dash.el:
-  ;;
-  ;;wget https://raw.githubusercontent.com/magnars/dash.el/master/dash.el
-  ;;wget https://raw.githubusercontent.com/sebastiansturm/autothemer/master/autothemer.el
-  ;;
-  ;;;; user-init
-  ;;(load-file "~/spacemacs/dash.el")
-  ;;(load-file "~/spacemacs/autothemer.el")
-
-  (load-file "~/spacemacs/dash.el")
-  (load-file "~/spacemacs/autothemer.el")
-
   ;; env for project
   ;; should set GTAGSLIBPATH
   (when (file-readable-p "~/_project_env.el")
@@ -516,7 +505,7 @@ before packages are loaded."
   (setq ruby-insert-encoding-magic-comment nil)
   (setq flycheck-ruby-rubocop-executable "~/.rbenv/shims/rubocop")
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
-  (setq ns-use-srgb-colorspace nil)
+  ;;(setq ns-use-srgb-colorspace nil)
 
   ;; ddskk
   (when (require 'skk nil t)
