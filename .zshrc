@@ -163,8 +163,6 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
 for f (~/.zsh/tools/*) source "${f}" # load peco sources
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # os settings
 if [[ "$OSTYPE" =~ "cygwin" ]];then
 else
