@@ -1,6 +1,6 @@
 #!zsh
  path=(
-    usr/local/bin
+    /usr/local/bin
     ~/local/bin
     $path
     ~/.local/bin
@@ -25,5 +25,3 @@ if lsof -n -iTCP:55100 | grep LISTEN > /dev/null 2>&1; then
 else
   google-ime-skk > /dev/null 2>&1 &
 fi
-
-eval "$(direnv hook zsh)"

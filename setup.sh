@@ -32,6 +32,12 @@ ln -s ~/dotfiles/rc.lua $XDG_CONFIG_HOME/awesome/rc.rua
 # vimfx config
 ln -s ~/dotfiles/vimfx ~/.config/
 
+# for osx
+if [[ ! -e "`which cmake`" ]]; then
+	echo "cmake command not found"
+	exit 1
+fi
+
 # tmux settings
 cd $HOME/local/src
 git clone https://github.com/thewtex/tmux-mem-cpu-load.git
@@ -39,9 +45,8 @@ cd tmux-mem-cpu-load
 cmake .
 make
 make install
+
 cd $HOME
-brew tap greymd/tools
-brew install tmux-xpanes
 
 # vim settings
 if which git >/dev/null 2>&1; then
@@ -68,7 +73,8 @@ ln -s {~/dotfiles/,~/}.slate.js
 
 # install neovim
 brew install neovim/neovim/neovim
-brew install python3
+brew install python
+python3 -m pip install --user --upgrade pynvim
 gem install neovim
 gem install rcodetools
 gem install fastri
@@ -84,3 +90,6 @@ brew install ripgrep
 # docker zsh completion
 # https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
+
+# alfred
+brew cask install alfred

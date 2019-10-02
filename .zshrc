@@ -193,11 +193,6 @@ export MYSQL_PS1='\u@\h[\d]> '
 # tmux
 export FZF_TMUX=1
 
-eval "$(rbenv init -)"
-# eval "$(ndenv init -)"
-# eval "$(hub alias -s)"
-
-
 export PGDATA=/usr/local/var/postgres
 source ~/_project_env.sh
 
@@ -205,5 +200,3 @@ source ~/_project_env.sh
 export SDKMAN_DIR="/Users/b-51/.sdkman"
 [[ -s "/Users/b-51/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/b-51/.sdkman/bin/sdkman-init.sh"
 
-
-eval "$(direnv hook zsh)"
