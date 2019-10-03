@@ -198,3 +198,4 @@ source ~/_project_env.sh
 export SDKMAN_DIR="/Users/b-51/.sdkman"
 [[ -s "/Users/b-51/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/b-51/.sdkman/bin/sdkman-init.sh"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
