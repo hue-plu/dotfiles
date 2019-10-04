@@ -13,6 +13,7 @@
     ~/.cargo/bin
     ~/.yarn/bin
     ~/.rbenv/bin
+    $PYENV_ROOT/bin
  )
 
 export TERMINFO=~/.terminfo
@@ -25,3 +26,5 @@ if lsof -n -iTCP:55100 | grep LISTEN > /dev/null 2>&1; then
 else
   google-ime-skk > /dev/null 2>&1 &
 fi
+
+export PYENV_ROOT=$HOME/.pyenv
