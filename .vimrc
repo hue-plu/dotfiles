@@ -49,7 +49,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'bronson/vim-trailing-whitespace'
 
 "----- colorscheme
-  Plug 'ajh17/Spacegray.vim'
+  Plug 'morhetz/gruvbox'
 "----- colorscheme
 
 "----- for ruby
@@ -163,8 +163,14 @@ set background=dark
 
 "カラースキームの設定
 "
-autocmd ColorScheme * highlight LineNr ctermfg=14 guifg=#81a2be
-colorscheme spacegray
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+autocmd ColorScheme * highlight SignColumn ctermbg=none
+autocmd ColorScheme * highlight GitGutterAdd ctermfg=green ctermbg=none
+autocmd ColorScheme * highlight GitGutterChange ctermfg=green ctermbg=none
+autocmd ColorScheme * highlight GitGutterDelete ctermfg=red ctermbg=none
+autocmd ColorScheme * highlight GitGutterChangeDeete ctermfg=red ctermbg=none
+colorscheme gruvbox
 filetype plugin on
 filetype indent on
 
