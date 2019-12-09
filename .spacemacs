@@ -33,7 +33,10 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(python
+   '(
+     (python :variables
+             python-enable-yapf-format-on-save t
+             python-sort-imports-on-save t)
      haskell
      sql
      javascript

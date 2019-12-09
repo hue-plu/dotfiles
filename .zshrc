@@ -199,3 +199,11 @@ export SDKMAN_DIR="/Users/b-51/.sdkman"
 [[ -s "/Users/b-51/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/b-51/.sdkman/bin/sdkman-init.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(pyenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuta_saito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuta_saito/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yuta_saito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuta_saito/google-cloud-sdk/completion.zsh.inc'; fi

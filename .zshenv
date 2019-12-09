@@ -14,6 +14,7 @@
     ~/.yarn/bin
     ~/.rbenv/bin
     $PYENV_ROOT/bin
+    /usr/local/opt/mysql-client/bin
  )
 
 export TERMINFO=~/.terminfo
@@ -28,3 +29,5 @@ else
 fi
 
 export PYENV_ROOT=$HOME/.pyenv
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
