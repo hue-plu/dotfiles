@@ -28,7 +28,7 @@
     },
     "terminal": {
         "fontFamily": "Gen Jyuu Gothic Monospace",
-        "fontWeight": "bold",
+        "fontWeight": "normal",
         "cursorStyle": "underline",
         "foreground": "#ebdbb2",
         "background": "#090B0A",
@@ -44,5 +44,5 @@
         "pin": "#cc5e37",
         "satellite": "#cc5e37"
     },
-    "injectCSS": "section#keyboard{display:none;} section#filesystem{display:none;} section#mod_column_left,section#mod_column_left>h3.title{left: unset;right: 0.555vh;} section#main_shell,section#main_shell>h3.title{left: 0.555vh;width: 80%;} section#main_shell{top: 2.5vh;height: 95.3%;position: absolute;} section#mod_column_right{display:none;} div#mod_toplist i{font-size: 1vh;} "
+    "injectCSS": "section#keyboard{display:none;} section#filesystem{display:none;} section#mod_column_left,section#mod_column_left>h3.title{left: unset;right: 0.555vh;} section#main_shell,section#main_shell>h3.title{left: 0.555vh;width: 80%;} section#main_shell{top: 2.5vh;height: 95.6%;position: absolute;} section#mod_column_right{display:none;} div#mod_toplist i{font-size: 1vh;} "
 }
