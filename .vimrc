@@ -166,10 +166,6 @@ set background=dark
 autocmd ColorScheme * highlight Normal ctermbg=none
 autocmd ColorScheme * highlight LineNr ctermbg=none
 autocmd ColorScheme * highlight SignColumn ctermbg=none
-autocmd ColorScheme * highlight GitGutterAdd ctermfg=green ctermbg=none
-autocmd ColorScheme * highlight GitGutterChange ctermfg=green ctermbg=none
-autocmd ColorScheme * highlight GitGutterDelete ctermfg=red ctermbg=none
-autocmd ColorScheme * highlight GitGutterChangeDeete ctermfg=red ctermbg=none
 colorscheme gruvbox
 filetype plugin on
 filetype indent on

@@ -33,13 +33,23 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(csv
+     (go :variables
+         go-backend 'go-mode
+         go-format-before-save t
+         go-use-golangci-lint t
+         go-use-gocheck-for-testing t
+         godoc-at-point-function 'godoc-gogetdoc
+         gofmt-command "goimports"
+         )
      (python :variables
-             python-enable-yapf-format-on-save t
-             python-sort-imports-on-save t)
+         python-enable-yapf-format-on-save t
+         python-sort-imports-on-save t)
      haskell
      sql
      javascript
+     (node :variables node-add-modules-path t)
+     (vue :variables vue-backend 'lsp)
      rust
      yaml
      html
@@ -471,6 +481,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
   (setq exec-path (append exec-path '("/usr/local/bin")))
+  (setq exec-path (append exec-path '("~/go/bin")))
 
   ;; gtags
   ;;   with ruby. need ctags and pygments
@@ -495,15 +506,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-
-  ;; node_modules/.bin
-  (setq-default js2-basic-offset 2
-                js-indent-level 2)
-  (with-eval-after-load 'mmm-mode
-    (add-hook 'mmm-js-mode-enter-hook #'add-node-modules-path)
-    (add-hook 'mmm-js-mode-enter-hook #'spacemacs/toggle-syntax-checking-on))
-  (with-eval-after-load 'js2-mode
-    (add-hook 'js2-mode-hook #'add-node-modules-path))
 
   ;; prevent ruby magic comment
   (setq ruby-insert-encoding-magic-comment nil)
