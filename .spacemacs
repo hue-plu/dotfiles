@@ -584,6 +584,12 @@ before packages are loaded."
   (add-hook 'vue-mode-hook
             (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
 
+  ;; js2-mode
+  (add-hook 'js2-mode-hook
+            (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-mode-show-strict-warnings nil)
+
 
   )
 
