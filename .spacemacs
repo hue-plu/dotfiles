@@ -583,6 +583,12 @@ before packages are loaded."
   ;; vue-mode
   (add-hook 'vue-mode-hook
             (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
+  (setq flycheck-stylelintrc "stylelint.config.js")
+  (eval-after-load 'flycheck
+    '(progn
+       (flycheck-add-mode 'css-stylelint 'vue-mode)))
+
+
 
   ;; js2-mode
   (add-hook 'js2-mode-hook
