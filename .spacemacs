@@ -584,11 +584,9 @@ before packages are loaded."
   (add-hook 'vue-mode-hook
             (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
   (setq flycheck-stylelintrc "stylelint.config.js")
-  (eval-after-load 'flycheck
-    '(progn
-       (flycheck-add-mode 'css-stylelint 'vue-mode)))
-
-
+  (with-eval-after-load 'flycheck
+            (flycheck-add-mode 'css-stylelint 'vue-mode)
+            (flycheck-add-next-checker 'css-stylelint 'javascript-eslint))
 
   ;; js2-mode
   (add-hook 'js2-mode-hook
