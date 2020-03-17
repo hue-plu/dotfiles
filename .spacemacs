@@ -20,7 +20,7 @@ This function should only modify configuration layer settings."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'unused
+   dotspacemacs-enable-lazy-installation nil
 
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
@@ -33,15 +33,17 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(typescript
+     csv
      (go :variables
-         go-backend 'go-mode
+         go-backend 'lsp
          go-format-before-save t
          go-use-golangci-lint t
          go-use-gocheck-for-testing t
          godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports"
          )
+     lsp
      (python :variables
          python-enable-yapf-format-on-save t
          python-sort-imports-on-save t)
@@ -507,6 +509,23 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; switch emacs app from command
+  (when (featurep 'ns)
+    (defun ns-raise-emacs ()
+      "Raise Emacs."
+      (ns-do-applescript "tell application \"Emacs\" to activate"))
+
+    (defun ns-raise-emacs-with-frame (frame)
+      "Raise Emacs and select the provided frame."
+      (with-selected-frame frame
+        (when (display-graphic-p)
+          (ns-raise-emacs))))
+
+    (add-hook 'after-make-frame-functions 'ns-raise-emacs-with-frame)
+
+    (when (display-graphic-p)
+      (ns-raise-emacs)))
+
   ;; prevent ruby magic comment
   (setq ruby-insert-encoding-magic-comment nil)
   (setq flycheck-ruby-rubocop-executable "~/.rbenv/shims/rubocop")
@@ -594,6 +613,12 @@ before packages are loaded."
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
 
+  ;; dotenv-mode
+  (add-to-list 'auto-mode-alist '("\\.env\\.*" . dotenv-mode))
+
+  ;; grammerly
+  (load-file "~/.emacs.d/emacs-grammarly.el")
+  (global-set-key (kbd "C-c C-c") 'grammarly-save-region-and-run)
 
   )
 
@@ -614,7 +639,7 @@ This function is called at the very end of Spacemacs initialization."
     ("585942bb24cab2d4b2f74977ac3ba6ddbd888e3776b9d2f993c5704aa8bb4739" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default)))
  '(package-selected-packages
    (quote
-    (lsp-ui lsp-treemacs lsp-python-ms helm-lsp dap-mode bui tree-mode company-lsp yaml-mode ws-butler winum which-key web-mode web-beautify vue-mode edit-indirect ssass-mode vue-html-mode mmm-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit sql-indent spaceline powerline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-mode rainbow-identifiers rainbow-delimiters racer pug-mode projectile-rails rake inflections popwin persp-mode pcre2el pbcopy paradox spinner osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text minitest migemo magit-gitflow magit-popup macrostep lorem-ipsum livid-mode skewer-mode simple-httpd linum-relative link-hint launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero indent-guide hydra lv hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link ggtags fuzzy flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish gruvbox-theme ddskk company-web company-tern company-statistics company-ghci company-ghc company-cabal column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode chruby cargo bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile all-the-icons aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (dap-mode bui yaml-mode ws-butler winum which-key web-mode web-beautify vue-mode edit-indirect ssass-mode vue-html-mode mmm-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit sql-indent spaceline powerline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-mode rainbow-identifiers rainbow-delimiters racer pug-mode projectile-rails rake inflections popwin persp-mode pcre2el pbcopy paradox spinner osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text minitest migemo magit-gitflow magit-popup macrostep lorem-ipsum livid-mode skewer-mode simple-httpd linum-relative link-hint launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero indent-guide hydra lv hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link ggtags fuzzy flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish gruvbox-theme ddskk company-web company-tern company-statistics company-ghci company-ghc company-cabal column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode chruby cargo bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile all-the-icons aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

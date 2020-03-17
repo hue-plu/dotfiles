@@ -84,6 +84,8 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus --without-imagemagick
 brew install cmigemo --HEAD
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+ln -s ~/dotfiles/emacs-grammarly.el ~/.emacs.d/emacs-grammarly.el
+
 brew install ripgrep
 
 
