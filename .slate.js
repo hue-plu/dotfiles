@@ -15,6 +15,7 @@ var launch_and_focus = function (target) {
 };
 S.bind('u:cmd', launch_and_focus('Vivaldi'));
 S.bind('i:cmd', launch_and_focus('Slack'));
+S.bind('o:cmd', launch_and_focus('Google Chrome'));
 // S.bind('o:cmd', launch_and_focus('FirefoxDeveloperEdition'));
 // S.bind('j:cmd', launch_and_focus('eDEX-UI'));
 S.bind('j:cmd', launch_and_focus('Alacritty'));

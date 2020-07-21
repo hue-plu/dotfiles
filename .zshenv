@@ -15,6 +15,7 @@
     ~/.rbenv/bin
     $PYENV_ROOT/bin
     /usr/local/opt/mysql-client/bin
+    /usr/local/opt/ruby/bin
  )
 
 export TERMINFO=~/.terminfo
