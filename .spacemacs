@@ -44,7 +44,10 @@ This function should only modify configuration layer settings."
          godoc-at-point-function 'godoc-gogetdoc
          gofmt-command "goimports"
          )
-     lsp
+     (lsp :variables
+          lsp-headerline-breadcrumb-enable nil
+          lsp-ui-doc-position 'at-point
+          )
      (python :variables python-enable-yapf-format-on-save t)
      haskell
      sql
