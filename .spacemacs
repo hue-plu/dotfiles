@@ -617,18 +617,16 @@ before packages are loaded."
   (with-eval-after-load "helm" (helm-migemo-mode +1))
 
   ;; org-mode
-  (with-eval-after-load 'org-agenda
-    (require 'org-projectile)
-    (setq org-directory "~/org/")
-    (setq org-agenda-files (list org-directory))
-    (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
-    (setq org-todo-keywords '((sequence "TODO" "WAITING" "|" "DONE" )))
-    (setq org-todo-keyword-faces '(("WAITING" . org-default)))
+  (require 'org-projectile)
+  (setq org-directory "~/org/")
+  (setq org-agenda-files (list org-directory))
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+  (setq org-todo-keywords '((sequence "TODO" "WAITING" "|" "DONE" )))
+  (setq org-todo-keyword-faces '(("WAITING" . org-default)))
 
-    ;; e.g. (setq org-agenda-files (append (list "~/projects/xx.org") (org-agenda-files)))
-    (when (file-readable-p "~/_project_org.el")
-          (load-file "~/_project_org.el"))
-    )
+  ;; e.g. (setq org-agenda-files (append (list "~/projects/xx.org") (org-agenda-files)))
+  (when (file-readable-p "~/_project_org.el")
+        (load-file "~/_project_org.el"))
 
   ;; vue-mode
   (add-hook 'vue-mode-hook
