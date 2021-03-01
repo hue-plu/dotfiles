@@ -34,7 +34,10 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     typescript
+     (typescript :variables
+                 typescript-backend 'tide
+                 typescript-linter 'tslint)
+
      csv
      (go :variables
          go-backend 'lsp
@@ -51,7 +54,8 @@ This function should only modify configuration layer settings."
      (python :variables python-enable-yapf-format-on-save t)
      haskell
      sql
-     javascript
+     (javascript :variables
+                 javascript-backend 'tide)
      (node :variables node-add-modules-path t)
      (vue :variables vue-backend 'lsp)
      rust
@@ -100,6 +104,7 @@ This function should only modify configuration layer settings."
                                        add-node-modules-path
                                        all-the-icons
                                        gruvbox-theme
+                                       tide
                                      )
 
    ;; A list of packages that cannot be updated.
@@ -642,6 +647,11 @@ before packages are loaded."
   ;; dotenv-mode
   (add-to-list 'auto-mode-alist '("\\.env\\.*" . dotenv-mode))
 
+  (with-eval-after-load 'lsp-mode
+    ;; lsp-mode
+    (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.nuxt$") ;; Nuxt.js
+    (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.next$") ;; Next.js
+    )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
