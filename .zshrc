@@ -31,14 +31,41 @@ function rprompt-git-current-branch {
                 color=%F{red}
         fi
 
-        echo "$color$name$action%f%b "
+        echo "branch $color$name$action%f%b "
+}
+
+function rprompt-tf-workspace {
+    local name color
+
+    if ! [[ "$PWD" =~ 'terraform' ]]; then
+            return
+    fi
+
+    if ! type "terraform" > /dev/null; then
+		return
+    fi
+
+    name=`terraform workspace show`
+    if [[ -z $name ]]; then
+            return
+    fi
+
+	if [[ -n `echo "$name" | grep "^default"` ]]; then
+		color=%F{green}
+	elif [[ -n `echo "$name" | grep "^production"` ]]; then
+		color=%F{red}
+    else
+        color=%F{red}
+    fi
+
+    echo "tf $color$name%f%b "
 }
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
 
 PROMPT=$'%2F%n@%m%f%1v%# '
-RPROMPT='[`rprompt-git-current-branch`%~]'
+RPROMPT='[`rprompt-tf-workspace``rprompt-git-current-branch`%~]'
 
 # alias for git
 gst  () { git status -s && git stash list }
@@ -194,16 +221,14 @@ export FZF_TMUX=1
 export PGDATA=/usr/local/var/postgres
 source ~/_project_env.sh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/b-51/.sdkman"
-[[ -s "/Users/b-51/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/b-51/.sdkman/bin/sdkman-init.sh"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(pyenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/yuta_saito/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuta_saito/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f ~/google-cloud-sdk/path.zsh.inc ]; then . ~/google-cloud-sdk/path.zsh.inc; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/yuta_saito/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuta_saito/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then . ~/google-cloud-sdk/completion.zsh.inc; fi
+
+[ -f ~/.ghcup/env ] && source ~/.ghcup/env # ghcup-env
