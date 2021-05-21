@@ -36,8 +36,9 @@ This function should only modify configuration layer settings."
    '(
      (typescript :variables
                  typescript-backend 'tide
-                 typescript-linter 'tslint)
-
+                 typescript-lsp-linter nil
+                 typescript-linter 'eslint)
+     graphql
      csv
      (go :variables
          go-backend 'lsp
@@ -52,7 +53,11 @@ This function should only modify configuration layer settings."
           lsp-ui-doc-position 'at-point
           )
      (python :variables python-enable-yapf-format-on-save t)
-     haskell
+     (haskell :variables
+              haskell-completion-backend 'lsp
+              haskell-enable-hindent t
+              haskell-stylish-on-save t
+              )
      sql
      (javascript :variables
                  javascript-backend 'tide)
@@ -518,8 +523,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
     (load-file "~/_project_env.el"))
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-  (setq exec-path (append exec-path '("/usr/local/bin")))
-  (setq exec-path (append exec-path '("~/go/bin")))
+  (setq exec-path (append (list (concat (getenv "HOME") "/go/bin"))))
+  (setq exec-path (append (list (concat (getenv "HOME") "/.local/bin"))))
+  (setq exec-path (append (list (concat (getenv "HOME") "/.ghcup/bin"))))
 
   ;; gtags
   ;;   with ruby. need ctags and pygments
@@ -624,6 +630,22 @@ before packages are loaded."
   (setq org-todo-keywords '((sequence "TODO" "WAITING" "|" "DONE" )))
   (setq org-todo-keyword-faces '(("WAITING" . org-default)))
 
+  ;; Save the corresponding buffers
+  (defun save-org-buffers ()
+    "Save `org-agenda-files' buffers without user confirmation.
+See also `org-save-all-org-buffers'"
+    (interactive)
+    (message "Saving org-agenda-files buffers...")
+    (save-some-buffers t (lambda ()
+                           (when (member (buffer-file-name) org-agenda-files)
+                             t)))
+    (message "Saving org-agenda-files buffers... done"))
+
+  ;; Add it after refile
+  (advice-add 'org-refile :after
+              (lambda (&rest _)
+                (save-org-buffers)))
+
   ;; e.g. (setq org-agenda-files (append (list "~/projects/xx.org") (org-agenda-files)))
   (when (file-readable-p "~/_project_org.el")
         (load-file "~/_project_org.el"))
@@ -644,6 +666,14 @@ before packages are loaded."
 
   ;; dotenv-mode
   (add-to-list 'auto-mode-alist '("\\.env\\.*" . dotenv-mode))
+
+  ;; typescript-tsx-mode
+  (add-hook 'typescript-tsx-mode-hook
+            (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
+
+  ;; typescript-mode
+  (add-hook 'typescript-mode-hook
+            (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
 
   (with-eval-after-load 'lsp-mode
     ;; lsp-mode
