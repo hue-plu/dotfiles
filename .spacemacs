@@ -39,6 +39,7 @@ This function should only modify configuration layer settings."
                  typescript-lsp-linter nil
                  typescript-linter 'eslint)
      graphql
+     (terraform :variables terraform-auto-format-on-save t)
      csv
      (go :variables
          go-backend 'lsp
