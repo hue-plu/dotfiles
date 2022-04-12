@@ -623,6 +623,8 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  (setq ns-use-srgb-colorspace nil)
+
   ;; switch emacs app from command
   (when (featurep 'ns)
     (defun ns-raise-emacs ()
