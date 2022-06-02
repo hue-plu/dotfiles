@@ -110,6 +110,7 @@ SAVEHIST=100000
 LISTMAX=100000
 
 fpath=(~/dotfiles/.zsh/completion $fpath)
+fpath=(~/.zfunc $fpath)
 
 autoload -U compinit
 # 補完機能の強化
@@ -223,8 +224,6 @@ source ~/_project_env.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-eval "$(pyenv init -)"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f ~/google-cloud-sdk/path.zsh.inc ]; then . ~/google-cloud-sdk/path.zsh.inc; fi
 
@@ -232,3 +231,15 @@ if [ -f ~/google-cloud-sdk/path.zsh.inc ]; then . ~/google-cloud-sdk/path.zsh.in
 if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then . ~/google-cloud-sdk/completion.zsh.inc; fi
 
 [ -f ~/.ghcup/env ] && source ~/.ghcup/env # ghcup-env
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+eval "$(pyenv init -)"
+eval "$(direnv hook zsh)"
+
+
+export PATH="$HOME/.poetry/bin:$PATH"
+eval "$(nodenv init -)"
