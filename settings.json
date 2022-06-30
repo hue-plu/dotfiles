@@ -1,0 +1,87 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<space>"
+            ],
+            "commands": [
+                "vspacecode.space"
+            ]
+        },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        }
+    ],
+    "workbench.startupEditor": "none",
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "workbench.editor.showTabs": false,
+    "vspacecode.bindingOverrides": [
+      {
+        "keys": "w.J",
+        "name": "Search: Focus List",
+        "type": "command",
+        "command": "search.action.focusSearchList"
+      },
+    ],
+    "vspacecode.bindingOverrides": [
+      {
+        "keys": "f.r",
+        "name": "$(history)   Quick Open",
+        "type": "command",
+        "command": "workbench.action.quickOpen"
+      },
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "eslint.workingDirectories": [
+        { "mode": "auto" }
+    ],
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.activityBar.visible": false,
+    "python.formatting.provider": "black",
+    "editor.formatOnType": true,
+    "python.pythonPath": "/Users/yuta_saito/.pyenv/shims/python",
+    "python.disableInstallationCheck": true,
+    "python.poetryPath": "/Users/yuta_saito/.pyenv/shims/poetry",
+    "python.analysis.typeCheckingMode": "basic",
+    "prettier.requireConfig": true,
+}
