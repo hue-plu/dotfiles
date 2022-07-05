@@ -51,8 +51,8 @@ cd $HOME
 # vim settings
 if which git >/dev/null 2>&1; then
 	mkdir -p $HOME/.local/share/{backup,swap,undo}
-	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    curl -fLo ~/.config/nvim/autoload/jetpack.vim --create-dirs \
+    https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim
 fi
 mkdir -p $HOME/.cache/shell/
 
