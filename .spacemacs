@@ -32,8 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(php
-     (typescript :variables
+   '((typescript :variables
                  typescript-backend 'tide
                  typescript-lsp-linter nil
                  typescript-linter 'eslint)
@@ -749,6 +748,7 @@ See also `org-save-all-org-buffers'"
     (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.next$") ;; Next.js
     (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.mypy_cache$") ;; Mypy
     (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.venv$") ;; venv
+    (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\venv$") ;; venv
     )
 
   ;; python-mode

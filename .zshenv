@@ -13,9 +13,12 @@
     ~/.cargo/bin
     ~/.yarn/bin
     ~/.rbenv/bin
+    ~/.poetry/bin
     $PYENV_ROOT/bin
     /usr/local/opt/mysql-client/bin
     /usr/local/opt/ruby/bin
+    ~/Library/Android/sdk/platform-tools
+    ~/.nodenv/shims
  )
 
 export TERMINFO=~/.terminfo
@@ -37,3 +40,4 @@ export GO111MODULE=on
 alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 alias emacs="ec"
 export EDITOR="et"
+

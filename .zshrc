@@ -68,21 +68,7 @@ PROMPT=$'%2F%n@%m%f%1v%# '
 RPROMPT='[`rprompt-tf-workspace``rprompt-git-current-branch`%~]'
 
 # alias for git
-gst  () { git status -s && git stash list }
-glgg () { git log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d%Creset' }
-glg  () { glgg | head }
 gc   () { git checkout `git branch | fzf | sed -e "s/\* //g" | awk "{print \$1}"`}
-rcd  () { cd `bundle show --paths | fzf` }
-
-open-pull-request () {
-    merge_commit=$(ruby -e 'print (File.readlines(ARGV[0]) & File.readlines(ARGV[1])).last' <(git rev-list --ancestry-path $1..master) <(git rev-list --first-parent $1..master))
-    if git show $merge_commit | grep -q 'pull request'
-    then
-        pull_request_number=$(git log -1 --format=%B $merge_commit | sed -e 's/^.*#\([0-9]*\).*$/\1/' | head -1)
-        url="`hub browse -u`/pull/${pull_request_number}"
-    fi
-    open $url
-}
 
 # alias for ls
 alias ls='ls -G'
@@ -112,9 +98,7 @@ LISTMAX=100000
 fpath=(~/dotfiles/.zsh/completion $fpath)
 fpath=(~/.zfunc $fpath)
 
-autoload -U compinit
-# 補完機能の強化
-compinit -u -C
+autoload -Uz compinit && compinit
 
 # コアダンプサイズを制限
 limit coredumpsize 102400
@@ -157,13 +141,13 @@ setopt numeric_glob_sort
 setopt print_eight_bit
 # ヒストリを共有
 setopt share_history
-# 補完の判定を大文字小文字どちらでも
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 # 補完候補の色づけ
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 zstyle ':completion:*' list-colors \
 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:default' menu select=1
 
 # ディレクトリ名だけで cd
 setopt auto_cd
@@ -232,6 +216,18 @@ if [ -f ~/google-cloud-sdk/completion.zsh.inc ]; then . ~/google-cloud-sdk/compl
 
 [ -f ~/.ghcup/env ] && source ~/.ghcup/env # ghcup-env
 
+_npm_completion() {
+  local si=$IFS
+  local -x COMP_POINT COMP_CWORD
+  (( COMP_POINT = 1 + ${#${(j. .)words[1,CURRENT]}} + $#QIPREFIX + $#IPREFIX + $#PREFIX ))
+  compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+               COMP_LINE=$BUFFER \
+               COMP_POINT="$COMP_POINT" \
+               npm completion -- "${words[@]}" \
+               2>/dev/null)
+  IFS=$si
+}
+compdef _npm_completion npm
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
