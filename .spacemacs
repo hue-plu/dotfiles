@@ -32,7 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '((typescript :variables
+   '(
+     (typescript :variables
                  typescript-backend 'tide
                  typescript-lsp-linter nil
                  typescript-linter 'eslint)
@@ -79,12 +80,16 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
-     auto-completion
+     ;; auto-completion
      ;; better-defaults
+     emacs-lisp
+     auto-completion
      emacs-lisp
      git
      (markdown :variables markdown-live-preview-engine 'vmd)
+     helm
+     ;; lsp
+     ;; markdown
      ;; multiple-cursors
      (org :variables org-projectile-file "project.org")
 
@@ -108,14 +113,14 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
-                                       indent-guide
-                                       migemo
-                                       vue-mode
-                                       add-node-modules-path
-                                       all-the-icons
-                                       gruvbox-theme
-                                       tide
-                                     )
+                                      indent-guide
+                                      migemo
+                                      vue-mode
+                                      add-node-modules-path
+                                      all-the-icons
+                                      gruvbox-theme
+                                      tide
+                                      )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -230,6 +235,13 @@ It should only modify the values of Spacemacs settings."
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
    dotspacemacs-startup-banner 'official
+
+   ;; Scale factor controls the scaling (size) of the startup banner. Default
+   ;; value is `auto' for scaling the logo automatically to fit all buffer
+   ;; contents, to a maximum of the full image height and a minimum of 3 line
+   ;; heights. If set to a number (int or float) it is used as a constant
+   ;; scaling factor for the default logo size.
+   dotspacemacs-startup-banner-scale 'auto
 
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
@@ -402,12 +414,12 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
-   ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   ;; (default t) (Emacs 24.4+ only)
+   dotspacemacs-maximized-at-startup t
 
    ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
-   ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
-   ;; borderless fullscreen. (default nil)
+   ;; variable with `dotspacemacs-maximized-at-startup' to obtain fullscreen
+   ;; without external boxes. Also disables the internal border. (default nil)
    dotspacemacs-undecorated-at-startup nil
 
    ;; A value from the range (0..100), in increasing opacity, which describes
@@ -419,6 +431,11 @@ It should only modify the values of Spacemacs settings."
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
+
+   ;; A value from the range (0..100), in increasing opacity, which describes the
+   ;; transparency level of a frame background when it's active or selected. Transparency
+   ;; can be toggled through `toggle-background-transparency'. (default 90)
+   dotspacemacs-background-transparency 90
 
    ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
@@ -529,7 +546,9 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil - same as frame-title-format)
    dotspacemacs-icon-title-format nil
 
-   ;; Show trailing whitespace (default t)
+   ;; Color highlight trailing whitespace in all prog-mode and text-mode derived
+   ;; modes such as c++-mode, python-mode, emacs-lisp, html-mode, rst-mode etc.
+   ;; (default t)
    dotspacemacs-show-trailing-whitespace t
 
    ;; Delete whitespace while saving buffer. Possible values are `all'
@@ -606,14 +625,16 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;   usage
   ;;     , g d -> find function name
   (setenv "GTAGSLABEL" "ctags")
-  )
+)
+
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-  )
+)
+
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -754,46 +775,8 @@ See also `org-save-all-org-buffers'"
   ;; python-mode
   (add-hook 'python-mode-hook
             (lambda () (setq flycheck-disabled-checkers '(python-mypy))))
-  )
+)
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("585942bb24cab2d4b2f74977ac3ba6ddbd888e3776b9d2f993c5704aa8bb4739" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default))
- '(evil-want-Y-yank-to-eol nil)
- '(package-selected-packages
-   '(phpunit phpcbf php-extras php-auto-yasnippets geben drupal-mode counsel-gtags counsel swiper ivy company-phpactor phpactor composer php-runtime company-php ac-php-core xcscope php-mode yapfify tide typescript-mode pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc go-guru go-eldoc cython-mode csv-mode company-go go-mode company-anaconda anaconda-mode pythonic yaml-mode ws-butler winum which-key web-mode web-beautify vue-mode edit-indirect ssass-mode vue-html-mode mmm-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit sql-indent spaceline powerline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-mode rainbow-identifiers rainbow-delimiters racer pug-mode projectile-rails rake inflections popwin persp-mode pcre2el pbcopy paradox spinner osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text minitest migemo magit-gitflow magit-popup macrostep lorem-ipsum livid-mode skewer-mode simple-httpd linum-relative link-hint launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero indent-guide hydra lv hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link ggtags fuzzy flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish gruvbox-theme ddskk company-web company-tern company-statistics company-ghci company-ghc company-cabal column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode chruby cargo bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile all-the-icons aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
-)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("585942bb24cab2d4b2f74977ac3ba6ddbd888e3776b9d2f993c5704aa8bb4739" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" default)))
- '(package-selected-packages
-   (quote
-    (yapfify tide typescript-mode pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc go-guru go-eldoc cython-mode csv-mode company-go go-mode company-anaconda anaconda-mode pythonic yaml-mode ws-butler winum which-key web-mode web-beautify vue-mode edit-indirect ssass-mode vue-html-mode mmm-mode volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org tagedit sql-indent spaceline powerline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-mode rainbow-identifiers rainbow-delimiters racer pug-mode projectile-rails rake inflections popwin persp-mode pcre2el pbcopy paradox spinner osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree move-text minitest migemo magit-gitflow magit-popup macrostep lorem-ipsum livid-mode skewer-mode simple-httpd linum-relative link-hint launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero indent-guide hydra lv hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link ggtags fuzzy flyspell-correct-helm flyspell-correct flycheck-rust flycheck-pos-tip pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit transient git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump f diminish gruvbox-theme ddskk company-web company-tern company-statistics company-ghci company-ghc company-cabal column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode chruby cargo bundler bind-map bind-key auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile all-the-icons aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
