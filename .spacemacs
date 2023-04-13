@@ -762,6 +762,9 @@ See also `org-save-all-org-buffers'"
   ;; typescript-mode
   (add-hook 'typescript-mode-hook
             (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
+  ;; set config to launch ts-server when emacs open .tsx file at startup
+  ;; ref: https://github.com/syl20bnr/spacemacs/issues/7344#issuecomment-342233811
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
   (with-eval-after-load 'lsp-mode
     ;; lsp-mode
