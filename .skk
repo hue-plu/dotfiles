@@ -1,4 +1,0 @@
-(setq skk-server-prog "~/.rbenv/shims/google-ime-skk")
-(setq skk-server-host "localhost")
-(setq skk-server-portnum 55100)
-(setq skk-share-private-jisyo t)
