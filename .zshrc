@@ -95,9 +95,6 @@ SAVEHIST=100000
 # 補完リストの上限
 LISTMAX=100000
 
-fpath=(~/dotfiles/.zsh/completion $fpath)
-fpath=(~/.zfunc $fpath)
-
 autoload -Uz compinit && compinit
 
 # コアダンプサイズを制限
@@ -111,12 +108,8 @@ bindkey -e
 setopt prompt_subst
 # ビープを鳴らさない
 setopt nobeep
-# 内部コマンド jobs の出力をデフォルトで jobs -l にする
-setopt long_list_jobs
 # 補完候補一覧でファイルの種別をマーク表示
 setopt list_types
-# サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
-setopt auto_resume
 # 直前と同じコマンドをヒストリに追加しない
 setopt hist_ignore_dups
 # 履歴中の重複行をファイル記録前に無くす
@@ -127,10 +120,6 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 # ファイル名で #, ~, ^ の 3 文字を正規表現として扱う
 setopt extended_glob
-# TAB で順に補完候補を切り替える
-setopt auto_menu
-# =command を command のパス名に展開する
-setopt equals
 # --prefix=/usr などの = 以降も補完
 setopt magic_equal_subst
 # ヒストリを呼び出してから実行する間に一旦編集
@@ -141,16 +130,6 @@ setopt numeric_glob_sort
 setopt print_eight_bit
 # ヒストリを共有
 setopt share_history
-# 補完候補の色づけ
-export LSCOLORS=gxfxcxdxbxegedabagacad
-export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:*' list-colors \
-'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*:default' menu select=1
-
-# ディレクトリ名だけで cd
-setopt auto_cd
 # カッコの対応などを自動的に補完
 setopt auto_param_keys
 # Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
@@ -163,28 +142,24 @@ setopt interactive_comments
 setopt mark_dirs
 # history (fc -l) コマンドをヒストリリストから取り除く。
 setopt hist_no_store
-# 補完候補を詰めて表示
-setopt list_packed
+# TAB で順に補完候補を切り替える
+setopt auto_menu
 # 最後のスラッシュを自動的に削除しない
 setopt noautoremoveslash
+
+# 補完候補の色づけ
+export LSCOLORS=gxfxcxdxbxegedabagacad
+export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*' list-colors \
+'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:default' menu select=1
 
 # setting for fzf
 export FZF_DEFAULT_OPTS="--reverse --inline-info"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 for f (~/.zsh/peco-sources/*) source "${f}" # load peco sources
-for f (~/.zsh/tools/*) source "${f}" # load peco sources
-
-# os settings
-if [[ "$OSTYPE" =~ "cygwin" ]];then
-else
-	export LANG=ja_JP.UTF-8
-fi
-
-# haskell need en_US.utf8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
 
 # cdr, add-zsh-hook を有効にする
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
@@ -197,42 +172,12 @@ zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/shell/chpwd-recent-dirs"
 zstyle ':chpwd:*' recent-dirs-pushd true
 
-# mysql
-export MYSQL_PS1='\u@\h[\d]> '
-
 # tmux
 export FZF_TMUX=1
 
-export PGDATA=/usr/local/var/postgres
-source ~/_project_env.sh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f ~/google-cloud-sdk/path.zsh.inc ]; then . ~/google-cloud-sdk/path.zsh.inc; fi
-
-[ -f ~/.ghcup/env ] && source ~/.ghcup/env # ghcup-env
-
-_npm_completion() {
-  local si=$IFS
-  local -x COMP_POINT COMP_CWORD
-  (( COMP_POINT = 1 + ${#${(j. .)words[1,CURRENT]}} + $#QIPREFIX + $#IPREFIX + $#PREFIX ))
-  compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-               COMP_LINE=$BUFFER \
-               COMP_POINT="$COMP_POINT" \
-               npm completion -- "${words[@]}" \
-               2>/dev/null)
-  IFS=$si
-}
-compdef _npm_completion npm
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
-eval "$(pyenv init -)"
-eval "$(direnv hook zsh)"
+# zsh plugin manager
+eval "$(sheldon source)"
 
 
-export PATH="$HOME/.poetry/bin:$PATH"
-eval "$(nodenv init -)"
