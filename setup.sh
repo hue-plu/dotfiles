@@ -3,16 +3,9 @@
 # create symbolic link
 ln -s {~/dotfiles/,~/}.tmux.conf
 ln -s {~/dotfiles/,~/}.spacemacs
-ln -s {~/dotfiles/,~/}.skk
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
-# ln -s {~/dotfiles/,~/}.Xdefaults
-# ln -s {~/dotfiles/,~/}.pryrc
-
-# before open Amethyst, remove under file
-# rm  ~/Library/Preferences/com.amethyst.Amethyst.plist
-ln -s {~/dotfiles/,~/}.amethyst
 
 # create local dirs
 mkdir -p $HOME/.local/{src,bin,share}
@@ -25,28 +18,8 @@ mkdir  $XDG_CONFIG_HOME/alacritty
 ln -s ~/dotfiles/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
 mkdir  $XDG_CONFIG_HOME/sheldon
 ln -s ~/dotfiles/plugins.toml $XDG_CONFIG_HOME/sheldon/plugins.toml
-
-# intelliJ
-# ln -s {~/dotfiles/,~/}.ideavimrc
-
-# vimfx config
-ln -s ~/dotfiles/vimfx ~/.config/
-
-# for osx
-if [[ ! -e "`which cmake`" ]]; then
-	echo "cmake command not found"
-	exit 1
-fi
-
-# tmux settings
-cd $HOME/local/src
-git clone https://github.com/thewtex/tmux-mem-cpu-load.git
-cd tmux-mem-cpu-load
-cmake .
-make
-make install
-
-cd $HOME
+mkdir  $XDG_CONFIG_HOME/karabiner
+ln -s ~/dotfiles/karabiner.json $XDG_CONFIG_HOME/karabiner/karabiner.json
 
 # vim settings
 if which git >/dev/null 2>&1; then
@@ -62,14 +35,10 @@ if [[ ! -e "`which brew`" ]]; then
 	exit 1
 fi
 
-brew tap caskroom/cask
-brew tap caskroom/fonts
-brew tap caskroom/versions
+brew tap homebrew/cask-fonts
+brew tap homebrew/cask-versions
 
 brew update
-
-brew cask install slate
-ln -s {~/dotfiles/,~/}.slate.js
 
 # install neovim
 brew install neovim/neovim/neovim
@@ -84,19 +53,18 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus --without-imagemagick
 brew install cmigemo --HEAD
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-ln -s ~/dotfiles/emacs-grammarly.el ~/.emacs.d/emacs-grammarly.el
 
 brew install ripgrep
 
-
-# docker zsh completion
-# https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-curl -L https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker > ~/.zsh/completion/_docker
-
-# alfred
-brew cask install alfred
-
 # fzf
 brew install fzf
+
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install
+
+# sheldon
+brew install sheldon
+
+# tmux
+brew install tmux
+
