@@ -27,6 +27,8 @@ set backup
 set clipboard+=unnamedplus
 set backupdir=~/.local/share/backup
 set directory=~/.local/share
+let $LANG = 'en_US'
+set langmenu=en_US.UTF-8
 set helplang=en
 set hidden
 set laststatus=2

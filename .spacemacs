@@ -40,14 +40,15 @@ This function should only modify configuration layer settings."
      graphql
      (terraform :variables terraform-auto-format-on-save t)
      csv
-     (go :variables
-         go-backend 'lsp
-         go-format-before-save t
-         go-use-golangci-lint t
-         go-use-gocheck-for-testing t
-         godoc-at-point-function 'godoc-gogetdoc
-         gofmt-command "goimports"
-         )
+     (go :variables go-backend 'lsp)
+     ;;(go :variables
+     ;;    go-backend 'lsp
+     ;;    go-format-before-save t
+     ;;    go-use-golangci-lint t
+     ;;    go-use-gocheck-for-testing t
+     ;;    
+     ;;    gofmt-command "goimports"
+     ;;    )
      (lsp :variables
           lsp-headerline-breadcrumb-enable nil
           lsp-ui-doc-position 'at-point
@@ -71,7 +72,6 @@ This function should only modify configuration layer settings."
      rust
      yaml
      html
-     gtags
      (ruby :variables
            ruby-enable-ruby-on-rails-support t)
      ruby-on-rails
@@ -80,7 +80,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; auto-completion
+     auto-completion
      ;; better-defaults
      emacs-lisp
      auto-completion
@@ -613,7 +613,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
     (load-file "~/_project_env.el"))
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
   (setq exec-path (append (list (concat (getenv "HOME") "/go/bin"))))
+  (setq exec-path (append (list (concat (getenv "HOME") ".asdf/shims"))))
   (setq exec-path (append (list (concat (getenv "HOME") "/.local/bin"))))
   (setq exec-path (append (list (concat (getenv "HOME") "/.ghcup/bin"))))
 
@@ -702,7 +704,7 @@ before packages are loaded."
   (require 'migemo)
   (setq migemo-command "cmigemo")
   (setq migemo-options '("-q" "--emacs" "-i" "\a"))
-  (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+  (setq migemo-dictionary "/opt/homebrew/share/migemo/utf-8/migemo-dict")
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
   (setq migemo-coding-system 'utf-8)

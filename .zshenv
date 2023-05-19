@@ -19,18 +19,14 @@
     /usr/local/opt/ruby/bin
     ~/Library/Android/sdk/platform-tools
     ~/.nodenv/shims
+	$(go env GOPATH)/bin
  )
+
+export LANG=ja_JP.UTF-8
 
 export TERMINFO=~/.terminfo
 export PYTHONPATH=~/.local/src/site-packages/
 export EDITOR=vim
-
-# ref: https://github.com/hitode909/google-ime-skk
-# emacs skk server connect to google-ime
-if lsof -n -iTCP:55100 | grep LISTEN > /dev/null 2>&1; then
-else
-  google-ime-skk > /dev/null 2>&1 &
-fi
 
 export PYENV_ROOT=$HOME/.pyenv
 export DOCKER_BUILDKIT=1
@@ -41,3 +37,13 @@ alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 alias emacs="ec"
 export EDITOR="et"
 
+. "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+
+export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '~/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '~/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
