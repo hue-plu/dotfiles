@@ -180,4 +180,5 @@ export FZF_TMUX=1
 # zsh plugin manager
 eval "$(sheldon source)"
 
+export SHELL=/bin/zsh
 
