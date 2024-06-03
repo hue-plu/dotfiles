@@ -15,7 +15,7 @@ mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 mkdir  $XDG_CONFIG_HOME/nvim
 ln -s ~/dotfiles/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 mkdir  $XDG_CONFIG_HOME/alacritty
-ln -s ~/dotfiles/alacritty.yml $XDG_CONFIG_HOME/alacritty/alacritty.yml
+ln -s ~/dotfiles/alacritty.toml $XDG_CONFIG_HOME/alacritty/alacritty.toml
 mkdir  $XDG_CONFIG_HOME/sheldon
 ln -s ~/dotfiles/plugins.toml $XDG_CONFIG_HOME/sheldon/plugins.toml
 mkdir  $XDG_CONFIG_HOME/karabiner

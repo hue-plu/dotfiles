@@ -19,7 +19,6 @@
     /usr/local/opt/ruby/bin
     ~/Library/Android/sdk/platform-tools
     ~/.nodenv/shims
-	$(go env GOPATH)/bin
  )
 
 export LANG=ja_JP.UTF-8
@@ -36,8 +35,6 @@ export GO111MODULE=on
 alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 alias emacs="ec"
 export EDITOR="et"
-
-. "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
