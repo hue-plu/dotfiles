@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
                  typescript-lsp-linter nil
                  typescript-linter 'eslint)
      graphql
+     (php :variables php-backend 'lsp)
      (terraform :variables terraform-auto-format-on-save t)
      csv
      (go :variables go-backend 'lsp)
@@ -46,7 +47,7 @@ This function should only modify configuration layer settings."
      ;;    go-format-before-save t
      ;;    go-use-golangci-lint t
      ;;    go-use-gocheck-for-testing t
-     ;;    
+     ;;
      ;;    gofmt-command "goimports"
      ;;    )
      (lsp :variables
@@ -120,6 +121,7 @@ This function should only modify configuration layer settings."
                                       all-the-icons
                                       gruvbox-theme
                                       tide
+                                      php-cs-fixer
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -618,6 +620,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq exec-path (append (list (concat (getenv "HOME") ".asdf/shims"))))
   (setq exec-path (append (list (concat (getenv "HOME") "/.local/bin"))))
   (setq exec-path (append (list (concat (getenv "HOME") "/.ghcup/bin"))))
+  (setq exec-path (append (list (concat (getenv "HOME") "/.config/composer/vendor/bin"))))
+  (setq evil-want-keybinding nil)
+
 
   ;; gtags
   ;;   with ruby. need ctags and pygments
@@ -776,6 +781,11 @@ See also `org-save-all-org-buffers'"
     (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.venv$") ;; venv
     (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\venv$") ;; venv
     )
+
+  ;; php mode
+  (setq php-cs-fixer-config-option (concat (getenv "HOME") "/.php-cs-fixer.dist.php"))
+  (add-hook 'before-save-hook 'php-cs-fixer-before-save)
+
 
   ;; python-mode
   (add-hook 'python-mode-hook
