@@ -121,7 +121,7 @@ This function should only modify configuration layer settings."
                                       all-the-icons
                                       gruvbox-theme
                                       tide
-                                      php-cs-fixer
+                                      reformatter
                                       )
 
    ;; A list of packages that cannot be updated.
@@ -600,7 +600,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -623,7 +623,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq exec-path (append (list (concat (getenv "HOME") "/.config/composer/vendor/bin"))))
   (setq evil-want-keybinding nil)
 
-
   ;; gtags
   ;;   with ruby. need ctags and pygments
   ;;   @see: https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btags/gtags#install-recommended-dependencies
@@ -632,7 +631,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;;   usage
   ;;     , g d -> find function name
   (setenv "GTAGSLABEL" "ctags")
-)
+  )
 
 
 (defun dotspacemacs/user-load ()
@@ -640,7 +639,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -692,9 +691,9 @@ before packages are loaded."
 
   ;; align-repeat by RET key in visual state
   (define-key evil-visual-state-map (kbd "RET")
-    (lambda()
-      (interactive)
-      (call-interactively 'spacemacs/align-repeat)))
+              (lambda()
+                (interactive)
+                (call-interactively 'spacemacs/align-repeat)))
 
   (eval-after-load 'evil-vars '(evil-set-initial-state 'term-mode 'emacs))
 
@@ -743,19 +742,31 @@ See also `org-save-all-org-buffers'"
 
   ;; e.g. (setq org-agenda-files (append (list "~/projects/xx.org") (org-agenda-files)))
   (when (file-readable-p "~/_project_org.el")
-        (load-file "~/_project_org.el"))
+    (load-file "~/_project_org.el"))
+
+  ;; setting reformatter
+  (require 'reformatter)
+  (reformatter-define biome-format
+    :program "biome"
+    :args `("format" "--stdin-file-path" ,(buffer-file-name))
+    :lighter " BiomeFmt")
 
   ;; vue-mode
   (add-hook 'vue-mode-hook
             (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
   (setq flycheck-stylelintrc "stylelint.config.js")
   (with-eval-after-load 'flycheck
-            (flycheck-add-mode 'css-stylelint 'vue-mode)
-            (flycheck-add-next-checker 'css-stylelint 'javascript-eslint))
+    (flycheck-add-mode 'css-stylelint 'vue-mode)
+    (flycheck-add-next-checker 'css-stylelint 'javascript-eslint))
+
+
+
+  (eval-after-load 'js2-mode
+    '(add-hook 'js2-mode-hook #'add-node-modules-path))
 
   ;; js2-mode
   (add-hook 'js2-mode-hook
-            (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
+            (lambda () (add-hook 'before-save-hook 'biome-format-on-save-mode)))
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
 
@@ -763,12 +774,16 @@ See also `org-save-all-org-buffers'"
   (add-to-list 'auto-mode-alist '("\\.env\\.*" . dotenv-mode))
 
   ;; typescript-tsx-mode
+  (eval-after-load 'typescript-tsx-mode
+    '(add-hook 'typescript-tsx-mode-hook #'add-node-modules-path))
   (add-hook 'typescript-tsx-mode-hook
-            (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
+            (lambda () (add-hook 'before-save-hook 'biome-format-on-save-mode)))
 
   ;; typescript-mode
+  (eval-after-load 'typescript-mode
+    '(add-hook 'typescript-mode-hook #'add-node-modules-path))
   (add-hook 'typescript-mode-hook
-            (lambda () (add-hook 'before-save-hook 'prettier-js nil 'local)))
+            (lambda () (add-hook 'before-save-hook 'biome-format-on-save-mode)))
   ;; set config to launch ts-server when emacs open .tsx file at startup
   ;; ref: https://github.com/syl20bnr/spacemacs/issues/7344#issuecomment-342233811
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
@@ -782,15 +797,24 @@ See also `org-save-all-org-buffers'"
     (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\venv$") ;; venv
     )
 
-  ;; php mode
-  (setq php-cs-fixer-config-option (concat (getenv "HOME") "/.php-cs-fixer.dist.php"))
-  (add-hook 'before-save-hook 'php-cs-fixer-before-save)
+  ;; graphql-mode
+  (add-to-list 'spacemacs-indent-sensitive-modes 'graphql-mode)
 
+  ;; php mode
+  ;; php-cs-fixer の場合の設定
+  ;;     (setq php-cs-fixer-config-option (concat (getenv "HOME") "/.php-cs-fixer.dist.php"))
+  ;;     (add-hook 'before-save-hook 'php-cs-fixer-before-save)
+  (add-to-list 'spacemacs-indent-sensitive-modes 'php-mode)
+  (add-hook 'php-mode-hook
+            (lambda ()
+              ;; disable lsp-checker for php-mode
+              (setq lsp-diagnostic-package :none)
+              (flycheck-select-checker 'php-phpcs)))
 
   ;; python-mode
   (add-hook 'python-mode-hook
             (lambda () (setq flycheck-disabled-checkers '(python-mypy))))
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
