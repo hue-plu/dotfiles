@@ -788,6 +788,33 @@ See also `org-save-all-org-buffers'"
   ;; ref: https://github.com/syl20bnr/spacemacs/issues/7344#issuecomment-342233811
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
+  (defun my/setup-typescript-mode ()
+    "Setup TypeScript mode depending on the presence of deno.json."
+    (if (locate-dominating-file default-directory "deno.json")
+        (progn
+          (message "Found deno.json, enabling Deno LSP.")
+          (require 'lsp-mode)
+          (lsp-deferred) ; Use lsp-deferred to defer LSP startup until buffer is fully loaded
+          (setq-local lsp-clients-deno-server-command '("deno" "lsp"))
+          ;; (setq-local lsp-enable-file-watchers nil)
+          )
+      (progn
+        (message "deno.json not found, using regular TypeScript mode."))))
+
+  (defun my/typescript-setup-hook ()
+    (when (derived-mode-p 'typescript-mode)
+      (my/setup-typescript-mode)))
+
+  (add-hook 'typescript-mode-hook 'my/typescript-setup-hook)
+
+  ;; Ensure lsp-mode is installed and configured
+  ;; (use-package lsp-mode
+  ;;   :ensure t
+  ;;   :commands (lsp lsp-deferred)
+  ;;   :hook ((typescript-mode . lsp-deferred))
+  ;;   :config
+  ;;   (setq lsp-prefer-capf t))
+
   (with-eval-after-load 'lsp-mode
     ;; lsp-mode
     (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\.nuxt$") ;; Nuxt.js
@@ -819,3 +846,27 @@ See also `org-save-all-org-buffers'"
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(safe-local-variable-values
+     '((lsp-enabled-clients deno-ls)
+       (typescript-backend . tide)
+       (typescript-backend . lsp)
+       (javascript-backend . tide)
+       (javascript-backend . tern)
+       (javascript-backend . lsp))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
