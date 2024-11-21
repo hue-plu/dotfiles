@@ -19,6 +19,7 @@
     /usr/local/opt/ruby/bin
     ~/Library/Android/sdk/platform-tools
     ~/.nodenv/shims
+	~/.config/composer/vendor/bin
  )
 
 export LANG=ja_JP.UTF-8
@@ -31,10 +32,6 @@ export PYENV_ROOT=$HOME/.pyenv
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 export GO111MODULE=on
-
-alias emacsclient="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-alias emacs="ec"
-export EDITOR="et"
 
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 

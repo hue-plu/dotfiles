@@ -6,6 +6,8 @@ ln -s {~/dotfiles/,~/}.spacemacs
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
+ln -s ~/dotfiles/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -s ~/dotfiles/settings.json ~/Library/Application\ Support/Code/User/settings.json 
 
 # create local dirs
 mkdir -p $HOME/.local/{src,bin,share}

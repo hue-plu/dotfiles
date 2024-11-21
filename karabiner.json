@@ -39,6 +39,27 @@
                         ]
                     },
                     {
+                        "description": "Open Spotify",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open -a 'Spotify.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Open Slack",
                         "manipulators": [
                             {
@@ -81,7 +102,7 @@
                         ]
                     },
                     {
-                        "description": "Open Emacs",
+                        "description": "Open VSCode",
                         "manipulators": [
                             {
                                 "from": {
@@ -94,7 +115,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -a 'Emacs.app'"
+                                        "shell_command": "open -a 'Visual Studio Code.app'"
                                     }
                                 ],
                                 "type": "basic"
