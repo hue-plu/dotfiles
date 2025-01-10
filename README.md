@@ -1,5 +1,13 @@
 # README #
 
+## Vivaldi: extentions
+- Mouse Dictionary
+    - https://chromewebstore.google.com/detail/mouse-dictionary/dnclbikcihnpjohihfcmmldgkjnebgnj
+    - 必要な英字郎のTXTデータ
+        - Pixivアカウントでログイン
+        - https://booth.pm/ja/items/777563
+
+
 ## OSX: mouse acceleration curve off
 https://downloads.steelseriescdn.com/drivers/tools/steelseries-exactmouse-tool.dmg
 SmoothMouseはKarabinerと競合するため使わない(使うとPointingButton::XX系が封印されてしまう)
