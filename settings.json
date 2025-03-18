@@ -63,26 +63,21 @@
             "type": "command",
             "command": "workbench.action.quickOpen"
         },
+        {
+            "keys": "p.I",
+            "name": "Reload Window",
+            "type": "command",
+            "command": "workbench.action.reloadWindow"
+        }
     ],
     "[typescript]": {
         "editor.defaultFormatter": "biomejs.biome"
     },
     "editor.formatOnSave": true,
-    "eslint.workingDirectories": [
-        {
-            "mode": "auto"
-        }
-    ],
     "[typescriptreact]": {
         "editor.defaultFormatter": "biomejs.biome"
     },
-    "python.formatting.provider": "black",
     "editor.formatOnType": true,
-    "python.pythonPath": "/Users/yuta_saito/.pyenv/shims/python",
-    "python.disableInstallationCheck": true,
-    "python.poetryPath": "/Users/yuta_saito/.pyenv/shims/poetry",
-    "python.analysis.typeCheckingMode": "basic",
-    "prettier.requireConfig": true,
     "workbench.activityBar.location": "hidden",
     "extensions.ignoreRecommendations": true,
     "zenMode.centerLayout": false,
