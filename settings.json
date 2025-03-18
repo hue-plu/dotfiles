@@ -22,6 +22,88 @@
                     "args": "m"
                 }
             ]
+        },
+        {
+            "before": [
+                "h"
+            ],
+            "commands": [
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "left",
+                        "by": "character",
+                        "value": 1
+                    }
+                },
+                "showhoverinoutput.showHoverOutput"
+            ]
+        },
+        {
+            "before": [
+                "j"
+            ],
+            "commands": [
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "down",
+                        "by": "line",
+                        "value": 1
+                    }
+                },
+                "showhoverinoutput.showHoverOutput"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "commands": [
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "up",
+                        "by": "line",
+                        "value": 1
+                    }
+                },
+                "showhoverinoutput.showHoverOutput"
+            ]
+        },
+        {
+            "before": [
+                "l"
+            ],
+            "commands": [
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "right",
+                        "by": "character",
+                        "value": 1
+                    }
+                },
+                "showhoverinoutput.showHoverOutput"
+            ]
+        },
+        {
+            "before": [
+                "b"
+            ],
+            "commands": [
+                "cursorWordStartLeft",
+                "showhoverinoutput.showHoverOutput"
+            ]
+        },
+        {
+            "before": [
+                "e"
+            ],
+            "commands": [
+                "cursorWordEndRight",
+                "showhoverinoutput.showHoverOutput"
+            ]
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
