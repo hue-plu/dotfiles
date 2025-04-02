@@ -2,7 +2,6 @@
 
 # create symbolic link
 ln -s {~/dotfiles/,~/}.tmux.conf
-ln -s {~/dotfiles/,~/}.spacemacs
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
@@ -49,12 +48,6 @@ python3 -m pip install --user --upgrade pynvim
 gem install neovim
 gem install rcodetools
 gem install fastri
-
-# install spacemacs
-brew tap d12frosted/emacs-plus
-brew install emacs-plus --without-imagemagick
-brew install cmigemo --HEAD
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 brew install ripgrep
 
