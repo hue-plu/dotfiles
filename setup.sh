@@ -5,6 +5,9 @@ ln -s {~/dotfiles/,~/}.tmux.conf
 ln -s {~/dotfiles/,~/}.zsh
 ln -s {~/dotfiles/,~/}.zshrc
 ln -s {~/dotfiles/,~/}.zshenv
+
+# for vscode
+mkdir -p $HOME/Library/Application\ Support/Code/User
 ln -s ~/dotfiles/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 ln -s ~/dotfiles/settings.json ~/Library/Application\ Support/Code/User/settings.json 
 

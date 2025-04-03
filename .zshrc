@@ -182,3 +182,5 @@ eval "$(sheldon source)"
 
 export SHELL=/bin/zsh
 
+# mise for Node version management
+eval "$(mise activate zsh)"
